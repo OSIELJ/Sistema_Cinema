@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "nome": "osiel",
+    "sobrenome": "juniro",
+    "cpf": "13441301609",
+    "endereco": "tirand",
+    "telefone": "38998151249"
+  },
+  {
+    "id": 2,
+    "nome": "Maicon",
+    "sobrenome": "Douglas",
+    "cpf": "13441301609",
+    "endereco": "tirand",
+    "telefone": "38998151249"
+  }
+]

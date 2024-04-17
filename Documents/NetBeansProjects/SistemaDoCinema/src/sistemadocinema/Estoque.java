@@ -1,0 +1,18 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package sistemadocinema;
+
+/**
+ *
+ * @author Osiel Junior
+ */
+public class Estoque {
+    
+    private Produto adicionarProduto;
+    private Produto removerProduto;
+    private Produto verificarValidadeProdutos;
+   
+    
+}
