@@ -4,13 +4,20 @@
  */
 package sistemadocinema;
 
+import java.util.List;
+
 /**
  *
  * @author Osiel Junior
  */
-public class Gerente {
+public class Gerente extends Usuario{
     
     private Relatorio relatorioDiario;
     private Relatorio relatorioMensalAnual;
+    private List<Gerente> listaGerentes;
+    
+    public Gerente(String nomeUsuario, String senha) {
+        super(nomeUsuario, senha);
+    }
     
 }

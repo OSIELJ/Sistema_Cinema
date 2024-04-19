@@ -5,7 +5,7 @@
 package sistemadocinema;
 
 /**
- *
+ *s
  * @author Osiel Junior
  */
 public class BalcaoAutomatico {

@@ -4,14 +4,22 @@
  */
 package sistemadocinema;
 
+import java.util.List;
+
 /**
  *
  * @author Osiel Junior
  */
-public class Funcionario {
-    private String nome;
-    private String cpf;
-    private String cargo;
-    private String login;
-    private String senha;
+
+
+ public class Funcionario extends Usuario {
+    
+    private List<sistemadocinema.Funcionario> listaFuncionarios;
+
+    public Funcionario(String nomeUsuario, String senha) {
+        super(nomeUsuario, senha);
+    }
 }
+    
+    
+

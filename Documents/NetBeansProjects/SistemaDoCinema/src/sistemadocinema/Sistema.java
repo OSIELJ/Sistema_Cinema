@@ -36,6 +36,36 @@ public class Sistema {
        Json.salvarClientes(listaClientes);
        
        
+       
+       Gerente myGerente = new Gerente("Osiel", "Osieljunior123");
+       Funcionario myFuncionario = new Funcionario("Daniel", "Danielrodrigues123");
+       
+       
+       Autenticar.adicionarUsuario(myFuncionario);
+       Autenticar.adicionarUsuario(myGerente);
+       
+       Autenticar.autenticar("Osiel", "Osieljunior123");
+       
+       
+       
+       
+
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
         
         
     }
