@@ -15,11 +15,11 @@ import java.util.List;
 public class Autenticar {
     private static List<Usuario> listaUsuarios = new ArrayList<>();
 
-    public static void adicionarUsuario(Usuario usuario) {
+    public  void adicionarUsuario(Usuario usuario) {
         listaUsuarios.add(usuario);
     }
 
-    public static Usuario autenticar(String nomeUsuario, String senha) {
+    public  Usuario autenticar(String nomeUsuario, String senha) {
         for (Usuario usuario : listaUsuarios) {
             if (usuario.getNomeUsuario().equals(nomeUsuario) && usuario.verificarSenha(senha)) {
                 if (usuario instanceof Gerente) {
