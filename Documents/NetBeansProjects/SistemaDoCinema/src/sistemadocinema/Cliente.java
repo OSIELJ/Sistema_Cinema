@@ -43,6 +43,22 @@ public class Cliente {
        // this.preferencias = preferencias;
     //}
 
+    public static int getUltimoId() {
+        return ultimoId;
+    }
+
+    public static void setUltimoId(int ultimoId) {
+        Cliente.ultimoId = ultimoId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -82,6 +98,16 @@ public class Cliente {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    public static List<Cliente> getListaCliente() {
+        return listaCliente;
+    }
+
+    public static void setListaCliente(List<Cliente> listaCliente) {
+        Cliente.listaCliente = listaCliente;
+    }
+
+     
 
    
     

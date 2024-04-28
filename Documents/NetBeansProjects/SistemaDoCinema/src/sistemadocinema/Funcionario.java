@@ -16,9 +16,24 @@ import java.util.List;
     
     private List<sistemadocinema.Funcionario> listaFuncionarios;
 
-    public Funcionario(String nomeUsuario, String senha) {
-        super(nomeUsuario, senha);
+    public Funcionario(String nome, String cpf, String nomeUsuario, String senha) {
+        super(nome, cpf, nomeUsuario, senha);
     }
+    
+    public String setSenha(){
+        
+        return super.getSenha();
+    }
+    
+    @Override
+        public String getNome() {
+        return super.getNome();
+    }
+        
+        public String getCpf() {
+        return super.getCpf();
+    }
+
 }
     
     

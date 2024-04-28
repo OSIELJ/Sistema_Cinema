@@ -16,8 +16,19 @@ public class Gerente extends Usuario{
     private Relatorio relatorioMensalAnual;
     private List<Gerente> listaGerentes;
     
-    public Gerente(String nomeUsuario, String senha) {
-        super(nomeUsuario, senha);
+    public Gerente(String nome, String cpf, String nomeUsuario, String senha) {
+        super(nome, cpf, nomeUsuario, senha);
     }
+    
+    
+            public String getNome() {
+        return super.getNome();
+    }
+        
+        public String getCpf() {
+        return super.getCpf();
+    }
+        
+
     
 }

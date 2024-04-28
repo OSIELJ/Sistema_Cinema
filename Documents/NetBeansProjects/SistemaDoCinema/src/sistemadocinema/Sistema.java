@@ -17,29 +17,41 @@ public class Sistema {
 
     public static void main(String[] args) {
 
-        /* Cliente myCliente = new Cliente("osiel", "juniro", "13441301609", "tirand",
-        "38998151249");
-        
-        Cliente myCliente1 = new Cliente("Maicon", "Douglas", "13441301609", "tirand",
-        "38998151249");
-        
-        
-        
-        List<Cliente> listaClientes = new ArrayList<>();
-        listaClientes.add(myCliente);
-        listaClientes.add(myCliente1);
+
+       
+           
       
-       Json.salvarClientes(listaClientes);
-       Json.salvarClientes(listaClientes);
-         */
-        // Sistema de se manter em execucao.
+  
+        
         Scanner scanner = new Scanner(System.in);
         String nomeUsuario, senha;
 
-        Gerente myGerente = new Gerente("Osiel", "Osieljunior123");
-        Funcionario myFuncionario = new Funcionario("Daniel", "Danielrodrigues123");
+        Gerente myGerente = new Gerente("Osiel Junior", "13441301609", "Osiel", "Osieljunior123");
+        Funcionario myFuncionario = new Funcionario("Daniel Rodrigues","01602001506","Daniel", "Danielrodrigues123");
+        
+        List<Cliente> listaClientes = new ArrayList<>();
+        List<Funcionario> listaFuncionarios = new ArrayList<>();
+        
+        
+        Cliente myCliente1 = new Cliente("osiel", "juniro", "13441301609", "tirand",
+        "38998151249");
+        Cliente myCliente2 = new Cliente("Maicon", "Douglas", "13441301612", "tirand",
+        "38998151249");
+        Cliente myCliente3 = new Cliente("dfdsdf", "fffffff", "000000000", "tirand",
+        "38998151249");
+        
+        
+        Cadastro myCadastro = new Cadastro(listaClientes,listaFuncionarios);
+        
+        myCadastro.cadastrarCliente(myCliente1);
+        myCadastro.cadastrarCliente(myCliente2);
+        myCadastro.cadastrarCliente(myCliente3);
+        
+        myCadastro.excluirCliente("000000000");
+        
+        
 
-        Autenticar myAutenticar = new Autenticar();
+      /*  Autenticar myAutenticar = new Autenticar();
 
         myAutenticar.adicionarUsuario(myFuncionario);
         myAutenticar.adicionarUsuario(myGerente);
@@ -131,7 +143,7 @@ public class Sistema {
             }
 
         }
-
+*/
     }
 
 }

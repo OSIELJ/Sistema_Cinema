@@ -14,7 +14,9 @@ public abstract class Usuario {
     private String nome;
     private String cpf;
 
-    public Usuario(String nomeUsuario, String senha) {
+    public Usuario(String nome,String cpf, String nomeUsuario, String senha) {
+        this.nome = nome;
+        this.cpf = cpf;
         this.nomeUsuario = nomeUsuario;
         this.senha = senha;
     }
@@ -22,8 +24,36 @@ public abstract class Usuario {
     public String getNomeUsuario() {
         return nomeUsuario;
     }
+    
+        public String getCpf() {
+        return cpf;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+        
+        
+        public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
 
     public boolean verificarSenha(String senha) {
         return this.senha.equals(senha);
     }
+    
 }
