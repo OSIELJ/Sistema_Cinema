@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  *
- * @author Osiel Junior
+ * @author Daniel Rodrigues
  */
-public class Gerente extends Usuario{
+public class Gerente extends Usuario {
     
     private Relatorio relatorioDiario;
     private Relatorio relatorioMensalAnual;
@@ -20,15 +20,31 @@ public class Gerente extends Usuario{
         super(nome, cpf, nomeUsuario, senha);
     }
     
+    // Método para adicionar um novo gerente à lista de gerentes
+    public void adicionarGerente(Gerente novoGerente) {
+        listaGerentes.add(novoGerente);
+    }
     
-            public String getNome() {
-        return super.getNome();
+    // Método para remover um gerente da lista de gerentes
+    public void removerGerente(Gerente gerenteRemover) {
+        listaGerentes.remove(gerenteRemover);
     }
-        
-        public String getCpf() {
-        return super.getCpf();
+    
+    // Método para gerar o relatório diário
+    public Relatorio gerarRelatorioDiario() {
+        // Lógica para gerar o relatório diário
+        return relatorioDiario;
     }
-        
-
+    
+    // Método para gerar o relatório mensal/anual
+    public Relatorio gerarRelatorioMensalAnual() {
+        // Lógica para gerar o relatório mensal/anual
+        return relatorioMensalAnual;
+    }
+    
+    // Método para obter a lista de gerentes
+    public List<Gerente> getListaGerentes() {
+        return listaGerentes;
+    }
     
 }
