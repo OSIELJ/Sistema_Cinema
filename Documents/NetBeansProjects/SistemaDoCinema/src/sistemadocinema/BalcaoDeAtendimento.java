@@ -5,6 +5,7 @@
 package sistemadocinema;
 
 
+import java.util.ArrayList;
 import java.util.List;
 /**
  *
@@ -12,74 +13,57 @@ import java.util.List;
  */
 public class BalcaoDeAtendimento {
     
-    private Cliente cliente;
-    private int id;
-    private Funcionario funcionarioResponsavel;
-    private List<Venda> vendas;
-    private List<Filme> filmes;
+    protected int id;
+    protected Funcionario funcionarioResponsavel;
+    protected List<Venda> vendas;
+    protected List<Filme> filmesEmCartaz;
 
-    // Construtor
-    public BalcaoDeAtendimento(Cliente cliente) {
-        this.cliente = cliente;
-    }
     
-    // Método de boas-vindas
-    public void bemVindo() {
-        if (this.cliente != null) {
-            System.out.println("Bem-vindo, " + cliente.getNome() + "!");
+    public BalcaoDeAtendimento(int id, Funcionario funcionarioResponsavel) {
+        this.id = id;
+        this.funcionarioResponsavel = funcionarioResponsavel;
+        this.vendas = new ArrayList<>();
+        this.filmesEmCartaz = new ArrayList<>();
+    }
+
+
+    public void realizarVenda(Venda venda) {
+        vendas.add(venda);
+        System.out.println("Venda realizada com sucesso!");
+    }
+
+   
+    public void cancelarVenda(Venda venda) {
+        vendas.remove(venda);
+        System.out.println("Venda cancelada com sucesso!");
+    }
+
+   
+    public void adicionarFilme(Filme filme) {
+        filmesEmCartaz.add(filme);
+        System.out.println("Filme adicionado com sucesso!");
+    }
+
+
+    public void removerFilme(Filme filme) {
+        filmesEmCartaz.remove(filme);
+        System.out.println("Filme removido com sucesso!");
+    }
+
+
+    public double calcularRendimentoDiario() {
+        double rendimento = 0.0;
+        for (Venda venda : vendas) {
+            rendimento += venda.calcularTotal();
+        }
+        return rendimento;
+    }
+
+    public void imprimirRelatorioVendas() {
+        System.out.println("Relatório de Vendas:");
+        for (Venda venda : vendas) {
+            System.out.println(venda.toString());
         }
     }
-
-    // Getters e Setters
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Funcionario getFuncionarioResponsavel() {
-        return funcionarioResponsavel;
-    }
-
-    public void setFuncionarioResponsavel(Funcionario funcionarioResponsavel) {
-        this.funcionarioResponsavel = funcionarioResponsavel;
-    }
-
-    public List<Venda> getVendas() {
-        return vendas;
-    }
-
-    public void setVendas(List<Venda> vendas) {
-        this.vendas = vendas;
-    }
-
-    public List<Filme> getFilmes() {
-        return filmes;
-    }
-
-    public void setFilmes(List<Filme> filmes) {
-        this.filmes = filmes;
-    }
-
-    // Método toString para representação em string do objeto
-    @Override
-    public String toString() {
-        return "BalcaoDeAtendimento{" +
-                "cliente=" + cliente +
-                ", id=" + id +
-                ", funcionarioResponsavel=" + funcionarioResponsavel +
-                ", vendas=" + vendas +
-                ", filmes=" + filmes +
-                '}';
-    }
 }
+

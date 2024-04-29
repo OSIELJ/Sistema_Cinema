@@ -7,6 +7,8 @@ package sistemadocinema;
 import java.util.ArrayList;
 import java.util.List;
 import Arquivo.Json;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -17,31 +19,23 @@ public class Sistema {
 
     public static void main(String[] args) {
 
-
-       
-           
-      
-  
-        
         Scanner scanner = new Scanner(System.in);
         String nomeUsuario, senha;
 
         Gerente myGerente = new Gerente("Osiel Junior", "13441301609", "Osiel", "Osieljunior123");
-        Funcionario myFuncionario = new Funcionario("Daniel Rodrigues","01602001506","Daniel", "Danielrodrigues123");
-        
+        Funcionario myFuncionario = new Funcionario("Daniel Rodrigues", "01602001506", "Daniel", "Danielrodrigues123");
+
         List<Cliente> listaClientes = new ArrayList<>();
         List<Funcionario> listaFuncionarios = new ArrayList<>();
-        
-        
+
         Cliente myCliente1 = new Cliente("osiel", "juniro", "13441301609", "tirand",
-        "38998151249");
+                "38998151249");
         Cliente myCliente2 = new Cliente("Maicon", "Douglas", "13441301612", "tirand",
-        "38998151249");
+                "38998151249");
         Cliente myCliente3 = new Cliente("dfdsdf", "fffffff", "000000000", "tirand",
-        "38998151249");
-        
-        
-        Cadastro myCadastro = new Cadastro(listaClientes,listaFuncionarios);
+                "38998151249");
+
+        /*Cadastro myCadastro = new Cadastro(listaClientes,listaFuncionarios);
         
         myCadastro.cadastrarCliente(myCliente1);
         myCadastro.cadastrarCliente(myCliente2);
@@ -49,9 +43,27 @@ public class Sistema {
         
         myCadastro.excluirCliente("000000000");
         
+         */
+        
+        
+        
+        Produto pipoca = new Produto("Pipoca", "Comida", LocalDate.of(2024, 12, 31), 5.0, 100);
+        Produto refrigerante = new Produto("Refrigerante", "Bebida", LocalDate.of(2024, 12, 31), 3.0, 200);
+        Produto chocolate = new Produto("Chocolate", "Guloseima", LocalDate.of(2024, 4, 28), 2.0, 150);
+
+
+        Estoque myEstoque = new Estoque();
+        myEstoque.adicionarProduto(pipoca);
+        myEstoque.adicionarProduto(refrigerante);
+        myEstoque.adicionarProduto(chocolate);
+        
+        myEstoque.verificarValidadeProdutos();
+        
+        
+        
         
 
-      /*  Autenticar myAutenticar = new Autenticar();
+        /*  Autenticar myAutenticar = new Autenticar();
 
         myAutenticar.adicionarUsuario(myFuncionario);
         myAutenticar.adicionarUsuario(myGerente);
@@ -143,7 +155,7 @@ public class Sistema {
             }
 
         }
-*/
+         */
     }
 
 }

@@ -17,7 +17,7 @@ public class Venda {
     private Cliente cliente;
     private List<Produto> produtosVendidos;
 
-    // Construtor
+
     public Venda(int id, Date dataHora, Cliente cliente, List<Produto> produtosVendidos) {
         this.id = id;
         this.dataHora = dataHora;
@@ -25,40 +25,7 @@ public class Venda {
         this.produtosVendidos = produtosVendidos;
     }
 
-    // Getters e Setters
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Date getDataHora() {
-        return dataHora;
-    }
-
-    public void setDataHora(Date dataHora) {
-        this.dataHora = dataHora;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public List<Produto> getProdutosVendidos() {
-        return produtosVendidos;
-    }
-
-    public void setProdutosVendidos(List<Produto> produtosVendidos) {
-        this.produtosVendidos = produtosVendidos;
-    }
-
-    // Método para calcular o valor total da venda
+   
     public double calcularTotal() {
         double total = 0.0;
         for (Produto produto : produtosVendidos) {
@@ -66,8 +33,7 @@ public class Venda {
         }
         return total;
     }
-
-    // Método toString para representação em string do objeto
+   
     @Override
     public String toString() {
         return "Venda{" +
