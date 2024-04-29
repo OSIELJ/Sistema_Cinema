@@ -32,7 +32,7 @@ public class Json {
     
     
     public Json() {
-        // Lógica de inicialização, se necessário
+        
     }
     
         public static void salvarClientes(List<Cliente> listaCliente){

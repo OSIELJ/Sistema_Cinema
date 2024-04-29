@@ -21,9 +21,28 @@ public class Cadastro {
         this.listaFuncionarios = new ArrayList<>();
     }
 
-    public boolean Existe(String cpf) {
+    /*public boolean Existe(String cpf) {
         for (Cliente cliente : listaClientes) {
             if (cliente.getCpf().equals(cpf)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    */
+    
+    public boolean existe(String cpf, Cliente cliente) {
+        for (Cliente c : listaClientes) {
+            if (c.getCpf().equals(cpf)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean existe(String cpf, Funcionario funcionario) {
+        for (Funcionario f : listaFuncionarios) {
+            if (f.getCpf().equals(cpf)) {
                 return true;
             }
         }
@@ -32,7 +51,7 @@ public class Cadastro {
     
 
     public void cadastrarCliente(Cliente cliente) {
-        if (!Existe(cliente.getCpf())) {
+        if (!existe(cliente.getCpf(), cliente)) {
             listaClientes.add(cliente);
             Json.salvarClientes(listaClientes);
             System.out.println("Cliente cadastrado com sucesso!");
@@ -67,7 +86,7 @@ public class Cadastro {
 
 
     public void cadastrarFuncionario(Funcionario funcionario) {
-        if (Existe(funcionario.getCpf())) {
+        if (!existe(funcionario.getCpf(), funcionario)) {
             listaFuncionarios.add(funcionario);
             System.out.println("Funcionário cadastrado com sucesso!");
         } else {
@@ -103,4 +122,6 @@ public class Cadastro {
             System.out.println("Nome: " + funcionario.getNome() + ", Senha: " + funcionario.getSenha());
         }
     }
+    
+    
 }

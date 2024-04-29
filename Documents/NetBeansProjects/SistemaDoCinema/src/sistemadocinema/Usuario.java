@@ -9,7 +9,7 @@ package sistemadocinema;
  * @author Osiel Junior
  */
 public abstract class Usuario {
-    private String nomeUsuario;
+    private final String nomeUsuario;
     private String senha;
     private String nome;
     private String cpf;
