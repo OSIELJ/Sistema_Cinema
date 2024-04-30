@@ -37,7 +37,7 @@ public class Estoque {
         for (Produto produto : produtos) {
             LocalDate dataValidadeProduto = produto.getDataValidade();
             if (dataValidadeProduto.isBefore(dataAtual)) {
-                System.out.println("O produto " + produto.getNome() + " está vencido!");
+                System.out.println("O produto " + produto.getNome() + " esta vencido!");
             }
         }
     }

@@ -47,9 +47,9 @@ public class Sistema {
         
         
         
-        Produto pipoca = new Produto("Pipoca", "Comida", LocalDate.of(2024, 12, 31), 5.0, 100);
-        Produto refrigerante = new Produto("Refrigerante", "Bebida", LocalDate.of(2024, 12, 31), 3.0, 200);
-        Produto chocolate = new Produto("Chocolate", "Guloseima", LocalDate.of(2024, 4, 28), 2.0, 150);
+        Alimenticios pipoca = new Alimenticios("Pipoca", LocalDate.of(2024, 12, 31), 5.0, 100);
+        Alimenticios refrigerante = new Alimenticios("Refrigerante", LocalDate.of(2024, 12, 31), 3.0, 200);
+        Alimenticios chocolate = new Alimenticios("Chocolate", LocalDate.of(2024, 4, 28), 2.0, 150);
 
 
         Estoque myEstoque = new Estoque();

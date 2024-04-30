@@ -13,16 +13,14 @@ import java.time.LocalDate;
  *@author Osiel Junior e Daniel Rodrigues
  */
 
-public class Produto {
+public abstract class Produto {
     private String nome;
-    private String tipo;
     private LocalDate dataValidade;
     private double valor;
     private int quantidadeEmEstoque;
 
-    public Produto(String nome, String tipo, LocalDate dataValidade, double valor, int quantidadeEmEstoque) {
+    public Produto(String nome, LocalDate dataValidade, double valor, int quantidadeEmEstoque) {
         this.nome = nome;
-        this.tipo = tipo;
         this.dataValidade = dataValidade;
         this.valor = valor;
         this.quantidadeEmEstoque = quantidadeEmEstoque;
@@ -36,13 +34,6 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
 
     public LocalDate getDataValidade() {
         return dataValidade;
@@ -97,7 +88,6 @@ public boolean estaVencido() {
     public String toString() {
         return "Produto{" +
                 "nome='" + nome + '\'' +
-                ", tipo='" + tipo + '\'' +
                 ", dataValidade=" + dataValidade +
                 ", valor=" + valor +
                 ", quantidadeEmEstoque=" + quantidadeEmEstoque +

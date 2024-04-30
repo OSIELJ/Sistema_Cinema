@@ -11,12 +11,12 @@ import Arquivo.Json;
  *
  * @author Osiel
  */
-public class Cadastro {
+public class GerenciarCadastros {
 
     private List<Cliente> listaClientes;
     private List<Funcionario> listaFuncionarios;
 
-    public Cadastro(List<Cliente> listaClientes, List<Funcionario> listaFuncionarios ) {
+    public GerenciarCadastros(List<Cliente> listaClientes, List<Funcionario> listaFuncionarios ) {
         this.listaClientes = new ArrayList<>();
         this.listaFuncionarios = new ArrayList<>();
     }
@@ -56,7 +56,7 @@ public class Cadastro {
             Json.salvarClientes(listaClientes);
             System.out.println("Cliente cadastrado com sucesso!");
         } else {
-            System.out.println("Cliente já está cadastrado!");
+            System.out.println("Cliente já esta cadastrado!");
         }
     }
 
