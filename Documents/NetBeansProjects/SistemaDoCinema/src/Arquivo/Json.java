@@ -25,7 +25,7 @@ import sistemadocinema.Filme;
  */
 public class Json {
     
-    public static final String arqCliente = "C:/Users/Osiel/Documents/NetBeansProjects/Sistema_Cinema/Documents/NetBeansProjects/SistemaDoCinema/src/Arquivo/cliente.json";
+    public static final String arqCliente = "./src/Arquivo/cliente.json";
     public static final String arqProdutos = "./src/main/java/Arquivo/produtos.json";
     public static final String arqFilmes = "./src/main/java/Arquivo/filmes.json";
     

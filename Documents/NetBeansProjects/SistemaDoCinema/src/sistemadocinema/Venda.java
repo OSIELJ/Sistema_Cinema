@@ -4,44 +4,67 @@
  */
 package sistemadocinema;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 /**
  *
  * @author Osiel Junior e Daniel Rodrigues
  */
 
 public class Venda {
-    private int id;
-    private Date dataHora;
+
     private Cliente cliente;
-    private List<Produto> produtosVendidos;
+    private List<Produto> itensVendidos;
+    private double valorTotal;
+    private LocalDateTime dataHora;
+    private String extrato;
 
-
-    public Venda(int id, Date dataHora, Cliente cliente, List<Produto> produtosVendidos) {
-        this.id = id;
-        this.dataHora = dataHora;
+    public Venda(Cliente cliente) {
         this.cliente = cliente;
-        this.produtosVendidos = produtosVendidos;
+        this.itensVendidos = new ArrayList<>();
+        this.dataHora = LocalDateTime.now();
+        this.extrato = "Extrato da venda:";
     }
 
-   
-    public double calcularTotal() {
-        double total = 0.0;
-        for (Produto produto : produtosVendidos) {
-            total += produto.getValor();
-        }
-        return total;
+    public void adicionarItem(Produto produto) {
+        itensVendidos.add(produto);
+        extrato += "\n" + produto.getNome() + " - R$" + produto.getValor();
     }
-   
+
+    public double calcularTotal() {
+        valorTotal = 0.0;
+        for (Produto produto : itensVendidos) {
+            valorTotal += produto.getValor();
+        }
+        return valorTotal; 
+    }
+
+    public List<Produto> getItensVendidos() {
+        return itensVendidos;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public LocalDateTime getDataHora() {
+        return dataHora;
+    }
+
+    public String getExtrato() {
+        return extrato;
+    }
+
     @Override
     public String toString() {
-        return "Venda{" +
-                "id=" + id +
-                ", dataHora=" + dataHora +
-                ", cliente=" + cliente +
-                ", produtosVendidos=" + produtosVendidos +
-                '}';
+        return "Venda{"
+                + "cliente=" + cliente
+                + ", itensVendidos=" + itensVendidos
+                + ", valorTotal=" + valorTotal
+                + ", dataHora=" + dataHora
+                + '}';
     }
 }
-

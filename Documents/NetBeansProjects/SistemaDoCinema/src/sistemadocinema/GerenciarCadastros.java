@@ -7,6 +7,7 @@ package sistemadocinema;
 import java.util.ArrayList;
 import java.util.List;
 import Arquivo.Json;
+
 /**
  *
  * @author Osiel
@@ -16,7 +17,7 @@ public class GerenciarCadastros {
     private List<Cliente> listaClientes;
     private List<Funcionario> listaFuncionarios;
 
-    public GerenciarCadastros(List<Cliente> listaClientes, List<Funcionario> listaFuncionarios ) {
+    public GerenciarCadastros(List<Cliente> listaClientes, List<Funcionario> listaFuncionarios) {
         this.listaClientes = new ArrayList<>();
         this.listaFuncionarios = new ArrayList<>();
     }
@@ -29,8 +30,7 @@ public class GerenciarCadastros {
         }
         return false;
     }
-    */
-    
+     */
     public boolean existe(String cpf, Cliente cliente) {
         for (Cliente c : listaClientes) {
             if (c.getCpf().equals(cpf)) {
@@ -48,7 +48,6 @@ public class GerenciarCadastros {
         }
         return false;
     }
-    
 
     public void cadastrarCliente(Cliente cliente) {
         if (!existe(cliente.getCpf(), cliente)) {
@@ -72,18 +71,26 @@ public class GerenciarCadastros {
         System.out.println("Cliente não encontrado!");
     }
 
-    public void editarCliente(String cpf, String telefone) {
+    public void editarCliente(String cpf, String novoTelefone, String novoEndereco) {
+        boolean clienteEncontrado = false;
         for (Cliente cliente : listaClientes) {
             if (cliente.getCpf().equals(cpf)) {
-                cliente.setTelefone(telefone);
+
+                if (novoTelefone != null && !novoTelefone.isEmpty()) {
+                    cliente.setTelefone(novoTelefone);
+                }
+                if (novoEndereco != null && !novoEndereco.isEmpty()) {
+                    cliente.setEndereco(novoEndereco);
+                }
+                clienteEncontrado = true;
                 System.out.println("Cadastro do cliente atualizado com sucesso!");
-                return;
+                break;
             }
         }
-        System.out.println("Cliente não encontrado!");
+        if (!clienteEncontrado) {
+            System.out.println("Cliente não encontrado!");
+        }
     }
-
-
 
     public void cadastrarFuncionario(Funcionario funcionario) {
         if (!existe(funcionario.getCpf(), funcionario)) {
@@ -105,15 +112,25 @@ public class GerenciarCadastros {
         System.out.println("Funcionário não encontrado!");
     }
 
-    public void editarFuncionario(String cpf, String novaSenha) {
+    public void editarFuncionario(String cpf, String novaSenha, String novoNome) {
+        boolean funcionarioEncontrado = false;
         for (Funcionario funcionario : listaFuncionarios) {
             if (funcionario.getCpf().equals(cpf)) {
-                funcionario.setSenha(novaSenha);
-                System.out.println("Senha do funcionário atualizada com sucesso!");
-                return;
+                // Atualiza os atributos apenas se as novas informações não forem nulas
+                if (novaSenha != null && !novaSenha.isEmpty()) {
+                    funcionario.setSenha(novaSenha);
+                }
+                if (novoNome != null && !novoNome.isEmpty()) {
+                    funcionario.setNome(novoNome);
+                }
+                funcionarioEncontrado = true;
+                System.out.println("Cadastro do funcionário atualizado com sucesso!");
+                break; // Encerra o loop assim que o funcionário é encontrado e atualizado
             }
         }
-        System.out.println("Funcionário não encontrado!");
+        if (!funcionarioEncontrado) {
+            System.out.println("Funcionário não encontrado!");
+        }
     }
 
     public void imprimirListaFuncionarios() {
@@ -122,6 +139,5 @@ public class GerenciarCadastros {
             System.out.println("Nome: " + funcionario.getNome() + ", Senha: " + funcionario.getSenha());
         }
     }
-    
-    
+
 }
