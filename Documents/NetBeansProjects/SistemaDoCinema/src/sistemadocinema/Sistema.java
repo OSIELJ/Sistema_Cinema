@@ -16,38 +16,31 @@ import java.util.Scanner;
  * @author Osiel Junior
  */
 public class Sistema {
-    
-    // private static BalcaoDeAtendimento[] balcoes = new BalcaoDeAtendimento[5];
-     
-     
-     
-     
 
+    // private static BalcaoDeAtendimento[] balcoes = new BalcaoDeAtendimento[5];
     public static void main(String[] args) {
-        
-        
-        
-        
-        
+
         Cliente myCliente1 = new Cliente("osiel", "juniro", "13441301609", "tirand",
                 "38998151249");
 
-        
+        int totalClientes = Cliente.getTotalClientes();
+        System.out.println("Total de clientes: " + totalClientes);
+
+        totalClientes = Cliente.getTotalClientes();
+        System.out.println("Total de clientes metodo static: " + totalClientes);
+
         Alimenticios pipoca = new Alimenticios("Pipoca", LocalDate.of(2024, 12, 31), 5.0, 100);
         Alimenticios refrigerante = new Alimenticios("Refrigerante", LocalDate.of(2024, 12, 31), 3.0, 200);
         Filme filme = new Filme("Os Incríveis", "Animação", LocalDate.of(2024, 5, 1), 10.0, 100, "10 dias");
-        
-        
+
         Venda venda = new Venda(myCliente1);
 
-        
         venda.adicionarItem(pipoca);
         venda.adicionarItem(refrigerante);
         venda.adicionarItem(filme);
-        
+
         venda.calcularTotal();
 
-        
         System.out.println("Venda realizada com sucesso:");
         System.out.println("Cliente: " + myCliente1.getNome());
         System.out.println("Itens vendidos:");
@@ -58,24 +51,7 @@ public class Sistema {
         System.out.println("Data e hora da venda: " + venda.getDataHora());
         System.out.println("Extrato da venda:");
         System.out.println(venda.getExtrato());
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         /*
         for (int i = 0; i < 5; i++) {
            balcoes[i] = new BalcaoDeAtendimento(i + 1, null);

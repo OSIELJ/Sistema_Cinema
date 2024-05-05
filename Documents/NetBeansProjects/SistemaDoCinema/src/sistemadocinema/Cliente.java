@@ -6,12 +6,13 @@ package sistemadocinema;
 
 import java.util.List;
 import java.util.ArrayList;
+
 /**
  *
  * @author Osiel Junior
  */
 public class Cliente {
-    
+
     private static int ultimoId = 0;
     private int id;
     private String nome;
@@ -20,28 +21,40 @@ public class Cliente {
     private String endereco;
     private String telefone;
     static List<Cliente> listaCliente;
-   // private List<String> preferencias;
-    
-    
-     public Cliente(String nome, String sobrenome, String cpf, String endereco, String telefone) {
+    // private List<String> preferencias;
+    protected static int contadorClientes = 0;
+    private static int totalClientes = 0;
+
+    public Cliente() {
+
+    }
+
+
+    public Cliente(String nome, String sobrenome, String cpf, String endereco, String telefone) {
         this.id = ++ultimoId;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
         this.endereco = endereco;
         this.telefone = telefone;
-       // this.preferencias = preferencias;
+        // this.preferencias = preferencias;
+        totalClientes++;
+        contadorClientes++;
     }
-    
-    
 
     //public List<String> getPreferencias() {
-     //   return preferencias;
-  //  }
-
-   // public void setPreferencias(List<String> preferencias) {
-       // this.preferencias = preferencias;
+    //   return preferencias;
+    //  }
+    // public void setPreferencias(List<String> preferencias) {
+    // this.preferencias = preferencias;
     //}
+    public static int getTotalClientes() {
+        return totalClientes;
+    }
+
+    public static void setTotalClientes(int totalClientes) {
+        Cliente.totalClientes = totalClientes;
+    }
 
     public static int getUltimoId() {
         return ultimoId;
@@ -107,9 +120,4 @@ public class Cliente {
         Cliente.listaCliente = listaCliente;
     }
 
-     
-
-   
-    
-    
 }
