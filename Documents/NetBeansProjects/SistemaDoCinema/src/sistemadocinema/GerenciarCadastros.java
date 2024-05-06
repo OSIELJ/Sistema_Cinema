@@ -17,6 +17,10 @@ public class GerenciarCadastros {
     private List<Cliente> listaClientes;
     private List<Funcionario> listaFuncionarios;
 
+    public GerenciarCadastros() {
+    }
+
+    
     public GerenciarCadastros(List<Cliente> listaClientes, List<Funcionario> listaFuncionarios) {
         this.listaClientes = new ArrayList<>();
         this.listaFuncionarios = new ArrayList<>();

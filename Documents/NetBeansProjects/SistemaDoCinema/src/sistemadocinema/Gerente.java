@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Daniel Rodrigues
  */
-public class Gerente extends Usuario {
+public class Gerente extends Funcionario {
     
     private Relatorio relatorioDiario;
     private Relatorio relatorioMensalAnual;
