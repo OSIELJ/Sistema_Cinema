@@ -17,8 +17,13 @@ import java.util.Scanner;
  */
 public class Sistema {
 
-    // private static BalcaoDeAtendimento[] balcoes = new BalcaoDeAtendimento[5];
+    private static BalcaoDeAtendimento[] balcoes = new BalcaoDeAtendimento[5];
     public static void main(String[] args) {
+        
+
+        
+        
+        
 
         //int totalClientes = Cliente.getTotalClientes();
         // System.out.println("Total de clientes: " + totalClientes);
@@ -73,18 +78,23 @@ public class Sistema {
         myAutenticar.adicionarUsuario(myFuncionario);
         myAutenticar.adicionarUsuario(myGerente);
 
-        System.out.print("Usuário: ");
-        nomeUsuario = scanner.nextLine();
 
-        System.out.print("Senha: ");
-        senha = scanner.nextLine();
 
-        Usuario usuarioLogado = myAutenticar.autenticar(nomeUsuario, senha);
-        if (usuarioLogado != null) {
-            Menu menu = new Menu(usuarioLogado);
-            menu.exibirMenu();
-        } else {
-            System.out.println("Usuário ou senha incorretos. Por favor, tente novamente.");
+        while (true) {
+            System.out.print("Usuário: ");
+            nomeUsuario = scanner.nextLine();
+
+            System.out.print("Senha: ");
+            senha = scanner.nextLine();
+
+            Usuario usuarioLogado = myAutenticar.autenticar(nomeUsuario, senha);
+            if (usuarioLogado != null) {
+                Menu menu = new Menu(usuarioLogado);
+                menu.exibirMenu();
+                break; // Sai do loop se o usuário for autenticado com sucesso
+            } else {
+                System.out.println("Usuário ou senha incorretos. Por favor, tente novamente.");
+            }
         }
 
     }

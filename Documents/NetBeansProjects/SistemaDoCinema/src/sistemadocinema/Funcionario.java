@@ -14,7 +14,7 @@ import java.util.List;
 
  public class Funcionario extends Usuario {
     
-    private List<sistemadocinema.Funcionario> listaFuncionarios;
+    
 
     public Funcionario(String nome, String cpf, String nomeUsuario, String senha) {
         super(nome, cpf, nomeUsuario, senha);

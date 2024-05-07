@@ -8,7 +8,11 @@ package sistemadocinema;
  *
  * @author Osiel Junior
  */
-public class BalcaoManual {
-    
-   
+public class BalcaoManual extends BalcaoDeAtendimento {
+
+    public BalcaoManual(int id, Funcionario funcionarioResponsavel) {
+        super(id, funcionarioResponsavel);
+    }
+
+    // Adicione métodos específicos para balcões com funcionário, se necessário
 }

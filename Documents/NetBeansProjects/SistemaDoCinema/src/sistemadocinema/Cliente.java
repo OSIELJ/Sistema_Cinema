@@ -20,7 +20,7 @@ public class Cliente {
     private String cpf;
     private String endereco;
     private String telefone;
-    static List<Cliente> listaCliente;
+   
     // private List<String> preferencias;
     protected static int contadorClientes = 0;
     private static int totalClientes = 0;
@@ -112,12 +112,6 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public static List<Cliente> getListaCliente() {
-        return listaCliente;
-    }
 
-    public static void setListaCliente(List<Cliente> listaCliente) {
-        Cliente.listaCliente = listaCliente;
-    }
 
 }

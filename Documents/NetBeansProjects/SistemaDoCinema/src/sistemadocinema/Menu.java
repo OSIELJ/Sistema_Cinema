@@ -21,8 +21,10 @@ public class Menu {
 
     public void exibirMenu() {
         switch (usuarioLogado) {
-            case Gerente gerente -> exibirMenuGerente(gerente);
-            case Funcionario funcionario -> exibirMenuFuncionario(funcionario);
+            case Gerente gerente ->
+                exibirMenuGerente(gerente);
+            case Funcionario funcionario ->
+                exibirMenuFuncionario(funcionario);
             default -> {
             }
         }
@@ -40,18 +42,37 @@ public class Menu {
             opcao = scanner.nextLine();
 
             switch (opcao) {
-                case "1":
-                    // Lógica para gerar relatório de vendas
-                    break;
-                case "2":
-                    // Lógica para adicionar novo funcionário
-                    break;
-                case "3":
+                case "1" -> {
+                }
+                case "2" -> {
+                    
+                    
+                    System.out.println("Informe o nome do novo funcionário:");
+                    String nome = scanner.nextLine();
+                    System.out.println("Informe o CPF do novo funcionário:");
+                    String cpf = scanner.nextLine();
+                    System.out.println("Informe o nome de usuário do novo funcionário:");
+                    String nomeUsuario = scanner.nextLine();
+                    System.out.println("Informe a senha do novo funcionário:");
+                    String senha = scanner.nextLine();
+
+                    // Criar instância de Funcionario com as informações fornecidas
+                   Gerente novoGerente = new Gerente(nome, cpf, nomeUsuario, senha);
+                
+                // Adicionar o novo gerente ao sistema
+                    gerente.adicionarGerente(novoGerente);
+                    
+
+                }
+                case "3" -> {
                     System.out.println("Sessão encerrada.");
                     return;
-                default:
+                }
+                default ->
                     System.out.println("Opção inválida. Por favor, escolha novamente.");
             }
+            // Lógica para gerar relatório de vendas
+            // Lógica para adicionar novo funcionário
         }
     }
 
@@ -69,24 +90,25 @@ public class Menu {
             opcao = scanner.nextLine();
 
             switch (opcao) {
-                case "1":
-                    // Lógica para realizar venda
-                    break;
-                case "2":
-                    // Lógica para cadastrar cliente
-                    break;
-                case "3":
-                    // Lógica para verificar estoque
-                    break;
-                case "4":
-                    // Lógica para verificar rendimento diário ou mensal dos balcões
-                    break;
-                case "5":
+                case "1" -> {
+                }
+                case "2" -> {
+                }
+                case "3" -> {
+                }
+                case "4" -> {
+                }
+                case "5" -> {
                     System.out.println("Sessão encerrada.");
                     return;
-                default:
+                }
+                default ->
                     System.out.println("Opção inválida. Por favor, escolha novamente.");
             }
+            // Lógica para realizar venda
+            // Lógica para cadastrar cliente
+            // Lógica para verificar estoque
+            // Lógica para verificar rendimento diário ou mensal dos balcões
         }
     }
 }

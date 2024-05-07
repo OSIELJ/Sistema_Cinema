@@ -27,7 +27,7 @@ public class BalcaoDeAtendimento {
     }
 
 
-    public void realizarVenda(Venda venda) {
+    public void confirmarVenda(Venda venda) {
         vendas.add(venda);
         System.out.println("Venda realizada com sucesso!");
     }

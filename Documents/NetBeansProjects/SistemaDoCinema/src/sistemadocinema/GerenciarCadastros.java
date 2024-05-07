@@ -136,6 +136,9 @@ public class GerenciarCadastros {
             System.out.println("Funcionário não encontrado!");
         }
     }
+    
+    
+
 
     public void imprimirListaFuncionarios() {
         System.out.println("Lista de Funcionários:");
