@@ -56,7 +56,6 @@ public class GerenciarCadastros {
     public void cadastrarCliente(Cliente cliente) {
         if (!existe(cliente.getCpf(), cliente)) {
             listaClientes.add(cliente);
-            Json.salvarClientes(listaClientes);
             System.out.println("Cliente cadastrado com sucesso!");
         } else {
             System.out.println("Cliente já esta cadastrado!");
@@ -66,8 +65,7 @@ public class GerenciarCadastros {
     public void excluirCliente(String cpf) {
         for (Cliente cliente : listaClientes) {
             if (cliente.getCpf().equals(cpf)) {
-                listaClientes.remove(cliente);
-                Json.salvarClientes(listaClientes);
+                listaClientes.remove(cliente);        
                 System.out.println("Cliente removido com sucesso!");
                 return;
             }

@@ -28,7 +28,7 @@ public class Json {
     public static final String arqCliente = "./src/Arquivo/cliente.json";
     public static final String arqProdutos = "./src/main/java/Arquivo/produtos.json";
     public static final String arqFilmes = "./src/main/java/Arquivo/filmes.json";
-    
+    public static final String arqExtratoVenda = "C:\\Users\\Osiel\\Documents\\NetBeansProjects\\Sistema_Cinema\\Documents\\NetBeansProjects\\SistemaDoCinema\\src\\Arquivo\\extratoVenda.json";
     
     
     public Json() {
@@ -124,6 +124,21 @@ public class Json {
         }
 
         return listaFilme;
+    }
+    
+    
+    
+        public static void salvarExtratoVenda(String extrato) {
+        
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(extrato);
+
+        try (FileWriter writer = new FileWriter(arqExtratoVenda)) {
+            writer.write(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Extrato da venda salvo. ");
     }
 
         

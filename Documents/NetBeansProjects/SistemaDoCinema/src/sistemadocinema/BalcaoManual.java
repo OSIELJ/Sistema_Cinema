@@ -14,5 +14,4 @@ public class BalcaoManual extends BalcaoDeAtendimento {
         super(id, funcionarioResponsavel);
     }
 
-    // Adicione métodos específicos para balcões com funcionário, se necessário
 }

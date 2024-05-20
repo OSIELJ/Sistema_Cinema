@@ -14,9 +14,12 @@ public class Menu {
 
     private final Scanner scanner = new Scanner(System.in);
     private final Usuario usuarioLogado;
+    private  Estoque meuEstoque;
 
-    public Menu(Usuario usuarioLogado) {
+
+    public Menu(Usuario usuarioLogado, Estoque meuEstoque) {
         this.usuarioLogado = usuarioLogado;
+        this.meuEstoque = meuEstoque;
     }
 
     public void exibirMenu() {
@@ -43,10 +46,12 @@ public class Menu {
 
             switch (opcao) {
                 case "1" -> {
+
+                    System.out.println("Qual relatorio voce deseja: Mensal ou Anual");
+
                 }
                 case "2" -> {
-                    
-                    
+
                     System.out.println("Informe o nome do novo funcionário:");
                     String nome = scanner.nextLine();
                     System.out.println("Informe o CPF do novo funcionário:");
@@ -57,11 +62,10 @@ public class Menu {
                     String senha = scanner.nextLine();
 
                     // Criar instância de Funcionario com as informações fornecidas
-                   Gerente novoGerente = new Gerente(nome, cpf, nomeUsuario, senha);
-                
-                // Adicionar o novo gerente ao sistema
+                    Gerente novoGerente = new Gerente(nome, cpf, nomeUsuario, senha);
+
+                    // Adicionar o novo gerente ao sistema
                     gerente.adicionarGerente(novoGerente);
-                    
 
                 }
                 case "3" -> {
@@ -91,10 +95,14 @@ public class Menu {
 
             switch (opcao) {
                 case "1" -> {
+
                 }
                 case "2" -> {
                 }
                 case "3" -> {
+
+                    System.out.println("Verificação de Estoque:");
+                    meuEstoque.verificarValidadeProdutos();
                 }
                 case "4" -> {
                 }

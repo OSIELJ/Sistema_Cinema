@@ -18,12 +18,17 @@ import java.util.Scanner;
 public class Sistema {
 
     private static BalcaoDeAtendimento[] balcoes = new BalcaoDeAtendimento[5];
+    
     public static void main(String[] args) {
         
 
+        /*balcoes[0] = new BalcaoManual(1, new Funcionario());
+        balcoes[1] = new BalcaoManual(2, new Funcionario());
+        balcoes[2] = new BalcaoAutomatico(3, new Funcionario());
+        balcoes[3] = new BalcaoAutomatico(4, new Funcionario());
+        balcoes[4] = new BalcaoAutomatico(5, new Funcionario("Func));
         
-        
-        
+        */
 
         //int totalClientes = Cliente.getTotalClientes();
         // System.out.println("Total de clientes: " + totalClientes);
@@ -60,7 +65,47 @@ public class Sistema {
         System.out.println(venda.getExtrato());
 
          */
-        Scanner scanner = new Scanner(System.in);
+        
+        
+        
+        
+  
+
+ 
+        
+        
+        
+        Cliente cliente = new Cliente("João", "Silva", "123.456.789-00", "Rua A, 123", "999999999");
+
+        
+        Venda venda = new Venda(cliente);
+
+
+        venda.adicionarItem(pipoca);
+        venda.adicionarItem(refrigerante);
+        venda.adicionarItem(filme);
+
+
+        System.out.println("Venda realizada com sucesso");
+
+        System.out.println("Extrato da venda:");
+        System.out.println(venda.getExtrato());
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       /* Scanner scanner = new Scanner(System.in);
         String nomeUsuario, senha;
 
         Gerente myGerente = new Gerente("Osiel Junior", "13441301609", "Osiel", "Osiel123");
@@ -89,13 +134,13 @@ public class Sistema {
 
             Usuario usuarioLogado = myAutenticar.autenticar(nomeUsuario, senha);
             if (usuarioLogado != null) {
-                Menu menu = new Menu(usuarioLogado);
+                Menu menu = new Menu(usuarioLogado, myEstoque);
                 menu.exibirMenu();
                 break; // Sai do loop se o usuário for autenticado com sucesso
             } else {
                 System.out.println("Usuário ou senha incorretos. Por favor, tente novamente.");
             }
-        }
+        }*/
 
     }
 
