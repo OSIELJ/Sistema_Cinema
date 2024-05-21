@@ -4,7 +4,10 @@
  */
 package sistemadocinema;
 
+import java.util.List;
 import java.util.Scanner;
+import sistemadocinema.gereciamentoDeVendas.BalcaoDeAtendimento;
+import sistemadocinema.gereciamentoDeVendas.Venda;
 
 /**
  *
@@ -14,12 +17,15 @@ public class Menu {
 
     private final Scanner scanner = new Scanner(System.in);
     private final Usuario usuarioLogado;
-    private  Estoque meuEstoque;
+    private final Estoque meuEstoque;
+    private BalcaoDeAtendimento balcaoAutomatico;
+    private List<Cliente> listaClientes;
 
-
-    public Menu(Usuario usuarioLogado, Estoque meuEstoque) {
+    public Menu(Usuario usuarioLogado, Estoque meuEstoque, BalcaoDeAtendimento balcaoAutomatico, List<Cliente> listaClientes) {
         this.usuarioLogado = usuarioLogado;
         this.meuEstoque = meuEstoque;
+        this.balcaoAutomatico = balcaoAutomatico;
+        this.listaClientes = listaClientes;
     }
 
     public void exibirMenu() {
@@ -95,7 +101,40 @@ public class Menu {
 
             switch (opcao) {
                 case "1" -> {
+                    System.out.println("Realizar Venda:");
+                    System.out.println("Informe o CPF do cliente:");
+                    String cpf = scanner.nextLine();
 
+                    for (Cliente cliente : listaClientes) {
+                        if (cliente.getCpf().equals(cpf)) {
+                            return cliente; // Retorna o cliente encontrado
+                        }
+                    }
+
+                    Cliente clienteSelecionado = selecionarCliente();
+                    if (clienteSelecionado != null) {
+                        System.out.println("Lista de produtos disponíveis:");
+                        meuEstoque.listarProdutosDisponiveis();
+                        // Aqui você precisará selecionar os produtos a serem vendidos
+                        List<Produto> produtosSelecionados = selecionarProdutos();
+                        if (!produtosSelecionados.isEmpty()) {
+                            Venda venda = new Venda(clienteSelecionado, balcaoAutomatico);
+                            for (Produto produto : produtosSelecionados) {
+                                venda.adicionarItem(produto);
+                            }
+
+                            // Confirmar a venda
+                            balcaoAutomatico.confirmarVenda(venda);
+                            // Atualizar o estoque
+                            for (Produto produto : produtosSelecionados) {
+                                meuEstoque.removerProduto(produto);
+                            }
+                        } else {
+                            System.out.println("Nenhum produto selecionado. Cancelando venda.");
+                        }
+                    } else {
+                        System.out.println("Nenhum cliente selecionado. Cancelando venda.");
+                    }
                 }
                 case "2" -> {
                 }

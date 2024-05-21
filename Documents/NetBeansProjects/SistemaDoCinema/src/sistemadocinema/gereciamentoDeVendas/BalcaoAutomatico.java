@@ -12,8 +12,8 @@ import sistemadocinema.Funcionario;
  */
 public class BalcaoAutomatico extends BalcaoDeAtendimento {
 
-    public BalcaoAutomatico(int id, Funcionario funcionarioResponsavel) {
-        super(id, funcionarioResponsavel);
+    public BalcaoAutomatico(int id, Funcionario funcionarioResponsavel, GerenciarVendas gerenciadorVendas) {
+        super(id, funcionarioResponsavel, gerenciadorVendas);
     }
 
     // Adicione métodos específicos para balcões automáticos, se necessário

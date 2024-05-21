@@ -12,6 +12,8 @@ import Arquivo.Json;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Scanner;
+import sistemadocinema.gereciamentoDeVendas.BalcaoAutomatico;
+import sistemadocinema.gereciamentoDeVendas.GerenciarVendas;
 
 /**
  *
@@ -23,14 +25,15 @@ public class Sistema {
     
     public static void main(String[] args) {
         
-
-        /*balcoes[0] = new BalcaoManual(1, new Funcionario());
-        balcoes[1] = new BalcaoManual(2, new Funcionario());
-        balcoes[2] = new BalcaoAutomatico(3, new Funcionario());
-        balcoes[3] = new BalcaoAutomatico(4, new Funcionario());
-        balcoes[4] = new BalcaoAutomatico(5, new Funcionario("Func));
+        Gerente myGerente = new Gerente("Osiel Junior", "13441301609", "Osiel", "Osiel123");
+        Funcionario myFuncionario = new Funcionario("Daniel Rodrigues", "01602001506", "Daniel", "Daniel123");
         
-        */
+        GerenciarVendas gerenciarVendas = new GerenciarVendas();
+       
+       
+        balcoes[4] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
+        
+       
 
         //int totalClientes = Cliente.getTotalClientes();
         // System.out.println("Total de clientes: " + totalClientes);
@@ -47,72 +50,14 @@ public class Sistema {
         myEstoque.adicionarProduto(chocolate);
         myEstoque.adicionarProduto(filme);
 
-        /*Venda venda = new Venda(myCliente1);
-
-        venda.adicionarItem(pipoca);
-        venda.adicionarItem(refrigerante);
-        venda.adicionarItem(filme);
-
-        venda.calcularTotal();
-
-        System.out.println("Venda realizada com sucesso:");
-        System.out.println("Cliente: " + myCliente1.getNome());
-        System.out.println("Itens vendidos:");
-        for (Produto produto : venda.getItensVendidos()) {
-            System.out.println("- " + produto.getNome() + ": R$" + produto.getValor());
-        }
-        System.out.println("Valor total: R$" + venda.calcularTotal());
-        System.out.println("Data e hora da venda: " + venda.getDataHora());
-        System.out.println("Extrato da venda:");
-        System.out.println(venda.getExtrato());
-
-         */
+        
+    
         
         
-        Funcionario myFuncionario = new Funcionario("Daniel Rodrigues", "01602001506", "Daniel", "Daniel123");
-        BalcaoDeAtendimento balcao = new BalcaoDeAtendimento(1, myFuncionario);
-        
-  
-
- 
-        
-        
-        
-        Cliente cliente = new Cliente("João", "Silva", "123.456.789-00", "Rua A, 123", "999999999");
-
-        
-        Venda venda = new Venda(cliente, balcao);
-
-
-        venda.adicionarItem(pipoca);
-        venda.adicionarItem(refrigerante);
-        venda.adicionarItem(filme);
-
-
-        System.out.println("Venda realizada com sucesso");
-
-        System.out.println("Extrato da venda:");
-        System.out.println(venda.getExtrato());
-        
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-       /* Scanner scanner = new Scanner(System.in);
+       Scanner scanner = new Scanner(System.in);
         String nomeUsuario, senha;
 
-        Gerente myGerente = new Gerente("Osiel Junior", "13441301609", "Osiel", "Osiel123");
-        Funcionario myFuncionario = new Funcionario("Daniel Rodrigues", "01602001506", "Daniel", "Daniel123");
+
 
         List<Cliente> listaClientes = new ArrayList<>();
         List<Funcionario> listaFuncionarios = new ArrayList<>();
@@ -137,13 +82,13 @@ public class Sistema {
 
             Usuario usuarioLogado = myAutenticar.autenticar(nomeUsuario, senha);
             if (usuarioLogado != null) {
-                Menu menu = new Menu(usuarioLogado, myEstoque);
+                Menu menu = new Menu(usuarioLogado, myEstoque,balcoes[4], listaClientes);
                 menu.exibirMenu();
                 break; // Sai do loop se o usuário for autenticado com sucesso
             } else {
                 System.out.println("Usuário ou senha incorretos. Por favor, tente novamente.");
             }
-        }*/
+        }
 
     }
 

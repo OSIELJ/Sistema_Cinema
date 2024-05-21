@@ -18,7 +18,6 @@ import sistemadocinema.Produto;
  * @author Osiel Junior e Daniel Rodrigues
  */
 public class Venda {
-
     private Cliente cliente;
     private List<Produto> itensVendidos;
     private double valorTotal;
@@ -30,6 +29,33 @@ public class Venda {
         this.itensVendidos = new ArrayList<>();
         this.dataHora = LocalDateTime.now();
         this.balcao = balcao;
+    }
+
+    public void adicionarItem(Produto produto) {
+        itensVendidos.add(produto);
+    }
+
+    public double calcularTotal() {
+        valorTotal = 0.0;
+        for (Produto produto : itensVendidos) {
+            valorTotal += produto.getValor();
+        }
+        return valorTotal;
+    }
+
+    public String getExtrato() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        StringBuilder extrato = new StringBuilder();
+        extrato.append("Cliente: ").append(cliente.getNome()).append("\n");
+        extrato.append("Data e Hora: ").append(dataHora.format(formatter)).append("\n");
+        extrato.append("Balcão: ").append(balcao.getId()).append("\n");
+        extrato.append("Itens vendidos:\n");
+        for (Produto produto : itensVendidos) {
+            extrato.append("- ").append(produto.getNome()).append(": R$").append(produto.getValor()).append("\n");
+        }
+        extrato.append("Total: R$").append(calcularTotal());
+        Json.salvarExtratoVenda(extrato.toString());
+        return extrato.toString();
     }
 
     public Cliente getCliente() {
@@ -72,45 +98,14 @@ public class Venda {
         this.balcao = balcao;
     }
 
-    public void adicionarItem(Produto produto) {
-        itensVendidos.add(produto);
-    }
-
-    public double calcularTotal() {
-        valorTotal = 0.0;
-        for (Produto produto : itensVendidos) {
-            valorTotal += produto.getValor();
-        }
-        return valorTotal;
-    }
-
-    public String getExtrato() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        StringBuilder extrato = new StringBuilder();
-        extrato.append("Cliente: ").append(cliente.getNome()).append("\n");
-        extrato.append("Data e Hora: ").append(dataHora.format(formatter)).append("\n");
-        extrato.append("Balcão: ").append(balcao.getId()).append("\n");
-        extrato.append("Itens vendidos:\n");
-        for (Produto produto : itensVendidos) {
-            extrato.append("- ").append(produto.getNome()).append(": R$").append(produto.getValor()).append("\n");
-        }
-        extrato.append("Total: R$").append(calcularTotal());
-        return extrato.toString();
-    }
-
-    public void gerarExtrato() {
-        String extrato = getExtrato();
-        Json.salvarExtratoVenda(extrato);
-    }
-
     @Override
     public String toString() {
-        return "Venda{" +
-                "cliente=" + cliente +
-                ", itensVendidos=" + itensVendidos +
-                ", valorTotal=" + valorTotal +
-                ", dataHora=" + dataHora +
-                ", balcao=" + balcao +
-                '}';
+        return "Venda{"
+                + "cliente=" + cliente
+                + ", itensVendidos=" + itensVendidos
+                + ", valorTotal=" + valorTotal
+                + ", dataHora=" + dataHora
+                + ", balcao=" + balcao
+                + '}';
     }
 }

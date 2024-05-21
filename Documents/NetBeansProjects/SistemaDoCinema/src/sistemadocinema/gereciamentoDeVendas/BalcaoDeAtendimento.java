@@ -14,17 +14,16 @@ import sistemadocinema.Funcionario;
  * @author Osiel Junior e Daniel Rodrigues
  */
 public class BalcaoDeAtendimento {
-    
     protected int id;
     protected Funcionario funcionarioResponsavel;
-    protected List<Venda> vendas;
     protected List<Filme> filmesEmCartaz;
+    GerenciarVendas gerenciadorVendas;
 
-    public BalcaoDeAtendimento(int id, Funcionario funcionarioResponsavel) {
+    public BalcaoDeAtendimento(int id, Funcionario funcionarioResponsavel, GerenciarVendas gerenciadorVendas) {
         this.id = id;
         this.funcionarioResponsavel = funcionarioResponsavel;
-        this.vendas = new ArrayList<>();
         this.filmesEmCartaz = new ArrayList<>();
+        this.gerenciadorVendas = gerenciadorVendas;
     }
 
     public int getId() {
@@ -35,23 +34,8 @@ public class BalcaoDeAtendimento {
         return funcionarioResponsavel;
     }
 
-    public List<Venda> getVendas() {
-        return vendas;
-    }
-
     public List<Filme> getFilmesEmCartaz() {
         return filmesEmCartaz;
-    }
-
-    public void confirmarVenda(Venda venda) {
-        vendas.add(venda);
-        System.out.println("Venda realizada com sucesso!");
-        venda.gerarExtrato();
-    }
-
-    public void cancelarVenda(Venda venda) {
-        vendas.remove(venda);
-        System.out.println("Venda cancelada com sucesso!");
     }
 
     public void adicionarFilme(Filme filme) {
@@ -65,18 +49,19 @@ public class BalcaoDeAtendimento {
     }
 
     public double calcularRendimentoDiario() {
-        double rendimento = 0.0;
-        for (Venda venda : vendas) {
-            rendimento += venda.calcularTotal();
-        }
-        return rendimento;
+        return gerenciadorVendas.calcularRendimentoDiario();
     }
 
     public void imprimirRelatorioVendas() {
-        System.out.println("Relatório de Vendas:");
-        for (Venda venda : vendas) {
-            System.out.println(venda.toString());
-        }
+        gerenciadorVendas.imprimirRelatorioVendas();
+    }
+
+    public void confirmarVenda(Venda venda) {
+        gerenciadorVendas.confirmarVenda(venda);
+    }
+
+    public void cancelarVenda(Venda venda) {
+        gerenciadorVendas.cancelarVenda(venda);
     }
 }
 

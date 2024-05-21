@@ -13,8 +13,9 @@ import sistemadocinema.gereciamentoDeVendas.BalcaoDeAtendimento;
  */
 public class BalcaoManual extends BalcaoDeAtendimento {
 
-    public BalcaoManual(int id, Funcionario funcionarioResponsavel) {
-        super(id, funcionarioResponsavel);
+    public BalcaoManual(int id, Funcionario funcionarioResponsavel, GerenciarVendas gerenciadorVendas) {
+        super(id, funcionarioResponsavel, gerenciadorVendas);
     }
 
+    // Adicione métodos específicos para balcões manuais, se necessário
 }
