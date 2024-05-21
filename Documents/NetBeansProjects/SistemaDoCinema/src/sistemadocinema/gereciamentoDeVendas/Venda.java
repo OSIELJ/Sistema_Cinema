@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package sistemadocinema;
+package sistemadocinema.gereciamentoDeVendas;
 
 import Arquivo.Json;
 import java.text.SimpleDateFormat;
@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import sistemadocinema.Cliente;
+import sistemadocinema.Produto;
 
 /**
  *
@@ -21,6 +23,14 @@ public class Venda {
     private List<Produto> itensVendidos;
     private double valorTotal;
     private LocalDateTime dataHora;
+    private BalcaoDeAtendimento balcao;
+
+    public Venda(Cliente cliente, BalcaoDeAtendimento balcao) {
+        this.cliente = cliente;
+        this.itensVendidos = new ArrayList<>();
+        this.dataHora = LocalDateTime.now();
+        this.balcao = balcao;
+    }
 
     public Cliente getCliente() {
         return cliente;
@@ -54,10 +64,12 @@ public class Venda {
         this.dataHora = dataHora;
     }
 
-    public Venda(Cliente cliente) {
-        this.cliente = cliente;
-        this.itensVendidos = new ArrayList<>();
-        this.dataHora = LocalDateTime.now();
+    public BalcaoDeAtendimento getBalcao() {
+        return balcao;
+    }
+
+    public void setBalcao(BalcaoDeAtendimento balcao) {
+        this.balcao = balcao;
     }
 
     public void adicionarItem(Produto produto) {
@@ -72,29 +84,33 @@ public class Venda {
         return valorTotal;
     }
 
-
-
     public String getExtrato() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         StringBuilder extrato = new StringBuilder();
         extrato.append("Cliente: ").append(cliente.getNome()).append("\n");
         extrato.append("Data e Hora: ").append(dataHora.format(formatter)).append("\n");
+        extrato.append("Balcão: ").append(balcao.getId()).append("\n");
         extrato.append("Itens vendidos:\n");
         for (Produto produto : itensVendidos) {
             extrato.append("- ").append(produto.getNome()).append(": R$").append(produto.getValor()).append("\n");
         }
         extrato.append("Total: R$").append(calcularTotal());
-        Json.salvarExtratoVenda(extrato.toString());
         return extrato.toString();
+    }
+
+    public void gerarExtrato() {
+        String extrato = getExtrato();
+        Json.salvarExtratoVenda(extrato);
     }
 
     @Override
     public String toString() {
-        return "Venda{"
-                + "cliente=" + cliente
-                + ", itensVendidos=" + itensVendidos
-                + ", valorTotal=" + valorTotal
-                + ", dataHora=" + dataHora
-                + '}';
+        return "Venda{" +
+                "cliente=" + cliente +
+                ", itensVendidos=" + itensVendidos +
+                ", valorTotal=" + valorTotal +
+                ", dataHora=" + dataHora +
+                ", balcao=" + balcao +
+                '}';
     }
 }

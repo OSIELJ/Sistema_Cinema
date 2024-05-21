@@ -4,6 +4,8 @@
  */
 package sistemadocinema;
 
+import sistemadocinema.gereciamentoDeVendas.Venda;
+import sistemadocinema.gereciamentoDeVendas.BalcaoDeAtendimento;
 import java.util.ArrayList;
 import java.util.List;
 import Arquivo.Json;
@@ -67,7 +69,8 @@ public class Sistema {
          */
         
         
-        
+        Funcionario myFuncionario = new Funcionario("Daniel Rodrigues", "01602001506", "Daniel", "Daniel123");
+        BalcaoDeAtendimento balcao = new BalcaoDeAtendimento(1, myFuncionario);
         
   
 
@@ -78,7 +81,7 @@ public class Sistema {
         Cliente cliente = new Cliente("João", "Silva", "123.456.789-00", "Rua A, 123", "999999999");
 
         
-        Venda venda = new Venda(cliente);
+        Venda venda = new Venda(cliente, balcao);
 
 
         venda.adicionarItem(pipoca);

@@ -4,6 +4,7 @@
  */
 package sistemadocinema;
 
+import sistemadocinema.gereciamentoDeVendas.Venda;
 import java.util.ArrayList;
 import java.util.List;
 
