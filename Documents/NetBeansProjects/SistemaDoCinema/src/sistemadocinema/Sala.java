@@ -46,6 +46,8 @@ public class Sala {
         poltronasDisponiveis++;
         System.out.println("Poltrona liberada com sucesso.");
     }
+    
+
 
     @Override
     public String toString() {

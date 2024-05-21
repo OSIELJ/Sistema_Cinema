@@ -18,14 +18,16 @@ public class Menu {
     private final Scanner scanner = new Scanner(System.in);
     private final Usuario usuarioLogado;
     private final Estoque meuEstoque;
-    private BalcaoDeAtendimento balcaoAutomatico;
-    private List<Cliente> listaClientes;
+    private final BalcaoDeAtendimento balcaoAutomatico;
+    private final List<Cliente> listaClientes;
+    private final List<Sala> salas;
 
-    public Menu(Usuario usuarioLogado, Estoque meuEstoque, BalcaoDeAtendimento balcaoAutomatico, List<Cliente> listaClientes) {
+    public Menu(Usuario usuarioLogado, Estoque meuEstoque, BalcaoDeAtendimento balcaoAutomatico, List<Cliente> listaClientes, List<Sala> salas) {
         this.usuarioLogado = usuarioLogado;
         this.meuEstoque = meuEstoque;
         this.balcaoAutomatico = balcaoAutomatico;
         this.listaClientes = listaClientes;
+        this.salas = salas;
     }
 
     public void exibirMenu() {
@@ -105,39 +107,67 @@ public class Menu {
                     System.out.println("Informe o CPF do cliente:");
                     String cpf = scanner.nextLine();
 
+                    Cliente clienteSelecionado = null;
                     for (Cliente cliente : listaClientes) {
                         if (cliente.getCpf().equals(cpf)) {
-                            return cliente; // Retorna o cliente encontrado
+                            clienteSelecionado = cliente;
+                            break; // Cliente encontrado, encerra o loop
                         }
                     }
 
-                    Cliente clienteSelecionado = selecionarCliente();
-                    if (clienteSelecionado != null) {
-                        System.out.println("Lista de produtos disponíveis:");
-                        meuEstoque.listarProdutosDisponiveis();
-                        // Aqui você precisará selecionar os produtos a serem vendidos
-                        List<Produto> produtosSelecionados = selecionarProdutos();
-                        if (!produtosSelecionados.isEmpty()) {
-                            Venda venda = new Venda(clienteSelecionado, balcaoAutomatico);
-                            for (Produto produto : produtosSelecionados) {
-                                venda.adicionarItem(produto);
-                            }
-
-                            // Confirmar a venda
-                            balcaoAutomatico.confirmarVenda(venda);
-                            // Atualizar o estoque
-                            for (Produto produto : produtosSelecionados) {
-                                meuEstoque.removerProduto(produto);
-                            }
-                        } else {
-                            System.out.println("Nenhum produto selecionado. Cancelando venda.");
-                        }
-                    } else {
-                        System.out.println("Nenhum cliente selecionado. Cancelando venda.");
+                    if (clienteSelecionado == null) {
+                        System.out.println("Cliente não encontrado.");
+                        return; // Encerra o método caso o cliente não seja encontrado
                     }
+
+                    System.out.println("Escolha qual filme deseja ver: ");
+                    meuEstoque.listarFilmesDisponivel();
+
+                    String tituloFilmeEscolhido = scanner.nextLine();
+                    Filme filmeEscolhido = null;
+                    for (Produto produto : meuEstoque.getProdutos()) {
+                        if (produto instanceof Filme) {
+                            Filme filme = (Filme) produto;
+                            if (filme.getTitulo().equals(tituloFilmeEscolhido)) {
+                                filmeEscolhido = filme;
+                                break; // Filme encontrado, encerra o loop
+                            }
+                        }
+                    }
+
+                    if (filmeEscolhido == null) {
+                        System.out.println("Filme não encontrado.");
+                        return; // Encerra o método caso o filme não seja encontrado
+                    }
+
+                    Sala salaDisponivel = null;
+                    for (Sala sala : salas) {
+                        if (sala.getFilme().equals(filmeEscolhido) && sala.getPoltronasDisponiveis() > 0) {
+                            salaDisponivel = sala;
+                            break; // Sala encontrada, encerra o loop
+                        }
+                    }
+
+                    if (salaDisponivel == null) {
+                        System.out.println("Não há salas disponíveis para o filme selecionado.");
+                        return; // Encerra o método caso não haja sala disponível
+                    }
+
+                    salaDisponivel.reservarPoltrona();
+
+                    Venda venda = new Venda(clienteSelecionado, balcaoAutomatico);
+                    venda.adicionarItem(filmeEscolhido);
+
+                    // Confirmar a venda
+                    balcaoAutomatico.confirmarVenda(venda);
+                    // Atualizar o estoque
+                    meuEstoque.removerProduto(filmeEscolhido);
                 }
+
                 case "2" -> {
+
                 }
+
                 case "3" -> {
 
                     System.out.println("Verificação de Estoque:");

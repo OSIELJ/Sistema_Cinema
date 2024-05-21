@@ -41,7 +41,22 @@ public class Estoque {
             }
         }
     }
-    
-    
 
+    public void listarFilmesDisponivel() {
+        System.out.println("Filmes disponíveis:");
+        for (Produto produto : produtos) {
+            if (produto instanceof Filme filme) {
+                System.out.println(filme.getTitulo());
+            } else {
+            }
+        }
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
 }
