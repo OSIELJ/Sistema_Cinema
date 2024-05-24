@@ -10,7 +10,7 @@ import Arquivo.Json;
 
 /**
  *
- * @author Osiel
+ * @author Daniel Rodrigues
  */
 public class GerenciarCadastros {
 
