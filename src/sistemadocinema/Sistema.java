@@ -15,6 +15,7 @@ import java.util.Scanner;
 import sistemadocinema.gereciamentoDeVendas.BalcaoAutomatico;
 import sistemadocinema.gereciamentoDeVendas.GerenciarVendas;
 
+
 /**
  *
  * @author Osiel Junior
@@ -77,9 +78,7 @@ public class Sistema {
         myEstoque.adicionarProduto(filme);
 
         
-    
-        
-        
+ 
        Scanner scanner = new Scanner(System.in);
         String nomeUsuario, senha;
 
@@ -119,5 +118,7 @@ public class Sistema {
         }
 
     }
+    
+    
 
 }
