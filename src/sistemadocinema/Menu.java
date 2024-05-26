@@ -4,6 +4,13 @@
  */
 package sistemadocinema;
 
+import com.mycompany.prototipo.Credito;
+import com.mycompany.prototipo.CreditoAdapter;
+import com.mycompany.prototipo.Debito;
+import com.mycompany.prototipo.DebitoAdapter;
+import com.mycompany.prototipo.PaymentGateway;
+import com.mycompany.prototipo.Pix;
+import com.mycompany.prototipo.PixAdapter;
 import java.util.List;
 import java.util.Scanner;
 import sistemadocinema.gereciamentoDeVendas.BalcaoDeAtendimento;
@@ -54,12 +61,9 @@ public class Menu {
 
             switch (opcao) {
                 case "1" -> {
-
                     System.out.println("Qual relatorio voce deseja: Mensal ou Anual");
-
                 }
                 case "2" -> {
-
                     System.out.println("Informe o nome do novo funcionário:");
                     String nome = scanner.nextLine();
                     System.out.println("Informe o CPF do novo funcionário:");
@@ -69,12 +73,8 @@ public class Menu {
                     System.out.println("Informe a senha do novo funcionário:");
                     String senha = scanner.nextLine();
 
-                    // Criar instância de Funcionario com as informações fornecidas
                     Gerente novoGerente = new Gerente(nome, cpf, nomeUsuario, senha);
-
-                    // Adicionar o novo gerente ao sistema
                     gerente.adicionarGerente(novoGerente);
-
                 }
                 case "3" -> {
                     System.out.println("Sessão encerrada.");
@@ -83,8 +83,6 @@ public class Menu {
                 default ->
                     System.out.println("Opção inválida. Por favor, escolha novamente.");
             }
-            // Lógica para gerar relatório de vendas
-            // Lógica para adicionar novo funcionário
         }
     }
 
@@ -111,13 +109,13 @@ public class Menu {
                     for (Cliente cliente : listaClientes) {
                         if (cliente.getCpf().equals(cpf)) {
                             clienteSelecionado = cliente;
-                            break; // Cliente encontrado, encerra o loop
+                            break;
                         }
                     }
 
                     if (clienteSelecionado == null) {
                         System.out.println("Cliente não encontrado.");
-                        return; // Encerra o método caso o cliente não seja encontrado
+                        return;
                     }
 
                     System.out.println("Escolha qual filme deseja ver: ");
@@ -130,50 +128,67 @@ public class Menu {
                             Filme filme = (Filme) produto;
                             if (filme.getTitulo().equals(tituloFilmeEscolhido)) {
                                 filmeEscolhido = filme;
-                                break; // Filme encontrado, encerra o loop
+                                break;
                             }
                         }
                     }
 
                     if (filmeEscolhido == null) {
                         System.out.println("Filme não encontrado.");
-                        return; // Encerra o método caso o filme não seja encontrado
+                        return;
                     }
 
                     Sala salaDisponivel = null;
                     for (Sala sala : salas) {
                         if (sala.getFilme().equals(filmeEscolhido) && sala.getPoltronasDisponiveis() > 0) {
                             salaDisponivel = sala;
-                            break; // Sala encontrada, encerra o loop
+                            break;
                         }
                     }
 
                     if (salaDisponivel == null) {
                         System.out.println("Não há salas disponíveis para o filme selecionado.");
-                        return; // Encerra o método caso não haja sala disponível
+                        return;
                     }
 
                     salaDisponivel.reservarPoltrona();
 
-                    Venda venda = new Venda(clienteSelecionado, balcaoAutomatico);
-                    venda.adicionarItem(filmeEscolhido);
+                    System.out.println("Escolha o método de pagamento: credito, debito, pix");
+                    String metodoPagamento = scanner.nextLine();
+                    PaymentGateway gateway = getPaymentGateway(metodoPagamento);
 
-                    // Confirmar a venda
-                    balcaoAutomatico.confirmarVenda(venda);
-                    // Atualizar o estoque
-                    meuEstoque.removerProduto(filmeEscolhido);
+                    if (gateway == null) {
+                        System.out.println("Método de pagamento inválido.");
+                        return;
+                    }
+
+                    System.out.println("Informe o usuário:");
+                    String userId = scanner.nextLine();
+                    System.out.println("Informe a senha:");
+                    String password = scanner.nextLine();
+
+                    Venda venda = new Venda(clienteSelecionado, balcaoAutomatico, gateway);
+                    venda.adicionarItem(filmeEscolhido);
+                    venda.calcularTotal();
+
+                    if (venda.processarPagamento(userId, password)) {
+                        balcaoAutomatico.confirmarVenda(venda);
+                        meuEstoque.removerProduto(filmeEscolhido);
+                        System.out.println("Venda realizada com sucesso.");
+                    } else {
+                        System.out.println("Falha no processamento do pagamento.");
+                    }
                 }
 
                 case "2" -> {
-
+                    // Lógica para cadastrar cliente
                 }
-
                 case "3" -> {
-
                     System.out.println("Verificação de Estoque:");
                     meuEstoque.verificarValidadeProdutos();
                 }
                 case "4" -> {
+                    // Lógica para verificar rendimento diário ou mensal dos balcões
                 }
                 case "5" -> {
                     System.out.println("Sessão encerrada.");
@@ -182,10 +197,15 @@ public class Menu {
                 default ->
                     System.out.println("Opção inválida. Por favor, escolha novamente.");
             }
-            // Lógica para realizar venda
-            // Lógica para cadastrar cliente
-            // Lógica para verificar estoque
-            // Lógica para verificar rendimento diário ou mensal dos balcões
         }
+    }
+
+    private static PaymentGateway getPaymentGateway(String tipoPagamento) {
+        return switch (tipoPagamento.toLowerCase()) {
+            case "credito" -> new CreditoAdapter(new Credito());
+            case "debito" -> new DebitoAdapter(new Debito());
+            case "pix" -> new PixAdapter(new Pix());
+            default -> null;
+        };
     }
 }

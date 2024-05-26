@@ -5,6 +5,7 @@
 package sistemadocinema.gereciamentoDeVendas;
 
 import Arquivo.Json;
+import com.mycompany.prototipo.PaymentGateway;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -23,12 +24,14 @@ public class Venda {
     private double valorTotal;
     private LocalDateTime dataHora;
     private BalcaoDeAtendimento balcao;
+    private final PaymentGateway paymentGateway;
 
-    public Venda(Cliente cliente, BalcaoDeAtendimento balcao) {
+    public Venda(Cliente cliente, BalcaoDeAtendimento balcao, PaymentGateway paymentGateway) {
         this.cliente = cliente;
         this.itensVendidos = new ArrayList<>();
         this.dataHora = LocalDateTime.now();
         this.balcao = balcao;
+        this.paymentGateway = paymentGateway;
     }
 
     public void adicionarItem(Produto produto) {
@@ -56,6 +59,17 @@ public class Venda {
         extrato.append("Total: R$").append(calcularTotal());
         Json.salvarExtratoVenda(extrato.toString());
         return extrato.toString();
+    }
+    
+    public boolean processarPagamento(String userId, String password) {
+        if (paymentGateway.authenticate(userId, password) && paymentGateway.checkBalance(userId, valorTotal)) {
+            paymentGateway.processPayment(userId, valorTotal);
+            paymentGateway.logTransaction(userId, valorTotal);
+            return true;
+        } else {
+            System.out.println("Autenticacao, saldo insuficiente ou valor fora do limite.");
+            return false;
+        }
     }
 
     public Cliente getCliente() {
