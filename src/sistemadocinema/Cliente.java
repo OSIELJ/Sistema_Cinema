@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- *
+ * A classe cliente is boa.
  * @author Osiel Junior
  */
 public class Cliente {

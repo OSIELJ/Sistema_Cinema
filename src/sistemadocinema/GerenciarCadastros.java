@@ -118,7 +118,7 @@ public class GerenciarCadastros {
         boolean funcionarioEncontrado = false;
         for (Funcionario funcionario : listaFuncionarios) {
             if (funcionario.getCpf().equals(cpf)) {
-                // Atualiza os atributos apenas se as novas informações não forem nulas
+                
                 if (novaSenha != null && !novaSenha.isEmpty()) {
                     funcionario.setSenha(novaSenha);
                 }
@@ -127,7 +127,7 @@ public class GerenciarCadastros {
                 }
                 funcionarioEncontrado = true;
                 System.out.println("Cadastro do funcionário atualizado com sucesso!");
-                break; // Encerra o loop assim que o funcionário é encontrado e atualizado
+                break; 
             }
         }
         if (!funcionarioEncontrado) {

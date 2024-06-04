@@ -14,8 +14,8 @@ import java.util.List;
 public class GerenciarVendas {
     private final List<Venda> vendasConfirmadas;
 
-    public GerenciarVendas() {
-        this.vendasConfirmadas = new ArrayList<>();
+    public GerenciarVendas(List<Venda> vendasConfirmadas) {
+        this.vendasConfirmadas = vendasConfirmadas;
     }
 
     public void confirmarVenda(Venda venda) {

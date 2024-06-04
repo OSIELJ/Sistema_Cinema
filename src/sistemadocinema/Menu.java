@@ -14,6 +14,7 @@ import com.mycompany.prototipo.PixAdapter;
 import java.util.List;
 import java.util.Scanner;
 import sistemadocinema.gereciamentoDeVendas.BalcaoDeAtendimento;
+import sistemadocinema.gereciamentoDeVendas.GerenciarVendas;
 import sistemadocinema.gereciamentoDeVendas.Venda;
 
 /**
@@ -28,14 +29,23 @@ public class Menu {
     private final BalcaoDeAtendimento balcaoAutomatico;
     private final List<Cliente> listaClientes;
     private final List<Sala> salas;
+    private List<Funcionario> listaFuncionarios;
+    private List<Venda> listaVendas;
+    
+    
 
-    public Menu(Usuario usuarioLogado, Estoque meuEstoque, BalcaoDeAtendimento balcaoAutomatico, List<Cliente> listaClientes, List<Sala> salas) {
+    public Menu(Usuario usuarioLogado, Estoque meuEstoque, BalcaoDeAtendimento balcaoAutomatico, List<Cliente> listaClientes,
+            List<Sala> salas, List<Funcionario> ListaFuncionarios, List<Venda> listaVendas) {
         this.usuarioLogado = usuarioLogado;
         this.meuEstoque = meuEstoque;
         this.balcaoAutomatico = balcaoAutomatico;
         this.listaClientes = listaClientes;
         this.salas = salas;
+        this.listaFuncionarios = listaFuncionarios;
+        this.listaVendas = listaVendas;
     }
+    
+    
 
     public void exibirMenu() {
         switch (usuarioLogado) {
@@ -93,9 +103,11 @@ public class Menu {
             System.out.println("O que você deseja fazer?");
             System.out.println("1. Realizar venda");
             System.out.println("2. Cadastrar Cliente");
-            System.out.println("3. Verificar estoque");
-            System.out.println("4. Verificar rendimento diário ou mensal dos balcões");
-            System.out.println("5. Sair");
+            System.out.println("3. Alterar Cliente");
+            System.out.println("2. Excluir Cliente");
+            System.out.println("5. Verificar estoque");
+            System.out.println("6. Verificar rendimento diário ou mensal dos balcões");
+            System.out.println("7. Sair");
 
             opcao = scanner.nextLine();
 
@@ -174,6 +186,7 @@ public class Menu {
                     if (venda.processarPagamento(userId, password)) {
                         balcaoAutomatico.confirmarVenda(venda);
                         meuEstoque.removerProduto(filmeEscolhido);
+                        listaVendas.add(venda);
                         System.out.println("Venda realizada com sucesso.");
                     } else {
                         System.out.println("Falha no processamento do pagamento.");
@@ -181,16 +194,70 @@ public class Menu {
                 }
 
                 case "2" -> {
-                    // Lógica para cadastrar cliente
+                    
+                    System.out.println("Digite o Nome: ");
+                    String nome = scanner.nextLine();
+                    
+                    System.out.println("Digite o sobrenome: ");
+                    String sobrenome = scanner.nextLine();
+                    
+                    System.out.println("Informe o CPF do novo funcionário: ");
+                    String cpf = scanner.nextLine();
+                    
+                    System.out.println("Informe o endereco: ");
+                    String endereco = scanner.nextLine();
+                    
+                    System.out.println("Informe o Telefone: ");
+                    String telefone = scanner.nextLine();
+                    
+                    Cliente ususario = new Cliente(nome, sobrenome, cpf, endereco, telefone);
+                    
+                    listaClientes.add(ususario);
+                   
                 }
                 case "3" -> {
+                    
+                  GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes,listaFuncionarios);
+                    System.out.println("Alterar Cliente:");
+                    
+                    System.out.println("Informe o CPF do novo funcionário: ");
+                    String cpf = scanner.nextLine();
+                    
+                    System.out.println("Informe o endereco: ");
+                    String novoEndereco = scanner.nextLine();
+                    
+                    System.out.println("Informe o Telefone: ");
+                    String novoTelefone = scanner.nextLine();
+                    
+    
+                    gerenciarCadastros.editarCliente(cpf, novoTelefone, novoEndereco);
+                    
+                }
+                case "4" -> {
+                    
+                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes,listaFuncionarios);
+                    System.out.println("Excluir Cliente:");
+                    
+                    System.out.println("Informe o CPF do novo funcionário: ");
+                    String cpf = scanner.nextLine();
+                    
+                    gerenciarCadastros.excluirCliente(cpf);
+                    
+                }
+                case "5" -> {
                     System.out.println("Verificação de Estoque:");
                     meuEstoque.verificarValidadeProdutos();
                 }
-                case "4" -> {
-                    // Lógica para verificar rendimento diário ou mensal dos balcões
+                case "6" -> {
+                    
+                    GerenciarVendas gerenciarVendas = new GerenciarVendas(listaVendas);
+                    
+                    System.out.println("Verificar rendimento diário dos balcões:");
+                    double rendimentoDiario = gerenciarVendas.calcularRendimentoDiario();
+                    System.out.println("Rendimento diário: " + rendimentoDiario);
+                    
                 }
-                case "5" -> {
+                case "7" -> {
                     System.out.println("Sessão encerrada.");
                     return;
                 }
