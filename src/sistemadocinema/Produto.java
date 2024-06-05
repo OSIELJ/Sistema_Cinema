@@ -14,6 +14,8 @@ import java.time.LocalDate;
  */
 
 public abstract class Produto {
+    
+    private static int contadorProdutos = 0;
     private String nome;
     private LocalDate dataValidade;
     private double valor;
@@ -24,6 +26,15 @@ public abstract class Produto {
         this.dataValidade = dataValidade;
         this.valor = valor;
         this.quantidadeEmEstoque = quantidadeEmEstoque;
+        contadorProdutos++;
+    }
+
+    public static int getContadorProdutos() {
+        return contadorProdutos;
+    }
+
+    public static void setContadorProdutos(int contadorProdutos) {
+        Produto.contadorProdutos = contadorProdutos;
     }
 
     public String getNome() {

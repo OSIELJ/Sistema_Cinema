@@ -31,8 +31,6 @@ public class Menu {
     private final List<Sala> salas;
     private List<Funcionario> listaFuncionarios;
     private List<Venda> listaVendas;
-    
-    
 
     public Menu(Usuario usuarioLogado, Estoque meuEstoque, BalcaoDeAtendimento balcaoAutomatico, List<Cliente> listaClientes,
             List<Sala> salas, List<Funcionario> ListaFuncionarios, List<Venda> listaVendas) {
@@ -44,8 +42,6 @@ public class Menu {
         this.listaFuncionarios = listaFuncionarios;
         this.listaVendas = listaVendas;
     }
-    
-    
 
     public void exibirMenu() {
         switch (usuarioLogado) {
@@ -63,17 +59,168 @@ public class Menu {
         while (true) {
             System.out.println("Bem-vindo, Gerente " + gerente.getNome() + "!");
             System.out.println("O que você deseja fazer?");
-            System.out.println("1. Gerar relatório de vendas");
-            System.out.println("2. Adicionar novo funcionário");
-            System.out.println("3. Sair");
+            System.out.println("1. Realizar venda");
+            System.out.println("2. Cadastrar Cliente");
+            System.out.println("3. Alterar Cliente");
+            System.out.println("2. Excluir Cliente");
+            System.out.println("5. Verificar estoque");
+            System.out.println("6. Verificar rendimento diário ou mensal dos balcões");
+            System.out.println("7. Cadastar Funcionario");
+            System.out.println("8. Editar Funcionario");
+            System.out.println("9. Sair");
 
             opcao = scanner.nextLine();
 
             switch (opcao) {
                 case "1" -> {
-                    System.out.println("Qual relatorio voce deseja: Mensal ou Anual");
+                    System.out.println("Realizar Venda:");
+                    System.out.println("Informe o CPF do cliente:");
+                    String cpf = scanner.nextLine();
+
+                    Cliente clienteSelecionado = null;
+                    for (Cliente cliente : listaClientes) {
+                        if (cliente.getCpf().equals(cpf)) {
+                            clienteSelecionado = cliente;
+                            break;
+                        }
+                    }
+
+                    if (clienteSelecionado == null) {
+                        System.out.println("Cliente não encontrado.");
+                        return;
+                    }
+
+                    System.out.println("Escolha qual filme deseja ver: ");
+                    meuEstoque.listarFilmesDisponivel();
+
+                    String tituloFilmeEscolhido = scanner.nextLine();
+                    Filme filmeEscolhido = null;
+                    for (Produto produto : meuEstoque.getProdutos()) {
+                        if (produto instanceof Filme) {
+                            Filme filme = (Filme) produto;
+                            if (filme.getTitulo().equals(tituloFilmeEscolhido)) {
+                                filmeEscolhido = filme;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (filmeEscolhido == null) {
+                        System.out.println("Filme não encontrado.");
+                        return;
+                    }
+
+                    Sala salaDisponivel = null;
+                    for (Sala sala : salas) {
+                        if (sala.getFilme().equals(filmeEscolhido) && sala.getPoltronasDisponiveis() > 0) {
+                            salaDisponivel = sala;
+                            break;
+                        }
+                    }
+
+                    if (salaDisponivel == null) {
+                        System.out.println("Não há salas disponíveis para o filme selecionado.");
+                        return;
+                    }
+
+                    salaDisponivel.reservarPoltrona();
+
+                    System.out.println("Escolha o método de pagamento: credito, debito, pix");
+                    String metodoPagamento = scanner.nextLine();
+                    PaymentGateway gateway = getPaymentGateway(metodoPagamento);
+
+                    if (gateway == null) {
+                        System.out.println("Método de pagamento inválido.");
+                        return;
+                    }
+
+                    System.out.println("Informe o usuário:");
+                    String userId = scanner.nextLine();
+                    System.out.println("Informe a senha:");
+                    String password = scanner.nextLine();
+
+                    Venda venda = new Venda(clienteSelecionado, balcaoAutomatico, gateway);
+                    venda.adicionarItem(filmeEscolhido);
+                    venda.calcularTotal();
+
+                    if (venda.processarPagamento(userId, password)) {
+                        balcaoAutomatico.confirmarVenda(venda);
+                        meuEstoque.removerProduto(filmeEscolhido);
+                        listaVendas.add(venda);
+                        System.out.println("Venda realizada com sucesso.");
+                    } else {
+                        System.out.println("Falha no processamento do pagamento.");
+                    }
                 }
+
                 case "2" -> {
+
+                    System.out.println("Digite o Nome: ");
+                    String nome = scanner.nextLine();
+
+                    System.out.println("Digite o sobrenome: ");
+                    String sobrenome = scanner.nextLine();
+
+                    System.out.println("Informe o CPF do novo funcionário: ");
+                    String cpf = scanner.nextLine();
+
+                    System.out.println("Informe o endereco: ");
+                    String endereco = scanner.nextLine();
+
+                    System.out.println("Informe o Telefone: ");
+                    String telefone = scanner.nextLine();
+
+                    Cliente ususario = new Cliente(nome, sobrenome, cpf, endereco, telefone);
+                    
+                     GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, listaFuncionarios);
+                     
+                     gerenciarCadastros.cadastrarCliente(ususario);                
+                        
+                }
+                case "3" -> {
+
+                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, listaFuncionarios);
+                    System.out.println("Alterar Cliente:");
+
+                    System.out.println("Informe o CPF do novo funcionário: ");
+                    String cpf = scanner.nextLine();
+
+                    System.out.println("Informe o endereco: ");
+                    String novoEndereco = scanner.nextLine();
+
+                    System.out.println("Informe o Telefone: ");
+                    String novoTelefone = scanner.nextLine();
+
+                    gerenciarCadastros.editarCliente(cpf, novoTelefone, novoEndereco);
+
+                }
+                case "4" -> {
+
+                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, listaFuncionarios);
+                    System.out.println("Excluir Cliente:");
+
+                    System.out.println("Informe o CPF do novo funcionário: ");
+                    String cpf = scanner.nextLine();
+
+                    gerenciarCadastros.excluirCliente(cpf);
+
+                }
+                case "5" -> {
+                    System.out.println("Verificação de Estoque:");
+                    meuEstoque.verificarValidadeProdutos();
+                }
+                case "6" -> {
+
+                    GerenciarVendas gerenciarVendas = new GerenciarVendas(listaVendas);
+
+                    System.out.println("Verificar rendimento diário dos balcões:");
+                    double rendimentoDiario = gerenciarVendas.calcularRendimentoDiario();
+                    System.out.println("Rendimento diário: " + rendimentoDiario);
+
+                }
+                case "7" -> {
+                    
+                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, listaFuncionarios);
                     System.out.println("Informe o nome do novo funcionário:");
                     String nome = scanner.nextLine();
                     System.out.println("Informe o CPF do novo funcionário:");
@@ -83,13 +230,33 @@ public class Menu {
                     System.out.println("Informe a senha do novo funcionário:");
                     String senha = scanner.nextLine();
 
-                    Gerente novoGerente = new Gerente(nome, cpf, nomeUsuario, senha);
-                    gerente.adicionarGerente(novoGerente);
+                    Funcionario novFuncionario = new Funcionario(nome, cpf, nomeUsuario, senha);
+                    
+                    gerenciarCadastros.cadastrarFuncionario(novFuncionario);
+                    
                 }
-                case "3" -> {
+                case "8" -> {
+                    
+                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, listaFuncionarios);
+                    
+                     System.out.println("8. Editar Funcionario");
+                     
+                    System.out.println("Informe o CPF do novo funcionário:");
+                    String cpf = scanner.nextLine();
+                    System.out.println("Informe o nome de usuário do novo funcionário:");
+                    String nomeUsuario = scanner.nextLine();
+                    System.out.println("Informe a senha do novo funcionário:");
+                    String senha = scanner.nextLine();
+                    
+                    gerenciarCadastros.editarFuncionario(cpf, senha, nomeUsuario);
+                    
+                }
+                case "9" -> {
                     System.out.println("Sessão encerrada.");
                     return;
+                    
                 }
+                
                 default ->
                     System.out.println("Opção inválida. Por favor, escolha novamente.");
             }
@@ -194,68 +361,67 @@ public class Menu {
                 }
 
                 case "2" -> {
-                    
+
                     System.out.println("Digite o Nome: ");
                     String nome = scanner.nextLine();
-                    
+
                     System.out.println("Digite o sobrenome: ");
                     String sobrenome = scanner.nextLine();
-                    
+
                     System.out.println("Informe o CPF do novo funcionário: ");
                     String cpf = scanner.nextLine();
-                    
+
                     System.out.println("Informe o endereco: ");
                     String endereco = scanner.nextLine();
-                    
+
                     System.out.println("Informe o Telefone: ");
                     String telefone = scanner.nextLine();
-                    
+
                     Cliente ususario = new Cliente(nome, sobrenome, cpf, endereco, telefone);
-                    
+
                     listaClientes.add(ususario);
-                   
+
                 }
                 case "3" -> {
-                    
-                  GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes,listaFuncionarios);
+
+                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, listaFuncionarios);
                     System.out.println("Alterar Cliente:");
-                    
+
                     System.out.println("Informe o CPF do novo funcionário: ");
                     String cpf = scanner.nextLine();
-                    
+
                     System.out.println("Informe o endereco: ");
                     String novoEndereco = scanner.nextLine();
-                    
+
                     System.out.println("Informe o Telefone: ");
                     String novoTelefone = scanner.nextLine();
-                    
-    
+
                     gerenciarCadastros.editarCliente(cpf, novoTelefone, novoEndereco);
-                    
+
                 }
                 case "4" -> {
-                    
-                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes,listaFuncionarios);
+
+                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, listaFuncionarios);
                     System.out.println("Excluir Cliente:");
-                    
+
                     System.out.println("Informe o CPF do novo funcionário: ");
                     String cpf = scanner.nextLine();
-                    
+
                     gerenciarCadastros.excluirCliente(cpf);
-                    
+
                 }
                 case "5" -> {
                     System.out.println("Verificação de Estoque:");
                     meuEstoque.verificarValidadeProdutos();
                 }
                 case "6" -> {
-                    
+
                     GerenciarVendas gerenciarVendas = new GerenciarVendas(listaVendas);
-                    
+
                     System.out.println("Verificar rendimento diário dos balcões:");
                     double rendimentoDiario = gerenciarVendas.calcularRendimentoDiario();
                     System.out.println("Rendimento diário: " + rendimentoDiario);
-                    
+
                 }
                 case "7" -> {
                     System.out.println("Sessão encerrada.");
@@ -269,10 +435,14 @@ public class Menu {
 
     private static PaymentGateway getPaymentGateway(String tipoPagamento) {
         return switch (tipoPagamento.toLowerCase()) {
-            case "credito" -> new CreditoAdapter(new Credito());
-            case "debito" -> new DebitoAdapter(new Debito());
-            case "pix" -> new PixAdapter(new Pix());
-            default -> null;
+            case "credito" ->
+                new CreditoAdapter(new Credito());
+            case "debito" ->
+                new DebitoAdapter(new Debito());
+            case "pix" ->
+                new PixAdapter(new Pix());
+            default ->
+                null;
         };
     }
 }

@@ -22,15 +22,21 @@ public class Sistema {
     private static final BalcaoDeAtendimento[] balcoes = new BalcaoDeAtendimento[5];
 
     public static void main(String[] args) {
-
+        
+        
         Cliente c = new Cliente("nome", "sobrenome", "13441301609", "endereco", "telefone");
 
         List<Venda> listVendas = new ArrayList<>();
         List<Cliente> listaClientes = new ArrayList<>();
         List<Funcionario> listaFuncionarios = new ArrayList<>();
+        
+        
+        GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, listaFuncionarios);
 
         Gerente myGerente = new Gerente("Osiel Junior", "13441301609", "Osiel", "Osiel123");
         Funcionario myFuncionario = new Funcionario("Daniel Rodrigues", "01602001506", "Daniel", "Daniel123");
+        
+        listaFuncionarios.add(myFuncionario);
 
         GerenciarVendas gerenciarVendas = new GerenciarVendas(listVendas);
         balcoes[4] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
@@ -61,28 +67,129 @@ public class Sistema {
         String nomeUsuario, senha;
 
         listaClientes.add(c);
+        
 
         myEstoque.verificarValidadeProdutos();
 
         Autenticar myAutenticar = new Autenticar();
         myAutenticar.adicionarUsuario(myFuncionario);
         myAutenticar.adicionarUsuario(myGerente);
+        
+        
+        /*Questão 1:
+        
+                Todas implementadas e adicionamos outras que não estava anteriormente.
+        */
+
+        /*Questão 2:
+        
+                Apenas funcionario e administrador tem acesso ao sistema.
+        */
+        
+        /*Questão 3:
+        
+               Todas contem o metodo ToString.
+        */
+        
+        /*Questão 4:
+        
+                Usar a palavra-chave super
+        
+                Na linha 18 da classe Filme:  
+                public Filme(String titulo, String estilo, LocalDate dataValidade, double valor, int quantidadeEmEstoque, String periodoExibicao) {
+                super(titulo, dataValidade, valor, quantidadeEmEstoque);
+                
+                Na liinha 15 na classe Alimenticios:
+                public Alimenticios(String nome, LocalDate dataValidade, double valor, int quantidadeEmEstoque) {
+                super(nome, dataValidade, valor, quantidadeEmEstoque);
+      
+        */
+        
+        /*Questão 5:
+        
+                
+      
+        */        
+          
+        
 
         while (true) {
-            System.out.print("Usuário: ");
-            nomeUsuario = scanner.nextLine();
+            System.out.println("Escolha o modo de operação:");
+            System.out.println("1. Modo Manual");
+            System.out.println("2. Modo Automático");
+            System.out.print("Opção: ");
+            String escolha = scanner.nextLine();
 
-            System.out.print("Senha: ");
-            senha = scanner.nextLine();
+            if (escolha.equals("1")) {
+                // Modo Manual
+                System.out.println("Modo Manual selecionado.");
+                // Adicione aqui o código para testes manuais, se necessário
+                
+                /*Questão 6:
+                    cadastrar os colaboradores no sistema, alterar ou editar seus atributos;
+                */ 
+                
+                System.out.println("-------------------------------------------------------------------");
+                gerenciarCadastros.imprimirListaFuncionarios();
+                // Cadastrar Colaborador/Funcionario
+                gerenciarCadastros.cadastrarFuncionario(new Funcionario("Marshal", "01602001503", "Marshal", "123"));
+                gerenciarCadastros.cadastrarFuncionario(new Funcionario("Andre", "01602001504", "Andre", "123"));
+                gerenciarCadastros.imprimirListaFuncionarios();
+                
+                // Editar Colaborador/Funcionario
+                gerenciarCadastros.editarFuncionario("01602001503", "1234", "MarshallDaBmW");
+                gerenciarCadastros.imprimirListaFuncionarios();
+                
+                // Excluir Colaborador/Funcionario
+                gerenciarCadastros.excluirFuncionario("01602001504");
+                gerenciarCadastros.imprimirListaFuncionarios();
+                System.out.println("-------------------------------------------------------------------");
+                
+                
+                /*Questão 7:
+                    Cadastrar, alterar ou excluir clientes;
+                */
+                
+                System.out.println("-------------------------------------------------------------------");
+                gerenciarCadastros.imprimirListaClientes();
+                // Cadastrar Cliente
+                gerenciarCadastros.cadastrarCliente(new Cliente("Arthur", "Abreu", "00000000000", "Rio grande", "38998121594"));
+                gerenciarCadastros.imprimirListaClientes();
+                
+                // Editar Cliente
+                gerenciarCadastros.editarCliente("00000000000", "38000000000", "Pedra Grande");
+                gerenciarCadastros.imprimirListaClientes();
+                
+                // Excluir Cliente
+                gerenciarCadastros.excluirCliente("00000000000");
+                gerenciarCadastros.imprimirListaClientes();
+                System.out.println("-------------------------------------------------------------------");
+                
+                
+                break;
+            } else if (escolha.equals("2")) {
+                // Modo Automático
+                System.out.println("Modo Automático selecionado.");
+                while (true) {
+                    System.out.print("Usuário: ");
+                    nomeUsuario = scanner.nextLine();
 
-            Usuario usuarioLogado = myAutenticar.autenticar(nomeUsuario, senha);
-            if (usuarioLogado != null) {
-                Menu menu = new Menu(usuarioLogado, myEstoque, balcoes[4], listaClientes,
-                        salas, listaFuncionarios, listVendas);
-                menu.exibirMenu();
+                    System.out.print("Senha: ");
+                    senha = scanner.nextLine();
+
+                    Usuario usuarioLogado = myAutenticar.autenticar(nomeUsuario, senha);
+                    if (usuarioLogado != null) {
+                        Menu menu = new Menu(usuarioLogado, myEstoque, balcoes[4], listaClientes,
+                                salas, listaFuncionarios, listVendas);
+                        menu.exibirMenu();
+                        break;
+                    } else {
+                        System.out.println("Usuário ou senha incorretos. Por favor, tente novamente.");
+                    }
+                }
                 break;
             } else {
-                System.out.println("Usuário ou senha incorretos. Por favor, tente novamente.");
+                System.out.println("Opção inválida. Por favor, escolha novamente.");
             }
         }
     }

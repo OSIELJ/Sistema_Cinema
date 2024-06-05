@@ -144,5 +144,13 @@ public class GerenciarCadastros {
             System.out.println("Nome: " + funcionario.getNome() + ", Senha: " + funcionario.getSenha());
         }
     }
+    
+    
+        public void imprimirListaClientes() {
+        System.out.println("Lista de Clientes:");
+        for (Cliente cliente : listaClientes) {
+            System.out.println("Nome: " + cliente.getNome() + ", telefone: " + cliente.getTelefone() + ",Endereço: " + cliente.getEndereco());
+        }
+    }
 
 }
