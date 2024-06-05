@@ -21,7 +21,6 @@ public class GerenciarVendas {
     public void confirmarVenda(Venda venda) {
         venda.calcularTotal(); // Calcula o total da venda
         this.vendasConfirmadas.add(venda);
-        System.out.println(venda.getExtrato());
         System.out.println("Venda realizada com sucesso!");
     }
 

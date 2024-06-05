@@ -46,7 +46,7 @@ public class Venda {
         return valorTotal;
     }
 
-    public String getExtrato() {
+   public String getExtrato() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         StringBuilder extrato = new StringBuilder();
         extrato.append("Cliente: ").append(cliente.getNome()).append("\n");
