@@ -41,12 +41,27 @@ public class Sistema {
 
         Gerente myGerente = new Gerente("Osiel Junior", "13441301609", "Osiel", "Osiel123");
         Funcionario myFuncionario = new Funcionario("Daniel Rodrigues", "01602001506", "Daniel", "Daniel123");
+        
+        Funcionario myFuncionario2 = new Funcionario("Arthur Abreu", "01602001000", "arthur", "123");
+        
+        Funcionario myFuncionario3 = new Funcionario("Enzo velozo", "01602000000", "Enzo", "123");
 
         listaFuncionarios.add(myFuncionario);
+        listaFuncionarios.add(myFuncionario2);
+        listaFuncionarios.add(myFuncionario3);
+        
+        
+        
 
         GerenciarVendas gerenciarVendas = new GerenciarVendas(listVendas);
         balcoes[4] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
-
+        balcoes[3] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
+        balcoes[2] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
+        balcoes[1] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
+        balcoes[0] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
+        
+        
+        
         Alimenticios pipoca = new Alimenticios("Pipoca", LocalDate.of(2024, 12, 31), 5.0, 100);
         Alimenticios refrigerante = new Alimenticios("Refrigerante", LocalDate.of(2024, 12, 31), 3.0, 200);
         Alimenticios chocolate = new Alimenticios("Chocolate", LocalDate.of(2023, 12, 31), 3.0, 200);
@@ -109,10 +124,20 @@ public class Sistema {
       
          */
  /*Questão 5:
-        
+        Na linha 30 dessa classe tem esse código:
+        private static final BalcaoDeAtendimento[] balcoes = new BalcaoDeAtendimento[5];
+ 
+        Na linha 51 há 55 de classe Sistema tem esse código:
+        balcoes[4] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
+        balcoes[3] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
+        balcoes[2] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
+        balcoes[1] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
+        balcoes[0] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
                 
       
-         */
+        */
+ 
+ 
         while (true) {
             System.out.println("Escolha o modo de operação:");
             System.out.println("1. Modo Manual");
@@ -170,6 +195,9 @@ public class Sistema {
 
                 Cliente cliente1 = new Cliente("João", "Silva", "98765432100", "Rua A, 123", "123456789");
                 Cliente cliente2 = new Cliente("Maria", "Souza", "12345678901", "Rua B, 456", "987654321");
+                
+                listaClientes.add(cliente1);
+                listaClientes.add(cliente2);
 
                 System.out.println("Escolha o método de pagamento: credito, debito, pix");
                 String metodoPagamento = "pix";
@@ -204,16 +232,58 @@ public class Sistema {
                 System.out.println("-------------------------------------------------------------------");
 
                 /*Questão 9:
-                    Os produtos, filmes e os clientes devem ser salvos de forma dinâmica no sistema.
-                 */
-                System.out.println("-------------------------------------------------------------------");
+                 Os produtos, filmes e os clientes devem ser salvos de forma dinâmica no sistema.
+                
+                
+                clientes dinamicamente:
 
-                    
+                Dentro do método main da classe Sistema, instâncias de Cliente são
+                criadas e adicionadas à lista listaClientes
+                através do método cadastrarCliente do objeto gerenciarCadastros (instância de GerenciarCadastros).
+                
+                    public GerenciarCadastros(List<Cliente> listaClientes, List<Funcionario> listaFuncionarios) {
+                        this.listaClientes = new ArrayList<>();
+                        this.listaFuncionarios = new ArrayList<>();
+                    }
+
+                
+                    public void cadastrarCliente(Cliente cliente) {
+                        if (!existe(cliente.getCpf(), cliente)) {
+                             listaClientes.add(cliente);
+                             System.out.println("Cliente cadastrado com sucesso!");
+                        } else {
+                        System.out.println("Cliente já esta cadastrado!");
+                        }
+                    }
                 
                 
                 
                 
-                System.out.println("-------------------------------------------------------------------");
+                
+                Produtos e Filmes dinamicamente
+                
+                Filmes e clientes são adicionados de forma dinâmica ao sistema através do método
+                adicionarProduto da classe Estoque e da criação de instâncias de Alimenticios e Filmes
+                por que os dois herdam de Produto
+                dentro do método main da classe Sistema
+                
+                    public Estoque() {
+                        this.produtos = new ArrayList<>();
+                    }
+    
+    
+
+
+                    public void adicionarProduto(Produto produto) {
+                        produtos.add(produto);
+                        System.out.println("Produto adicionado com sucesso!");
+                    }
+        
+                
+                 
+                
+                 */
+
 
                 /*Questão 10:
                     Cada venda efetuada vai gerar um extrato que deverá ser impresso e salvo junto com a informação do cliente que fez a compra.
@@ -335,9 +405,64 @@ public class Sistema {
                     
                     
                     System.out.println("-------------------------------------------------------------------");
+                    
+                    
+                    
+                    
                   
-                  
-                  
+                   /*Questão 13:
+                        Implementar a interface Comparator para as classes Filme e Venda e fazer comparações por diferentes atributos.
+
+                   */
+                    System.out.println("-------------------------------------------------------------------");
+
+                    
+                    
+                    
+                    
+                    
+                    System.out.println("-------------------------------------------------------------------");
+                    
+                    
+                    
+                    
+                    
+                    
+                   /*Questão 14:
+                        Salve e recupere todas as informações dos Clientes, Filmes, Produtos, Vendas, Colaboradores e Estoque
+                    em um arquivo de texto. Utilizem classes já prontas na internet que trabalhem com o formato json.
+                    Ao manipular um arquivo utilize os conceitos aprendidos em aula para alocar e desalocar recursos com segurança. 
+                   */
+                   
+                    System.out.println("-------------------------------------------------------------------");
+
+                    
+                    Json.salvarClientes(listaClientes);
+                    Json.salvarFuncionario(listaFuncionarios);
+                    Json.salvarVendas(listVendas);
+                    
+                    
+                    
+                    System.out.println("-------------------------------------------------------------------");   
+                    
+                    
+                    
+                                   
+                     /*Questão 15:
+                        Gerar um JavaDoc de todo o seu projeto.
+                   */
+                    System.out.println("-------------------------------------------------------------------");
+
+                    
+                    
+                    
+                    
+                    
+                    System.out.println("-------------------------------------------------------------------");
+                    
+                    
+                    
+                    
                   
                 break;
 

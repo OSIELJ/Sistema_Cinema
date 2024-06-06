@@ -14,6 +14,8 @@ import java.io.Writer;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +23,9 @@ import java.util.List;
 import sistemadocinema.Cliente;
 import sistemadocinema.Produto;
 import sistemadocinema.Filme;
+import sistemadocinema.Funcionario;
+
+import sistemadocinema.gereciamentoDeVendas.Venda;
 
 /**
  *
@@ -32,6 +37,8 @@ public class Json {
     public static final String arqProdutos = "./src/main/java/Arquivo/produtos.json";
     public static final String arqFilmes = "./src/main/java/Arquivo/filmes.json";
     public static final String arqExtratoVenda = "C:/Users/Osiel/Documents/NetBeansProjects/Sistema_Cinema/src/Arquivo/extratoVenda.json";
+    public static final String arqFuncionario = "./src/Arquivo/funcionario.json";
+    public static final String arqVenda = "./src/Arquivo/venda.json";
 
     public Json() {
 
@@ -150,6 +157,41 @@ public class Json {
             e.printStackTrace();
         }
     }
+    
+    
+    
+    
+        public static void salvarFuncionario(List<Funcionario> listaFuncionarios) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(listaFuncionarios);
+
+        try (FileWriter writer = new FileWriter(arqFuncionario)) {
+            writer.write(json);
+        } catch (IOException e) {
+        }
+        System.out.println("Funcionarios salvos com sucesso ");
+    }
+        
+
+    public static void salvarVendas(List<Venda> listaVendas) {
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(Venda.class, new VendaAdapter())
+                .create();
+        
+        String json = gson.toJson(listaVendas);
+
+        try (FileWriter writer = new FileWriter(arqVenda)) {
+            writer.write(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Vendas salvas com sucesso.");
+    }
+    
+
+    
+    
     
         @Override
     public String toString() {

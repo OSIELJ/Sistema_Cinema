@@ -149,7 +149,7 @@ public class GerenciarCadastros {
         public void imprimirListaClientes() {
         System.out.println("Lista de Clientes:");
         for (Cliente cliente : listaClientes) {
-            System.out.println("Nome: " + cliente.getNome() + ", telefone: " + cliente.getTelefone() + ",Endereço: " + cliente.getEndereco());
+            System.out.println("Nome: " + cliente.getNome() + ", telefone: " + cliente.getTelefone() + ",Endereço: " + cliente.getEndereco());      
         }
     }
 
