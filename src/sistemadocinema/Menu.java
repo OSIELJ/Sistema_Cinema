@@ -445,4 +445,11 @@ public class Menu {
                 null;
         };
     }
+
+    @Override
+    public String toString() {
+        return "Menu{" + "scanner=" + scanner + ", usuarioLogado=" + usuarioLogado + ", meuEstoque=" + meuEstoque + ", balcaoAutomatico=" + balcaoAutomatico + ", listaClientes=" + listaClientes + ", salas=" + salas + ", listaFuncionarios=" + listaFuncionarios + ", listaVendas=" + listaVendas + '}';
+    }
+    
+    
 }

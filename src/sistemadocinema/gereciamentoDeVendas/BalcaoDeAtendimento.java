@@ -64,5 +64,12 @@ public class BalcaoDeAtendimento {
     public void cancelarVenda(Venda venda) {
         gerenciadorVendas.cancelarVenda(venda);
     }
+
+    @Override
+    public String toString() {
+        return "BalcaoDeAtendimento{" + "id=" + id + ", funcionarioResponsavel=" + funcionarioResponsavel + ", filmesEmCartaz=" + filmesEmCartaz + ", gerenciadorVendas=" + gerenciadorVendas + '}';
+    }
+    
+    
 }
 

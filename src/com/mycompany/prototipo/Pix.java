@@ -30,5 +30,12 @@ public class Pix {
         // Registra a transação no Pix
         System.out.println("Transacao registrada com sucesso via Pix.");
     }
+
+    @Override
+    public String toString() {
+        return "Pix{" + '}';
+    }
+    
+    
 }
 

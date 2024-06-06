@@ -34,6 +34,13 @@ import java.util.List;
         return super.getCpf();
     }
 
+    @Override
+    public String toString() {
+        return "Funcionario{" + '}';
+    }
+        
+        
+
 }
     
     

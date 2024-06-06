@@ -49,4 +49,12 @@ public class GerenciarVendas {
         }
         return rendimento;
     }
+
+    @Override
+    public String toString() {
+        return "GerenciarVendas{" + "vendasConfirmadas=" + vendasConfirmadas + '}';
+    }
+    
+    
+    
 }

@@ -35,4 +35,11 @@ public class PixAdapter implements PaymentGateway {
     public void logTransaction(String userId, double amount) {
         pix.logTransaction(userId, amount);
     }
+
+    @Override
+    public String toString() {
+        return "PixAdapter{" + "pix=" + pix + '}';
+    }
+    
+    
 }

@@ -153,4 +153,11 @@ public class GerenciarCadastros {
         }
     }
 
+    @Override
+    public String toString() {
+        return "GerenciarCadastros{" + "listaClientes=" + listaClientes + ", listaFuncionarios=" + listaFuncionarios + '}';
+    }
+        
+        
+
 }

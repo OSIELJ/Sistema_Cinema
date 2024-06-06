@@ -35,4 +35,10 @@ public class CreditoAdapter implements PaymentGateway {
     public void logTransaction(String userId, double amount) {
         credito.logTransaction(userId, amount);
     }
+
+    @Override
+    public String toString() {
+        return "CreditoAdapter{" + "credito=" + credito + '}';
+    }
+    
 }

@@ -113,6 +113,11 @@ public class Cliente {
         this.telefone = telefone;
     }
 
+    @Override
+    public String toString() {
+        return "Cliente{" + "id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefone=" + telefone + '}';
+    }
+
 
 
 }

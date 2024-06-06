@@ -37,4 +37,11 @@ public class Relatorio {
             System.out.println(venda.toString());
         }
     }
+
+    @Override
+    public String toString() {
+        return "Relatorio{" + "tipo=" + tipo + ", rendimento=" + rendimento + ", vendas=" + vendas + '}';
+    }
+    
+    
 }

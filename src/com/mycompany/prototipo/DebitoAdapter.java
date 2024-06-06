@@ -35,4 +35,11 @@ public class DebitoAdapter implements PaymentGateway {
     public void logTransaction(String userId, double amount) {
         debito.logTransaction(userId, amount);
     }
+
+    @Override
+    public String toString() {
+        return "DebitoAdapter{" + "debito=" + debito + '}';
+    }
+    
+    
 }

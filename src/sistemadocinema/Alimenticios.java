@@ -27,6 +27,11 @@ public class Alimenticios extends Produto {
     public static void setContadorProdutos(int contadorProdutos) {
         Alimenticios.contadorProdutos = contadorProdutos;
     }
+
+    @Override
+    public String toString() {
+        return "Alimenticios{" + '}';
+    }
         
     
     }

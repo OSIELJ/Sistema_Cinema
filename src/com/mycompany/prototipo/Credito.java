@@ -41,5 +41,12 @@ public class Credito {
         // Registra a transação do cartão de crédito
         System.out.println("Transacao registrada no cartao de credito.");
     }
+
+    @Override
+    public String toString() {
+        return "Credito{" + '}';
+    }
+    
+    
 }
 

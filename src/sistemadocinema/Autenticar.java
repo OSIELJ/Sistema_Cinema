@@ -32,6 +32,13 @@ public class Autenticar {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "Autenticar{" + '}';
+    }
+    
+    
 }
     
 

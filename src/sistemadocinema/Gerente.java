@@ -46,5 +46,12 @@ public class Gerente extends Funcionario {
     public List<Gerente> getListaGerentes() {
         return listaGerentes;
     }
+
+    @Override
+    public String toString() {
+        return "Gerente{" + "relatorioDiario=" + relatorioDiario + ", relatorioMensalAnual=" + relatorioMensalAnual + ", listaGerentes=" + listaGerentes + '}';
+    }
+    
+    
     
 }

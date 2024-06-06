@@ -16,5 +16,12 @@ public class BalcaoAutomatico extends BalcaoDeAtendimento {
         super(id, funcionarioResponsavel, gerenciadorVendas);
     }
 
-    // Adicione métodos específicos para balcões automáticos, se necessário
+
+
+    @Override
+    public String toString() {
+        return "BalcaoAutomatico{" + '}';
+    }
+    
+    
 }

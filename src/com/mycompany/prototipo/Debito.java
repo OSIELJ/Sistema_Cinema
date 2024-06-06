@@ -29,4 +29,11 @@ public class Debito {
         // Registra a transação do cartão de débito
         System.out.println("Transacao registrada no cartao de debito.");
     }
+
+    @Override
+    public String toString() {
+        return "Debito{" + '}';
+    }
+    
+    
 }

@@ -17,5 +17,10 @@ public class BalcaoManual extends BalcaoDeAtendimento {
         super(id, funcionarioResponsavel, gerenciadorVendas);
     }
 
-    // Adicione métodos específicos para balcões manuais, se necessário
+    @Override
+    public String toString() {
+        return "BalcaoManual{" + '}';
+    }
+
+    
 }
