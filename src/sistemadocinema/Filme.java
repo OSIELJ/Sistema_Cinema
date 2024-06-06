@@ -11,15 +11,25 @@ import java.time.LocalDate;
  * @author Osiel Junior
  */
 public class Filme extends Produto {
-        private String titulo;
+    private String titulo;
     private String estilo;
     private String periodoExibicao;
+    private static int contadorProdutos = 0;
 
     public Filme(String titulo, String estilo, LocalDate dataValidade, double valor, int quantidadeEmEstoque, String periodoExibicao) {
         super(titulo, dataValidade, valor, quantidadeEmEstoque);
         this.titulo = titulo;
         this.estilo = estilo;
         this.periodoExibicao = periodoExibicao;
+        contadorProdutos++;
+    }
+
+    public static int getContadorProdutos() {
+        return contadorProdutos;
+    }
+
+    public static void setContadorProdutos(int contadorProdutos) {
+        Filme.contadorProdutos = contadorProdutos;
     }
 
     public String getTitulo() {

@@ -1,1 +1,16 @@
-"Cliente: nome\nData e Hora: 21/05/2024 15:22:22\nBalcão: 5\nItens vendidos:\n- Os Incríveis: R$10.0\nTotal: R$10.0"
+[
+  "Cliente: João\nCPF: 98765432100\nData e Hora: 06/06/2024 11:07:45\nBalcão: 5\nItens vendidos:\n- Os Incríveis: R$10.0\n- O Senhor dos Anéis: R$12.0\n- Pipoca: R$5.0\nTotal: R$27.0",
+  "Cliente: Maria\nCPF: 12345678901\nData e Hora: 06/06/2024 11:07:45\nBalcão: 5\nItens vendidos:\n- Matrix: R$11.0\n- Refrigerante: R$3.0\nTotal: R$14.0",
+  "Cliente: João\nCPF: 98765432100\nData e Hora: 06/06/2024 11:26:17\nBalcão: 5\nItens vendidos:\n- Os Incríveis: R$10.0\n- O Senhor dos Anéis: R$12.0\n- Pipoca: R$5.0\nTotal: R$27.0",
+  "Cliente: Maria\nCPF: 12345678901\nData e Hora: 06/06/2024 11:26:17\nBalcão: 5\nItens vendidos:\n- Matrix: R$11.0\n- Refrigerante: R$3.0\nTotal: R$14.0",
+  "Cliente: João\nCPF: 98765432100\nData e Hora: 06/06/2024 11:27:23\nBalcão: 5\nItens vendidos:\n- Os Incríveis: R$10.0\n- O Senhor dos Anéis: R$12.0\n- Pipoca: R$5.0\nTotal: R$27.0",
+  "Cliente: Maria\nCPF: 12345678901\nData e Hora: 06/06/2024 11:27:23\nBalcão: 5\nItens vendidos:\n- Matrix: R$11.0\n- Refrigerante: R$3.0\nTotal: R$14.0",
+  "Cliente: João\nCPF: 98765432100\nData e Hora: 06/06/2024 11:30:37\nBalcão: 5\nItens vendidos:\n- Os Incríveis: R$10.0\n- O Senhor dos Anéis: R$12.0\n- Pipoca: R$5.0\nTotal: R$27.0",
+  "Cliente: Maria\nCPF: 12345678901\nData e Hora: 06/06/2024 11:30:37\nBalcão: 5\nItens vendidos:\n- Matrix: R$11.0\n- Refrigerante: R$3.0\nTotal: R$14.0",
+  "Cliente: João\nCPF: 98765432100\nData e Hora: 06/06/2024 11:33:12\nBalcão: 5\nItens vendidos:\n- Os Incríveis: R$10.0\n- O Senhor dos Anéis: R$12.0\n- Pipoca: R$5.0\nTotal: R$27.0",
+  "Cliente: Maria\nCPF: 12345678901\nData e Hora: 06/06/2024 11:33:12\nBalcão: 5\nItens vendidos:\n- Matrix: R$11.0\n- Refrigerante: R$3.0\nTotal: R$14.0",
+  "Cliente: João\nCPF: 98765432100\nData e Hora: 06/06/2024 11:34:36\nBalcão: 5\nItens vendidos:\n- Os Incríveis: R$10.0\n- O Senhor dos Anéis: R$12.0\n- Pipoca: R$5.0\nTotal: R$27.0",
+  "Cliente: Maria\nCPF: 12345678901\nData e Hora: 06/06/2024 11:34:36\nBalcão: 5\nItens vendidos:\n- Matrix: R$11.0\n- Refrigerante: R$3.0\nTotal: R$14.0",
+  "Cliente: João\nCPF: 98765432100\nData e Hora: 06/06/2024 11:45:43\nBalcão: 5\nItens vendidos:\n- Os Incríveis: R$10.0\n- O Senhor dos Anéis: R$12.0\n- Pipoca: R$5.0\nTotal: R$27.0",
+  "Cliente: Maria\nCPF: 12345678901\nData e Hora: 06/06/2024 11:45:43\nBalcão: 5\nItens vendidos:\n- Matrix: R$11.0\n- Refrigerante: R$3.0\nTotal: R$14.0"
+]

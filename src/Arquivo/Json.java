@@ -12,7 +12,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.lang.reflect.Type;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import sistemadocinema.Cliente;
@@ -28,7 +31,7 @@ public class Json {
     public static final String arqCliente = "./src/Arquivo/cliente.json";
     public static final String arqProdutos = "./src/main/java/Arquivo/produtos.json";
     public static final String arqFilmes = "./src/main/java/Arquivo/filmes.json";
-    public static final String arqExtratoVenda = "C:\\Users\\Osiel\\Documents\\NetBeansProjects\\Sistema_Cinema\\Documents\\NetBeansProjects\\SistemaDoCinema\\src\\Arquivo\\extratoVenda.json";
+    public static final String arqExtratoVenda = "C:/Users/Osiel/Documents/NetBeansProjects/Sistema_Cinema/src/Arquivo/extratoVenda.json";
     
     
     public Json() {
@@ -128,17 +131,37 @@ public class Json {
     
     
     
-        public static void salvarExtratoVenda(String extrato) {
-        
+    public static void salvarExtratoVenda(String extrato) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String json = gson.toJson(extrato);
+        List<String> extratos = new ArrayList<>();
 
-        try (FileWriter writer = new FileWriter(arqExtratoVenda)) {
-            writer.write(json);
+        try {
+            // Verifica se o arquivo existe e não está vazio
+            if (Files.exists(Paths.get(arqExtratoVenda)) && Files.size(Paths.get(arqExtratoVenda)) > 0) {
+                try (FileReader reader = new FileReader(arqExtratoVenda)) {
+                    // Tenta ler o conteúdo atual como um array de strings
+                    String[] existentes = gson.fromJson(reader, String[].class);
+                    if (existentes != null) {
+                        extratos.addAll(Arrays.asList(existentes));
+                    }
+                } catch (com.google.gson.JsonSyntaxException e) {
+                    // Se houver um erro de sintaxe (não um array), ignore e continue
+                    e.printStackTrace();
+                }
+            }
+
+            // Adiciona o novo extrato à lista
+            extratos.add(extrato);
+
+            // Grava a lista atualizada de volta no arquivo
+            try (FileWriter writer = new FileWriter(arqExtratoVenda)) {
+                gson.toJson(extratos, writer);
+            }
+
+            System.out.println("Extrato da venda salvo.");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Extrato da venda salvo. ");
     }
 
         

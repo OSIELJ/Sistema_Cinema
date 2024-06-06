@@ -4,6 +4,7 @@
  */
 package sistemadocinema.gereciamentoDeVendas;
 
+import Arquivo.Json;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class GerenciarVendas {
         venda.calcularTotal(); // Calcula o total da venda
         this.vendasConfirmadas.add(venda);
         System.out.println("Venda realizada com sucesso!");
+        Json.salvarExtratoVenda(venda.getExtrato());
     }
 
     public void cancelarVenda(Venda venda) {
@@ -36,6 +38,7 @@ public class GerenciarVendas {
         System.out.println("Relatório de Vendas:");
         for (Venda venda : vendasConfirmadas) {
             System.out.println(venda.getExtrato());
+            
         }
     }
 

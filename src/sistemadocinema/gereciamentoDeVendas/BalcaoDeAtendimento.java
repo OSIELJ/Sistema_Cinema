@@ -54,6 +54,7 @@ public class BalcaoDeAtendimento {
 
     public void imprimirRelatorioVendas() {
         gerenciadorVendas.imprimirRelatorioVendas();
+        
     }
 
     public void confirmarVenda(Venda venda) {

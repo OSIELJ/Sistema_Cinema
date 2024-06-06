@@ -4,6 +4,7 @@
  */
 package sistemadocinema;
 
+import Arquivo.Json;
 import com.mycompany.prototipo.Credito;
 import com.mycompany.prototipo.CreditoAdapter;
 import com.mycompany.prototipo.Debito;
@@ -67,6 +68,8 @@ public class Sistema {
         myEstoque.adicionarProduto(refrigerante);
         myEstoque.adicionarProduto(chocolate);
         myEstoque.adicionarProduto(filme);
+        myEstoque.adicionarProduto(filme2);
+        myEstoque.adicionarProduto(filme3);
 
         Scanner scanner = new Scanner(System.in);
         String nomeUsuario, senha;
@@ -161,66 +164,181 @@ public class Sistema {
 
 
                 /*Questão 8:
-                    Cadastrar, alterar ou excluir clientes;
+                    Verificar e imprimir dados das vendas e dos clientes;
                  */
                 System.out.println("-------------------------------------------------------------------");
 
                 Cliente cliente1 = new Cliente("João", "Silva", "98765432100", "Rua A, 123", "123456789");
                 Cliente cliente2 = new Cliente("Maria", "Souza", "12345678901", "Rua B, 456", "987654321");
-                
-                    System.out.println("Escolha o método de pagamento: credito, debito, pix");
-                    String metodoPagamento ="pix";
-                    PaymentGateway gateway = getPaymentGateway(metodoPagamento);
 
-                    if (gateway == null) {
-                        System.out.println("Método de pagamento inválido.");
-                        return;
-                    }
+                System.out.println("Escolha o método de pagamento: credito, debito, pix");
+                String metodoPagamento = "pix";
+                PaymentGateway gateway = getPaymentGateway(metodoPagamento);
 
+                if (gateway == null) {
+                    System.out.println("Método de pagamento inválido.");
+                    return;
+                }
 
-                Venda venda1 = new Venda(cliente1, balcoes[4],gateway);
-
+                Venda venda1 = new Venda(cliente1, balcoes[4], gateway);
                 venda1.adicionarItem(filme);
                 venda1.adicionarItem(filme2);
                 venda1.adicionarItem(pipoca);
-                venda1.calcularTotal();
-                
                 balcoes[4].confirmarVenda(venda1);
                 myEstoque.removerProduto(filme);
                 myEstoque.removerProduto(filme2);
                 myEstoque.removerProduto(pipoca);
                 listVendas.add(venda1);
                 System.out.println("Venda realizada com sucesso.");
-     
-                Venda venda2 = new Venda(cliente2, balcoes[4],gateway);
 
+                Venda venda2 = new Venda(cliente2, balcoes[4], gateway);
                 venda2.adicionarItem(filme3);
                 venda2.adicionarItem(refrigerante);
-                
                 balcoes[4].confirmarVenda(venda2);
                 myEstoque.removerProduto(filme3);
                 myEstoque.removerProduto(refrigerante);
                 listVendas.add(venda2);
-                System.out.println("Venda realizada com sucesso.");               
-                
-                gerenciarVendas.imprimirRelatorioVendas();
-          
+                System.out.println("Venda realizada com sucesso.");
 
+                gerenciarVendas.imprimirRelatorioVendas();
                 System.out.println("-------------------------------------------------------------------");
-                
-                
 
                 /*Questão 9:
                     Os produtos, filmes e os clientes devem ser salvos de forma dinâmica no sistema.
                  */
                 System.out.println("-------------------------------------------------------------------");
 
+                    
+                
+                
+                
+                
+                System.out.println("-------------------------------------------------------------------");
 
+                /*Questão 10:
+                    Cada venda efetuada vai gerar um extrato que deverá ser impresso e salvo junto com a informação do cliente que fez a compra.
                 
+                    Nas linhas 49 ha 65 da classe venda onde gera o extrato: Código abaixo
+                
+                    public String getExtrato() {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                    StringBuilder extrato = new StringBuilder();
+                    extrato.append("Cliente: ").append(cliente.getNome()).append("\n");
+                    extrato.append("CPF: ").append(cliente.getCpf()).append("\n");
+                    extrato.append("Data e Hora: ").append(dataHora.format(formatter)).append("\n");
+                    extrato.append("Balcão: ").append(balcao.getId()).append("\n");
+                    extrato.append("Itens vendidos:\n");
+                    for (Produto produto : itensVendidos) {
+                         extrato.append("- ").append(produto.getNome()).append(": R$").append(produto.getValor()).append("\n");
+                    }
+                        extrato.append("Total: R$").append(calcularTotal());
+        
+                        return extrato.toString();
+        
+                   }
+                
+                    na linha 22 ha 27 tem o código onde salvo esse extrato no meu arqivo Json.
+                
+                    public void confirmarVenda(Venda venda) {
+                    venda.calcularTotal(); // Calcula o total da venda
+                    this.vendasConfirmadas.add(venda);
+                    System.out.println("Venda realizada com sucesso!");
+                    Json.salvarExtratoVenda(venda.getExtrato());
+                }
+                
+                Exemplo de como esta salvando no meu arquivo extratoVenda.json
+                
+                "Cliente: João\nCPF: 98765432100\nData e Hora: 06/06/2024 11:07:45\nBalcão: 5\n
+                Itens vendidos:\n- Os Incríveis: R$10.0\n- O Senhor dos Anéis: R$12.0\n- Pipoca: R$5.0\nTotal: R$27.0"
+          
+                 */
+                
+                
+                
+                
+                  /*Questão 11:
+                    
+                    Criar duas variáveis de classe (static) que irão armazenar quantas instâncias foram criadas dos tipos Cliente dentro da classe Sistema usando duas soluções diferentes:
+                    Uma delas utilizando o enfoque de encapsulamento de acordo com a engenharia de software (atributo private static e métodos get e set);
+                    Na segunda estratégia, implementar usando o controle de acesso do tipo protect;
+                    Explique quais são as vantagens e desvantagens de cada uma das duas estratégias.
+                
+                
+                  Nas linhas 25 e 26 da classe Cliente tem o código:
+                    
+                        protected static int contadorClientes = 0;
+                        private static int totalClientes = 0;
+                
+                
+                            public Cliente(String nome, String sobrenome, String cpf, String endereco, String telefone) {
+                                this.id = ++ultimoId;
+                                this.nome = nome;
+                                this.sobrenome = sobrenome;
+                                this.cpf = cpf;
+                                this.endereco = endereco;
+                                this.telefone = telefone;
+                            //  this.preferencias = preferencias;
+                                totalClientes++;
+                                contadorClientes++;
+                           }
+                
+                    public static int getTotalClientes() {
+                        return totalClientes;
+                    }
 
-                System.out.println("-------------------------------------------------------------------");                
+                    public static void setTotalClientes(int totalClientes) {
+                        Cliente.totalClientes = totalClientes;
+                    }
                 
+                    Encapsulamento:
+
+                    Vantagens:
+                    Maior controle sobre o acesso às variáveis de classe. Os métodos get e set permitem uma manipulação segura dos valores.
+                    Permite a validação de dados antes de serem atribuídos às variáveis.
+                    Facilita a manutenção do código, pois quaisquer alterações internas na implementação das variáveis podem ser feitas sem afetar
+                    o restante do código que as acessa.
                 
+                    Desvantagens:
+                    Pode adicionar um pouco de sobrecarga devido à necessidade de escrever métodos get e set para cada variável,
+                    o que pode ser redundante em alguns casos.
+                    A necessidade de criar métodos get e set para cada variável pode aumentar a complexidade do código em classes com muitos atributos.
+                
+                    Controle de acesso do tipo protected:
+
+                    Vantagens:
+                    Mais flexibilidade no acesso às variáveis. Variáveis protegidas podem ser acessadas por subclasses,
+                    o que pode ser útil em hierarquias de classes.
+                    Evita a necessidade de escrever métodos get e set para cada variável, o que pode simplificar o código.
+                
+                    Desvantagens:
+                    Menos controle sobre o acesso às variáveis, pois elas podem ser acessadas diretamente por subclasses.
+                    Pode resultar em acoplamento mais forte entre classes, pois as subclasses têm acesso direto às variáveis protegidas.
+
+          
+                 */
+                  
+                  
+                  /*Questão 12:
+                        Criar um método de classe para classe Sistema que deverá retornar quantas instâncias foram criadas dos tipos Cliente e Produtos;
+                   */
+                    System.out.println("-------------------------------------------------------------------");
+
+                    int totalClientes = Cliente.getTotalClientes();
+                    System.out.println("Total de clientes: " + totalClientes);
+                        
+                    int totalAlimento = Alimenticios.getContadorProdutos();
+                    System.out.println("Total de podruto do tipo alimentos: " + totalAlimento);
+ 
+                    int totalFilme = Filme.getContadorProdutos();
+                    System.out.println("Total de podruto do tipo Filme: " + totalFilme);
+                    
+                    
+                    
+                    System.out.println("-------------------------------------------------------------------");
+                  
+                  
+                  
+                  
                 break;
 
             } else if (escolha.equals("2")) {
@@ -249,8 +367,8 @@ public class Sistema {
             }
         }
     }
-    
-        private static PaymentGateway getPaymentGateway(String tipoPagamento) {
+
+    private static PaymentGateway getPaymentGateway(String tipoPagamento) {
         return switch (tipoPagamento.toLowerCase()) {
             case "credito" ->
                 new CreditoAdapter(new Credito());

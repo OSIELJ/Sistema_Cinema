@@ -21,12 +21,15 @@ public class Estoque {
     public Estoque() {
         this.produtos = new ArrayList<>();
     }
+    
+    
+
 
     public void adicionarProduto(Produto produto) {
         produtos.add(produto);
         System.out.println("Produto adicionado com sucesso!");
     }
-
+    
     public void removerProduto(Produto produto) {
         produtos.remove(produto);
         System.out.println("Produto removido com sucesso!");

@@ -50,6 +50,7 @@ public class Venda {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         StringBuilder extrato = new StringBuilder();
         extrato.append("Cliente: ").append(cliente.getNome()).append("\n");
+        extrato.append("CPF: ").append(cliente.getCpf()).append("\n");
         extrato.append("Data e Hora: ").append(dataHora.format(formatter)).append("\n");
         extrato.append("Balcão: ").append(balcao.getId()).append("\n");
         extrato.append("Itens vendidos:\n");
@@ -57,8 +58,10 @@ public class Venda {
             extrato.append("- ").append(produto.getNome()).append(": R$").append(produto.getValor()).append("\n");
         }
         extrato.append("Total: R$").append(calcularTotal());
-        Json.salvarExtratoVenda(extrato.toString());
+        
         return extrato.toString();
+        
+        
     }
     
     public boolean processarPagamento(String userId, String password) {

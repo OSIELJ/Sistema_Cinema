@@ -11,11 +11,22 @@ import java.time.LocalDate;
  * @author Osiel
  */
 public class Alimenticios extends Produto {
+    private static int contadorProdutos = 0;
 
     public Alimenticios(String nome, LocalDate dataValidade, double valor, int quantidadeEmEstoque) {
+        
         super(nome, dataValidade, valor, quantidadeEmEstoque);
+        contadorProdutos++;
       
     }
-    
+
+    public static int getContadorProdutos() {
+        return contadorProdutos;
+    }
+
+    public static void setContadorProdutos(int contadorProdutos) {
+        Alimenticios.contadorProdutos = contadorProdutos;
+    }
+        
     
     }
