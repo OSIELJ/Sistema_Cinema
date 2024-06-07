@@ -2,7 +2,7 @@
   {
     "cliente": "João",
     "cpf": "98765432100",
-    "dataHora": "06/06/2024 19:00:27",
+    "dataHora": "06/06/2024 23:44:29",
     "balcao": 5,
     "itensVendidos": [
       {
@@ -23,7 +23,7 @@
   {
     "cliente": "João",
     "cpf": "98765432100",
-    "dataHora": "06/06/2024 19:00:27",
+    "dataHora": "06/06/2024 23:44:29",
     "balcao": 5,
     "itensVendidos": [
       {
@@ -44,7 +44,7 @@
   {
     "cliente": "Maria",
     "cpf": "12345678901",
-    "dataHora": "06/06/2024 19:00:27",
+    "dataHora": "06/06/2024 23:44:29",
     "balcao": 5,
     "itensVendidos": [
       {
@@ -61,7 +61,7 @@
   {
     "cliente": "Maria",
     "cpf": "12345678901",
-    "dataHora": "06/06/2024 19:00:27",
+    "dataHora": "06/06/2024 23:44:29",
     "balcao": 5,
     "itensVendidos": [
       {

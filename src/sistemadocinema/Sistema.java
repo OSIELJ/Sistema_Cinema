@@ -36,6 +36,12 @@ public class Sistema {
         List<Venda> listVendas = new ArrayList<>();
         List<Cliente> listaClientes = new ArrayList<>();
         List<Funcionario> listaFuncionarios = new ArrayList<>();
+        List<Filme> listaFilmes = new ArrayList<>();
+        List<Alimenticios> listaAlimenticios = new ArrayList<>();
+        
+        
+        
+        
 
         GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, listaFuncionarios);
 
@@ -65,9 +71,25 @@ public class Sistema {
         Alimenticios pipoca = new Alimenticios("Pipoca", LocalDate.of(2024, 12, 31), 5.0, 100);
         Alimenticios refrigerante = new Alimenticios("Refrigerante", LocalDate.of(2024, 12, 31), 3.0, 200);
         Alimenticios chocolate = new Alimenticios("Chocolate", LocalDate.of(2023, 12, 31), 3.0, 200);
+        Alimenticios biscoitos = new Alimenticios("Biscoitos", LocalDate.of(2023, 10, 15), 2.5, 150);
+        
+        listaAlimenticios.add(pipoca);
+        listaAlimenticios.add(refrigerante);
+        listaAlimenticios.add(chocolate);
+        
+        
+        
+        
+        
         Filme filme = new Filme("Os Incríveis", "Animação", LocalDate.of(2024, 5, 1), 10.0, 100, "10 dias");
         Filme filme2 = new Filme("O Senhor dos Anéis", "Fantasia", LocalDate.of(2024, 6, 15), 12.0, 150, "15 dias");
         Filme filme3 = new Filme("Matrix", "Ficção Científica", LocalDate.of(2024, 7, 30), 11.0, 120, "12 dias");
+        
+        listaFilmes.add(filme);
+        listaFilmes.add(filme2);
+        listaFilmes.add(filme3);
+        
+        
 
         Sala sala1 = new Sala(filme, 80);
         Sala sala2 = new Sala(filme2, 100);
@@ -85,6 +107,7 @@ public class Sistema {
         myEstoque.adicionarProduto(filme);
         myEstoque.adicionarProduto(filme2);
         myEstoque.adicionarProduto(filme3);
+        myEstoque.adicionarProduto(biscoitos);
 
         Scanner scanner = new Scanner(System.in);
         String nomeUsuario, senha;
@@ -440,6 +463,9 @@ public class Sistema {
                     Json.salvarClientes(listaClientes);
                     Json.salvarFuncionario(listaFuncionarios);
                     Json.salvarVendas(listVendas);
+                    Json.salvarFilme(listaFilmes);
+                    Json.salvarAlimenticios(listaAlimenticios);
+                    Json.salvarEstoque(myEstoque);
                     
                     
                     

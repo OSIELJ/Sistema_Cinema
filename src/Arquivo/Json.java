@@ -19,8 +19,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import sistemadocinema.Alimenticios;
 
 import sistemadocinema.Cliente;
+import sistemadocinema.Estoque;
 import sistemadocinema.Produto;
 import sistemadocinema.Filme;
 import sistemadocinema.Funcionario;
@@ -35,10 +37,12 @@ public class Json {
 
     public static final String arqCliente = "./src/Arquivo/cliente.json";
     public static final String arqProdutos = "./src/main/java/Arquivo/produtos.json";
-    public static final String arqFilmes = "./src/main/java/Arquivo/filmes.json";
+    public static final String arqFilmes = "./src/Arquivo/filmes.json";
     public static final String arqExtratoVenda = "C:/Users/Osiel/Documents/NetBeansProjects/Sistema_Cinema/src/Arquivo/extratoVenda.json";
     public static final String arqFuncionario = "./src/Arquivo/funcionario.json";
     public static final String arqVenda = "./src/Arquivo/venda.json";
+    public static final String arqAlimenticios = "./src/Arquivo/alimenticios.json";
+    public static final String arqEstoque = "./src/Arquivo/estoque.json";
 
     public Json() {
 
@@ -55,7 +59,7 @@ public class Json {
 
             e.printStackTrace();
         }
-        System.out.println("Clientes salvos. ");
+        System.out.println("Clientes salvos com Sucesso. ");
     }
 
 
@@ -101,14 +105,21 @@ public class Json {
     }
 
     public static void salvarFilme(List<Filme> listaFilmes) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        // Register the custom FilmeAdapter
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Filme.class, new FilmeAdapter())
+                .setPrettyPrinting()
+                .create();
+        
         String json = gson.toJson(listaFilmes);
 
         try (FileWriter writer = new FileWriter(arqFilmes)) {
             writer.write(json);
         } catch (IOException e) {
+            e.printStackTrace(); // Print the stack trace for better error visibility
         }
-        System.out.println("Filmes salvos. ");
+
+        System.out.println("Filmes salvos.");
     }
 
     public static List<Filme> lerFilmes() {
@@ -189,6 +200,50 @@ public class Json {
         System.out.println("Vendas salvas com sucesso.");
     }
     
+    
+        public static void salvarAlimenticios(List<Alimenticios> listaAlimenticios) {
+        
+            
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Alimenticios.class, new AlimenticiosAdapter())
+                .setPrettyPrinting()
+                .create();
+        
+        String json = gson.toJson(listaAlimenticios);
+
+        try (FileWriter writer = new FileWriter(arqAlimenticios)) {
+            writer.write(json);
+        } catch (IOException e) {
+            e.printStackTrace(); // Print the stack trace for better error visibility
+        }
+
+        System.out.println("Alimenticios salvos.");
+    }
+        
+        
+        
+        
+    public static void salvarEstoque(Estoque estoque) {
+        
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Produto.class, new ProdutoAdapter())
+                .registerTypeAdapter(Filme.class, new FilmeAdapter())
+                .registerTypeAdapter(Alimenticios.class, new AlimenticiosAdapter())
+                .setPrettyPrinting()
+                .create();
+
+        String json = gson.toJson(estoque);
+
+        try (FileWriter writer = new FileWriter(arqEstoque)) {
+            writer.write(json);
+        } catch (IOException e) {
+            e.printStackTrace(); 
+        }
+
+        System.out.println("Estoque salvo com sucesso.");
+    }
+
+
 
     
     

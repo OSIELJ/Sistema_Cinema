@@ -1,0 +1,20 @@
+[
+  {
+    "nome": "Pipoca",
+    "dataValidade": "2024-12-31",
+    "valor": 5.0,
+    "quantidadeEmEstoque": 100
+  },
+  {
+    "nome": "Refrigerante",
+    "dataValidade": "2024-12-31",
+    "valor": 3.0,
+    "quantidadeEmEstoque": 200
+  },
+  {
+    "nome": "Chocolate",
+    "dataValidade": "2023-12-31",
+    "valor": 3.0,
+    "quantidadeEmEstoque": 200
+  }
+]
