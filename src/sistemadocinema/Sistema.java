@@ -17,8 +17,11 @@ import sistemadocinema.gereciamentoDeVendas.BalcaoDeAtendimento;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Scanner;
 import sistemadocinema.gereciamentoDeVendas.BalcaoAutomatico;
+import sistemadocinema.gereciamentoDeVendas.ComparatorValorVenda;
 import sistemadocinema.gereciamentoDeVendas.GerenciarVendas;
 
 /**
@@ -439,7 +442,13 @@ public class Sistema {
                    */
                     System.out.println("-------------------------------------------------------------------");
 
-                    
+                     FilmeComparator comparadorFilmes = new FilmeComparator();
+                     
+                     Collections.sort(listaFilmes, comparadorFilmes);
+                     
+                     ComparatorValorVenda comparatorValorVenda = new ComparatorValorVenda();
+                     
+                     Collections.sort(listVendas, comparatorValorVenda);
                     
                     
                     
@@ -477,14 +486,84 @@ public class Sistema {
                      /*Questão 15:
                         Gerar um JavaDoc de todo o seu projeto.
                    */
+                     
+                     
+                    
+                    
+                     /*Questão 15:
+                        Instaciar um iterator para a arraylist de pessoas/funcionario/cliente (qual estiver usando)
+                        Fazer testes no main em pecorrer o arraylist com chamadas usando o código: 
+                        while(iterator.hasnext())
+                        { 
+                            imprimir(iterator.next());
+                        }
+
+                        Explicar como isso está acontecendo.
+                        Qual relação do código acima com o foreach em java?
+
+                        Testar o foreach.
+                   */
                     System.out.println("-------------------------------------------------------------------");
+                    
+
+                    Iterator<Cliente> iterator1 = listaClientes.iterator();
+                    
+                    System.out.println("Detalhes dos clientes:");
+                    while (iterator1.hasNext()) {
+                        Cliente cliente = iterator1.next();
+                        System.out.println(cliente); // Utiliza o método toString() para imprimir os detalhes do cliente
+                    }
+                    
+                     /*Relação com o foreach em Java:
+                     O foreach em Java é uma construção de loop conveniente e simplificada para percorrer coleções de elementos, como listas, arrays, conjuntos, entre outros.
+                     Internamente, ele utiliza um Iterator para percorrer a coleção, facilitando a iteração.
+                     No código anterior, a utilização do Iterator segue uma abordagem mais tradicional para percorrer e acessar os elementos de uma lista.
+                     O Iterator permite a iteração segura e a manipulação de elementos durante a iteração.
+                      A mesma operação de percorrer a lista de clientes utilizando o foreach:
+                     */
+                     
+                     
+                    System.out.println();
+                    System.out.println("Detalhes dos clientes utilizando foreach:");
+                    for (Cliente cliente : listaClientes) {
+                        System.out.println(cliente);
+                    }
 
                     
+                    System.out.println("-------------------------------------------------------------------");                    
                     
                     
                     
+                      /*Questão 16:
                     
+                    Apresentar no main testes do comparator implementado.
+
+                    Utilizar e apresentar no main a aplicação do método sort da classe collections passando o comparator criado
+                    para ordenar a lista de pessoas/usuario/cliente (qual estiver usando) com dois paramêtros diferentes.
+                    Ou seja, rodar duas vezes.
+
+                   */
                     System.out.println("-------------------------------------------------------------------");
+                    
+
+
+                    
+                    System.out.println("-------------------------------------------------------------------");     
+                    
+                    
+                    
+                    
+                    /*Questão 17:
+                        
+                        Criar um método find para clientes utilizando o interator e comparator. Apresentar testes do método implementado.
+                    
+                   */
+                    System.out.println("-------------------------------------------------------------------");
+                    
+
+
+                    
+                    System.out.println("-------------------------------------------------------------------");                      
                     
                     
                     
