@@ -606,6 +606,14 @@ public class Sistema {
                    */
                     System.out.println("-------------------------------------------------------------------");
                     
+                    ControleClientes controle = new ControleClientes(listaClientes);
+                    Comparator<Cliente> comparatorPorNome = new ComparatorNomeCliente();
+                    Cliente primeiroClientePorNome = controle.find(comparatorPorNome);
+                        if (primeiroClientePorNome != null) {
+                             System.out.println("Primeiro cliente por nome encontrado: " + primeiroClientePorNome);
+                        } else {
+                            System.out.println("Nenhum cliente encontrado por nome.");
+                     }
 
 
                     

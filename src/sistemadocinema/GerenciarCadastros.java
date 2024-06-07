@@ -7,6 +7,8 @@ package sistemadocinema;
 import java.util.ArrayList;
 import java.util.List;
 import Arquivo.Json;
+import java.util.Comparator;
+import java.util.Iterator;
 
 /**
  *
@@ -16,6 +18,8 @@ public class GerenciarCadastros {
 
     private List<Cliente> listaClientes;
     private List<Funcionario> listaFuncionarios;
+    
+
 
     public GerenciarCadastros() {
     }
@@ -72,6 +76,8 @@ public class GerenciarCadastros {
         }
         System.out.println("Cliente não encontrado!");
     }
+    
+    
 
     public void editarCliente(String cpf, String novoTelefone, String novoEndereco) {
         boolean clienteEncontrado = false;
