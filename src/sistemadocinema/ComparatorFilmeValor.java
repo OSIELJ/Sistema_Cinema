@@ -10,7 +10,7 @@ import java.util.Comparator;
  *
  * @author Osiel
  */
-public class FilmeComparator implements Comparator<Filme> {
+public class ComparatorFilmeValor implements Comparator<Filme> {
 
     @Override
     public int compare(Filme filme1, Filme filme2) {

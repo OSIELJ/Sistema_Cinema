@@ -18,9 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Scanner;
 import sistemadocinema.gereciamentoDeVendas.BalcaoAutomatico;
+import sistemadocinema.gereciamentoDeVendas.ComparatorDataHoraVenda;
 import sistemadocinema.gereciamentoDeVendas.ComparatorValorVenda;
 import sistemadocinema.gereciamentoDeVendas.GerenciarVendas;
 
@@ -441,25 +443,56 @@ public class Sistema {
 
                    */
                     System.out.println("-------------------------------------------------------------------");
-
-                     FilmeComparator comparadorFilmes = new FilmeComparator();
+                    
                      
-                     Collections.sort(listaFilmes, comparadorFilmes);
+                     Collections.sort(listaFilmes, new ComparatorFilmeValor());
+                     System.out.println("\nFilmes ordenados por Valor:");
+                        for (Filme meuFilme : listaFilmes) {
+                            System.out.println(meuFilme);
+                        }                     
                      
-                     ComparatorValorVenda comparatorValorVenda = new ComparatorValorVenda();
+                        
+                     System.out.println("-------------------------------------------------------------------");    
                      
-                     Collections.sort(listVendas, comparatorValorVenda);
+                     
+                     
+                     Collections.sort(listaFilmes, new ComparatorEstiloFilme());
+                     System.out.println("\nFilmes ordenados por estilo:");
+                        for (Filme meuFilme : listaFilmes) {
+                            System.out.println(meuFilme);
+                        }
+                        
+                        
+                     
+                     System.out.println("-------------------------------------------------------------------");                    
+                     
+                     
+                     
+   
+                     Collections.sort(listVendas, new ComparatorValorVenda());
+                        System.out.println("Vendas ordenadas por valor:");
+                        for (Venda minhaVenda : listVendas) {
+                            System.out.println(minhaVenda);
+                        }                    
+                     
+                    System.out.println("-------------------------------------------------------------------");                  
                     
                     
+                    
+                     
+                     Collections.sort(listVendas, new ComparatorDataHoraVenda());
+                         System.out.println("Vendas ordenadas pela Data:");
+                        for (Venda minhaVenda : listVendas) {
+                            System.out.println(minhaVenda);
+                        }                         
+                     
                     
                     
                     System.out.println("-------------------------------------------------------------------");
                     
                     
                     
-                    
-                    
-                    
+               
                    /*Questão 14:
                         Salve e recupere todas as informações dos Clientes, Filmes, Produtos, Vendas, Colaboradores e Estoque
                     em um arquivo de texto. Utilizem classes já prontas na internet que trabalhem com o formato json.
@@ -545,9 +578,22 @@ public class Sistema {
                    */
                     System.out.println("-------------------------------------------------------------------");
                     
+                            Collections.sort(listaClientes, new ComparatorNomeCliente());
+                            System.out.println("Clientes ordenados por nome:");
+                            for (Cliente cliente : listaClientes) {
+                                 System.out.println(cliente);
+                              }
 
-
-                    
+                    System.out.println("-------------------------------------------------------------------");                     
+                            
+                            
+                            Collections.sort(listaClientes, new ComparatorCpfCliente());
+                            System.out.println("\nClientes ordenados por CPF:");
+                            for (Cliente cliente : listaClientes) {
+                                System.out.println(cliente);
+                            }                               
+                            
+                            
                     System.out.println("-------------------------------------------------------------------");     
                     
                     

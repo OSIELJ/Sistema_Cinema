@@ -1,42 +1,8 @@
 [
   {
-    "cliente": "Maria",
-    "cpf": "12345678901",
-    "dataHora": "07/06/2024 09:36:12",
-    "balcao": 5,
-    "itensVendidos": [
-      {
-        "nome": "Matrix",
-        "valor": 11.0
-      },
-      {
-        "nome": "Refrigerante",
-        "valor": 3.0
-      }
-    ],
-    "total": 14.0
-  },
-  {
-    "cliente": "Maria",
-    "cpf": "12345678901",
-    "dataHora": "07/06/2024 09:36:12",
-    "balcao": 5,
-    "itensVendidos": [
-      {
-        "nome": "Matrix",
-        "valor": 11.0
-      },
-      {
-        "nome": "Refrigerante",
-        "valor": 3.0
-      }
-    ],
-    "total": 14.0
-  },
-  {
     "cliente": "João",
     "cpf": "98765432100",
-    "dataHora": "07/06/2024 09:36:12",
+    "dataHora": "07/06/2024 11:52:30",
     "balcao": 5,
     "itensVendidos": [
       {
@@ -57,7 +23,7 @@
   {
     "cliente": "João",
     "cpf": "98765432100",
-    "dataHora": "07/06/2024 09:36:12",
+    "dataHora": "07/06/2024 11:52:30",
     "balcao": 5,
     "itensVendidos": [
       {
@@ -74,5 +40,39 @@
       }
     ],
     "total": 27.0
+  },
+  {
+    "cliente": "Maria",
+    "cpf": "12345678901",
+    "dataHora": "07/06/2024 11:52:30",
+    "balcao": 5,
+    "itensVendidos": [
+      {
+        "nome": "Matrix",
+        "valor": 11.0
+      },
+      {
+        "nome": "Refrigerante",
+        "valor": 3.0
+      }
+    ],
+    "total": 14.0
+  },
+  {
+    "cliente": "Maria",
+    "cpf": "12345678901",
+    "dataHora": "07/06/2024 11:52:30",
+    "balcao": 5,
+    "itensVendidos": [
+      {
+        "nome": "Matrix",
+        "valor": 11.0
+      },
+      {
+        "nome": "Refrigerante",
+        "valor": 3.0
+      }
+    ],
+    "total": 14.0
   }
 ]
