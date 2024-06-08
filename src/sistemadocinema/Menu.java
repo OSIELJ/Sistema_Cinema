@@ -18,8 +18,17 @@ import sistemadocinema.gereciamentoDeVendas.GerenciarVendas;
 import sistemadocinema.gereciamentoDeVendas.Venda;
 
 /**
- *
- * @author Osiel
+ * A classe Menu representa o menu principal do sistema de cinema.
+ * Ela permite a interação do usuário com diversas funcionalidades, como a realização de vendas,
+ * cadastro de clientes, verificação de estoque e geração de relatórios.
+ * 
+ * @see Usuario
+ * @see Estoque
+ * @see BalcaoDeAtendimento
+ * @see Cliente
+ * @see Sala
+ * @see Funcionario
+ * @see Venda
  */
 public class Menu {
 
@@ -32,6 +41,17 @@ public class Menu {
     private List<Funcionario> listaFuncionarios;
     private List<Venda> listaVendas;
 
+    /**
+     * Construtor da classe Menu.
+     * 
+     * @param usuarioLogado O usuário que está logado no sistema.
+     * @param meuEstoque O estoque do cinema.
+     * @param balcaoAutomatico O balcão de atendimento automático.
+     * @param listaClientes A lista de clientes cadastrados.
+     * @param salas A lista de salas de cinema.
+     * @param ListaFuncionarios A lista de funcionários cadastrados.
+     * @param listaVendas A lista de vendas realizadas.
+     */
     public Menu(Usuario usuarioLogado, Estoque meuEstoque, BalcaoDeAtendimento balcaoAutomatico, List<Cliente> listaClientes,
             List<Sala> salas, List<Funcionario> ListaFuncionarios, List<Venda> listaVendas) {
         this.usuarioLogado = usuarioLogado;
@@ -43,6 +63,10 @@ public class Menu {
         this.listaVendas = listaVendas;
     }
 
+    
+    /**
+     * Exibe o menu principal de acordo com o tipo de usuário logado (Gerente ou Funcionario).
+     */
     public void exibirMenu() {
         switch (usuarioLogado) {
             case Gerente gerente ->
@@ -54,6 +78,11 @@ public class Menu {
         }
     }
 
+    /**
+     * Exibe o menu específico para o Gerente.
+     * 
+     * @param gerente O gerente logado.
+     */
     private void exibirMenuGerente(Gerente gerente) {
         String opcao;
         while (true) {
@@ -263,6 +292,11 @@ public class Menu {
         }
     }
 
+       /**
+     * Exibe o menu específico para o Funcionario.
+     * 
+     * @param funcionario O funcionário logado.
+     */
     private void exibirMenuFuncionario(Funcionario funcionario) {
         String opcao;
         while (true) {
@@ -433,6 +467,12 @@ public class Menu {
         }
     }
 
+    /**
+     * Obtém o adaptador de gateway de pagamento com base no tipo de pagamento.
+     * 
+     * @param tipoPagamento O tipo de pagamento (credito, debito, pix).
+     * @return O adaptador de gateway de pagamento correspondente.
+     */
     private static PaymentGateway getPaymentGateway(String tipoPagamento) {
         return switch (tipoPagamento.toLowerCase()) {
             case "credito" ->

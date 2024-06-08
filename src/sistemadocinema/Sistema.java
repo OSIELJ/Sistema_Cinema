@@ -27,13 +27,19 @@ import sistemadocinema.gereciamentoDeVendas.ComparatorValorVenda;
 import sistemadocinema.gereciamentoDeVendas.GerenciarVendas;
 
 /**
+ * Representa o sistema de cinema, responsável por gerenciar operações como cadastro de clientes,
+ * funcionários, filmes, vendas, entre outras.
  *
- * @author Osiel Junior
  */
 public class Sistema {
 
     private static final BalcaoDeAtendimento[] balcoes = new BalcaoDeAtendimento[5];
 
+    /**
+     * Método principal que inicia o sistema de cinema.
+     *
+     * @param args os argumentos da linha de comando (não utilizados)
+     */
     public static void main(String[] args) {
 
         Cliente c = new Cliente("nome", "sobrenome", "13441301609", "endereco", "telefone");
@@ -599,6 +605,7 @@ public class Sistema {
                     
                     
                     
+
                     /*Questão 17:
                         
                         Criar um método find para clientes utilizando o interator e comparator. Apresentar testes do método implementado.
@@ -652,6 +659,12 @@ public class Sistema {
         }
     }
 
+/**
+ * Retorna o gateway de pagamento correspondente ao tipo de pagamento fornecido.
+ *
+ * @param tipoPagamento O tipo de pagamento para o qual obter o gateway.
+ * @return O gateway de pagamento correspondente ao tipo fornecido, ou null se o tipo não for reconhecido.
+ */
     private static PaymentGateway getPaymentGateway(String tipoPagamento) {
         return switch (tipoPagamento.toLowerCase()) {
             case "credito" ->

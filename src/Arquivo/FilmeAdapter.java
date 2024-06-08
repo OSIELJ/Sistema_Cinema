@@ -12,12 +12,18 @@ import sistemadocinema.Filme;
 import java.lang.reflect.Type;
 
 /**
- * JsonSerializer for Filme class
- * 
- * @author Osiel
+ * Classe responsável por adaptar objetos do tipo Filme para JSON utilizando o Gson.
+ * Implementa JsonSerializer<Filme> para fornecer uma forma personalizada de serializar Filme.
  */
 public class FilmeAdapter implements JsonSerializer<Filme> {
 
+    /**
+     * 
+     * @param filme O objeto Filme a ser serializado.
+     * @param typeOfSrc O tipo do objeto de origem.
+     * @param context O contexto de serialização.
+     * @return O JsonElement que representa o objeto Filme em formato JSON.
+     */
     @Override
     public JsonElement serialize(Filme filme, Type typeOfSrc, JsonSerializationContext context) {
         JsonObject json = new JsonObject();

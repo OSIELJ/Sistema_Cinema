@@ -14,11 +14,20 @@ import sistemadocinema.Produto;
 import java.lang.reflect.Type;
 
 /**
- *
- * @author Osiel
+ * Adaptador para serialização e desserialização de objetos do tipo Produto.
+ * Este adaptador trata especificamente os subtipos Filme e Alimenticios.
+ * 
  */
 public class ProdutoAdapter implements JsonSerializer<Produto>, JsonDeserializer<Produto> {
     
+     /**
+     * Serializa um objeto Produto para seu formato JSON correspondente.
+     * 
+     * @param produto O objeto Produto a ser serializado.
+     * @param typeOfSrc O tipo do objeto fonte.
+     * @param context O contexto de serialização.
+     * @return O JsonElement que representa o objeto Produto.
+     */
     @Override
     public JsonElement serialize(Produto produto, Type typeOfSrc, JsonSerializationContext context) {
         JsonObject jsonObject = new JsonObject();
@@ -27,6 +36,17 @@ public class ProdutoAdapter implements JsonSerializer<Produto>, JsonDeserializer
         return jsonObject;
     }
 
+     /**
+     * Desserializa um JsonElement para um objeto Produto.
+     * Este método identifica o subtipo de Produto (Filme ou Alimenticios)
+     * com base no campo "type" do JSON e desserializa para o tipo apropriado.
+     * 
+     * @param json O elemento JSON a ser desserializado.
+     * @param typeOfT O tipo do objeto destino.
+     * @param context O contexto de desserialização.
+     * @return O objeto Produto desserializado.
+     * @throws JsonParseException Se ocorrer um erro durante a desserialização.
+     */
     @Override
     public Produto deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();

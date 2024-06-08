@@ -12,12 +12,17 @@ import sistemadocinema.Alimenticios;
 import java.lang.reflect.Type;
 
 /**
- * JsonSerializer for Alimenticios class
- * 
- * @author Osiel
+ *Classe responsável por adaptar objetos do tipo Alimenticios para JSON utilizando o Gson.
  */
 public class AlimenticiosAdapter implements JsonSerializer<Alimenticios> {
 
+    /**
+     * 
+     * @param alimenticios O objeto Alimenticios a ser serializado.
+     * @param typeOfSrc O tipo do objeto de origem.
+     * @param context O contexto de serialização.
+     * @return O JsonElement que representa o objeto Alimenticios em formato JSON.
+     */
     @Override
     public JsonElement serialize(Alimenticios alimenticios, Type typeOfSrc, JsonSerializationContext context) {
         JsonObject json = new JsonObject();

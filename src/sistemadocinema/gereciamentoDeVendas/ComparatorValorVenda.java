@@ -8,11 +8,19 @@ import java.util.Comparator;
 import sistemadocinema.Filme;
 
 /**
- *
- * @author Osiel
+ * ComparatorValorVenda é uma classe que implementa a interface Comparator,
+ * usada para comparar duas vendas com base no valor total da venda.
  */
 public class ComparatorValorVenda implements Comparator<Venda> {
 
+    /**
+     * Compara duas vendas com base no valor total da venda.
+     * 
+     * @param venda1 A primeira venda a ser comparada.
+     * @param venda2 A segunda venda a ser comparada.
+     * @return Um valor negativo se a primeira venda tiver um valor total menor,
+     *         um valor positivo se tiver um valor total maior e zero se forem iguais.
+     */
     @Override
     public int compare(Venda venda1, Venda venda2) {
         double diferencaPrecoVenda = venda1.getValorTotal() - venda2.getValorTotal();

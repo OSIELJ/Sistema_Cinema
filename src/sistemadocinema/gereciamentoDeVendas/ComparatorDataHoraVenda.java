@@ -8,11 +8,20 @@ import java.time.LocalDateTime;
 import java.util.Comparator;
 
 /**
- *
- * @author Osiel
+ * ComparatorDataHoraVenda é uma classe que implementa a interface Comparator,
+ * usada para comparar duas vendas com base na data e hora em que foram realizadas.
+ * 
  */
 public class ComparatorDataHoraVenda implements Comparator<Venda> {
 
+    /**
+     * Compara duas vendas com base na data e hora em que foram realizadas.
+     * 
+     * @param venda1 A primeira venda a ser comparada.
+     * @param venda2 A segunda venda a ser comparada.
+     * @return Um valor negativo se a primeira venda ocorrer antes da segunda,
+     *         um valor positivo se ocorrer depois e zero se forem iguais.
+     */
     @Override
     public int compare(Venda venda1, Venda venda2) {
         LocalDateTime dataHora1 = venda1.getDataHora();

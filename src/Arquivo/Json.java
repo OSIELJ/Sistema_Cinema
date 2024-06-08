@@ -30,8 +30,7 @@ import sistemadocinema.Funcionario;
 import sistemadocinema.gereciamentoDeVendas.Venda;
 
 /**
- *
- * @author Osiel Junior
+ *Classe responsável por gerenciar operações de leitura e escrita de dados em arquivos JSON.
  */
 public class Json {
 
@@ -48,6 +47,11 @@ public class Json {
 
     }
 
+    /**
+     * Salva uma lista de clientes em um arquivo JSON.
+     * 
+     * @param listaCliente A lista de clientes a ser salva.
+     */
     public static void salvarClientes(List<Cliente> listaCliente) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -64,6 +68,11 @@ public class Json {
 
 
 
+     /**
+     * Lê uma lista de clientes de um arquivo JSON.
+     * 
+     * @return A lista de clientes lida do arquivo.
+     */
     public static List<Cliente> lerClientes() {
         ArrayList<Cliente> listaCliente = new ArrayList();
 
@@ -78,6 +87,11 @@ public class Json {
         return listaCliente;
     }
 
+    /**
+     * Salva uma lista de produtos em um arquivo JSON.
+     * 
+     * @param listaProduto A lista de produtos a ser salva.
+    */
     public static void salvarProdutos(List<Produto> listaProduto) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(listaProduto);
@@ -89,7 +103,11 @@ public class Json {
         }
         System.out.println("Produtos salvos. ");
     }
-
+    /**
+     * Lê uma lista de produtos de um arquivo JSON.
+     * 
+     * @return A lista de produtos lida do arquivo.
+     */
     public static List<Produto> lerProdutos() {
         ArrayList<Produto> listaProduto = new ArrayList();
 
@@ -104,6 +122,11 @@ public class Json {
         return listaProduto;
     }
 
+    /**
+     * Salva uma lista de filmes em um arquivo JSON.
+     * 
+     * @param listaFilmes A lista de filmes a ser salva.
+     */
     public static void salvarFilme(List<Filme> listaFilmes) {
         // Register the custom FilmeAdapter
         Gson gson = new GsonBuilder()
@@ -122,6 +145,11 @@ public class Json {
         System.out.println("Filmes salvos.");
     }
 
+    /**
+     * Lê uma lista de filmes de um arquivo JSON.
+     * 
+     * @return A lista de filmes lida do arquivo.
+     */
     public static List<Filme> lerFilmes() {
         ArrayList<Filme> listaFilme = new ArrayList();
 
@@ -136,6 +164,11 @@ public class Json {
         return listaFilme;
     }
 
+    /**
+     * Salva o extrato de uma venda em um arquivo JSON.
+     * 
+     * @param extrato O extrato da venda a ser salvo.
+     */
     public static void salvarExtratoVenda(String extrato) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<String> extratos = new ArrayList<>();
@@ -169,9 +202,11 @@ public class Json {
         }
     }
     
-    
-    
-    
+    /**
+     * Salva uma lista de funcionários em um arquivo JSON.
+     * 
+     * @param listaFuncionarios A lista de funcionários a ser salva.
+     */
         public static void salvarFuncionario(List<Funcionario> listaFuncionarios) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(listaFuncionarios);
@@ -182,8 +217,12 @@ public class Json {
         }
         System.out.println("Funcionarios salvos com sucesso ");
     }
-        
-
+       
+    /**
+     * Salva uma lista de vendas em um arquivo JSON.
+     * 
+     * @param listaVendas A lista de vendas a ser salva.
+ */
     public static void salvarVendas(List<Venda> listaVendas) {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
@@ -201,6 +240,11 @@ public class Json {
     }
     
     
+     /**
+     * Salva uma lista de produtos alimentícios em um arquivo JSON.
+     * 
+     * @param listaAlimenticios A lista de produtos alimentícios a ser salva.
+     */
         public static void salvarAlimenticios(List<Alimenticios> listaAlimenticios) {
         
             
@@ -220,8 +264,11 @@ public class Json {
         System.out.println("Alimenticios salvos.");
     }
         
-        
-        
+    /**
+     * Salva o estoque em um arquivo JSON.
+     * 
+     * @param estoque O estoque a ser salvo.
+     */
         
     public static void salvarEstoque(Estoque estoque) {
         
@@ -243,11 +290,11 @@ public class Json {
         System.out.println("Estoque salvo com sucesso.");
     }
 
-
-
-    
-    
-    
+    /**
+     * Sobrescreve o método toString para retornar uma representação textual da classe Json.
+     * 
+     * @return A representação textual da classe Json.
+     */
         @Override
     public String toString() {
         return "Json{" + '}';
