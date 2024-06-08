@@ -1,0 +1,26 @@
+[
+  {
+    "titulo": "Os Incríveis",
+    "estilo": "Animação",
+    "dataValidade": "2024-05-01",
+    "valor": 10.0,
+    "quantidadeEmEstoque": 100,
+    "periodoExibicao": "10 dias"
+  },
+  {
+    "titulo": "O Senhor dos Anéis",
+    "estilo": "Fantasia",
+    "dataValidade": "2024-06-15",
+    "valor": 12.0,
+    "quantidadeEmEstoque": 150,
+    "periodoExibicao": "15 dias"
+  },
+  {
+    "titulo": "Matrix",
+    "estilo": "Ficção Científica",
+    "dataValidade": "2024-07-30",
+    "valor": 11.0,
+    "quantidadeEmEstoque": 120,
+    "periodoExibicao": "12 dias"
+  }
+]

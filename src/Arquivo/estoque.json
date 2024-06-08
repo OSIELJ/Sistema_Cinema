@@ -1,0 +1,16 @@
+{
+  "produtos": [
+    {
+      "nome": "Chocolate",
+      "dataValidade": "2023-12-31",
+      "valor": 3.0,
+      "quantidadeEmEstoque": 200
+    },
+    {
+      "nome": "Biscoitos",
+      "dataValidade": "2023-10-15",
+      "valor": 2.5,
+      "quantidadeEmEstoque": 150
+    }
+  ]
+}

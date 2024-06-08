@@ -1,0 +1,20 @@
+[
+  {
+    "nomeUsuario": "Daniel",
+    "senha": "Daniel123",
+    "nome": "Daniel Rodrigues",
+    "cpf": "01602001506"
+  },
+  {
+    "nomeUsuario": "arthur",
+    "senha": "123",
+    "nome": "Arthur Abreu",
+    "cpf": "01602001000"
+  },
+  {
+    "nomeUsuario": "Enzo",
+    "senha": "123",
+    "nome": "Enzo velozo",
+    "cpf": "01602000000"
+  }
+]

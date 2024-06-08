@@ -1,0 +1,78 @@
+[
+  {
+    "cliente": "João",
+    "cpf": "98765432100",
+    "dataHora": "08/06/2024 14:24:43",
+    "balcao": 5,
+    "itensVendidos": [
+      {
+        "nome": "Os Incríveis",
+        "valor": 10.0
+      },
+      {
+        "nome": "O Senhor dos Anéis",
+        "valor": 12.0
+      },
+      {
+        "nome": "Pipoca",
+        "valor": 5.0
+      }
+    ],
+    "total": 27.0
+  },
+  {
+    "cliente": "João",
+    "cpf": "98765432100",
+    "dataHora": "08/06/2024 14:24:43",
+    "balcao": 5,
+    "itensVendidos": [
+      {
+        "nome": "Os Incríveis",
+        "valor": 10.0
+      },
+      {
+        "nome": "O Senhor dos Anéis",
+        "valor": 12.0
+      },
+      {
+        "nome": "Pipoca",
+        "valor": 5.0
+      }
+    ],
+    "total": 27.0
+  },
+  {
+    "cliente": "Maria",
+    "cpf": "12345678901",
+    "dataHora": "08/06/2024 14:24:43",
+    "balcao": 5,
+    "itensVendidos": [
+      {
+        "nome": "Matrix",
+        "valor": 11.0
+      },
+      {
+        "nome": "Refrigerante",
+        "valor": 3.0
+      }
+    ],
+    "total": 14.0
+  },
+  {
+    "cliente": "Maria",
+    "cpf": "12345678901",
+    "dataHora": "08/06/2024 14:24:43",
+    "balcao": 5,
+    "itensVendidos": [
+      {
+        "nome": "Matrix",
+        "valor": 11.0
+      },
+      {
+        "nome": "Refrigerante",
+        "valor": 3.0
+      }
+    ],
+    "total": 14.0
+  }
+]
