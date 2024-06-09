@@ -31,7 +31,7 @@ public class Venda {
     private double valorTotal;
     private LocalDateTime dataHora;
     private BalcaoDeAtendimento balcao;
-    private final PaymentGateway paymentGateway;
+    private  PaymentGateway paymentGateway = null;
 
      /**
      * Constrói uma nova instância de Venda com base no cliente, balcão de atendimento
@@ -47,6 +47,13 @@ public class Venda {
         this.dataHora = LocalDateTime.now();
         this.balcao = balcao;
         this.paymentGateway = paymentGateway;
+    }
+    
+        public Venda(Cliente cliente, BalcaoDeAtendimento balcao) {
+        this.cliente = cliente;
+     
+        this.balcao = balcao;
+       
     }
 
     /**

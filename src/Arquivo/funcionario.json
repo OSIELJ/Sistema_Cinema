@@ -16,5 +16,11 @@
     "senha": "123",
     "nome": "Enzo velozo",
     "cpf": "01602000000"
+  },
+  {
+    "nomeUsuario": "Marshal",
+    "senha": "1234",
+    "nome": "MarshallDaBmW",
+    "cpf": "01602001503"
   }
 ]

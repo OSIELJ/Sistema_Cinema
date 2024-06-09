@@ -56,6 +56,12 @@ public class Cliente {
     public Cliente() {
 
     }
+    
+    public Cliente(String nome, String cpf){
+        this.nome = nome;
+        this.cpf = cpf;
+    
+    }
 
     /**
      * Construtor para inicializar os atributos do cliente.

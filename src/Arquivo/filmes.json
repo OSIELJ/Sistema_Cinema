@@ -8,6 +8,22 @@
     "periodoExibicao": "10 dias"
   },
   {
+    "titulo": "Forrest Gump",
+    "estilo": "Drama",
+    "dataValidade": "2024-10-20",
+    "valor": 11.0,
+    "quantidadeEmEstoque": 140,
+    "periodoExibicao": "10 dias"
+  },
+  {
+    "titulo": "O Poderoso Chefão",
+    "estilo": "Drama",
+    "dataValidade": "2024-03-10",
+    "valor": 11.0,
+    "quantidadeEmEstoque": 120,
+    "periodoExibicao": "10 dias"
+  },
+  {
     "titulo": "O Senhor dos Anéis",
     "estilo": "Fantasia",
     "dataValidade": "2024-06-15",
@@ -16,11 +32,35 @@
     "periodoExibicao": "15 dias"
   },
   {
+    "titulo": "Harry Potter e a Pedra Filosofal",
+    "estilo": "Fantasia",
+    "dataValidade": "2024-08-10",
+    "valor": 15.0,
+    "quantidadeEmEstoque": 180,
+    "periodoExibicao": "14 dias"
+  },
+  {
     "titulo": "Matrix",
     "estilo": "Ficção Científica",
     "dataValidade": "2024-07-30",
     "valor": 11.0,
     "quantidadeEmEstoque": 120,
     "periodoExibicao": "12 dias"
+  },
+  {
+    "titulo": "Interestelar",
+    "estilo": "Ficção Científica",
+    "dataValidade": "2024-09-25",
+    "valor": 13.0,
+    "quantidadeEmEstoque": 160,
+    "periodoExibicao": "13 dias"
+  },
+  {
+    "titulo": "Crepúsculo",
+    "estilo": "Romance",
+    "dataValidade": "2024-02-05",
+    "valor": 9.0,
+    "quantidadeEmEstoque": 100,
+    "periodoExibicao": "8 dias"
   }
 ]

@@ -2,7 +2,7 @@
   {
     "cliente": "João",
     "cpf": "98765432100",
-    "dataHora": "09/06/2024 12:55:43",
+    "dataHora": "09/06/2024 18:39:00",
     "balcao": 5,
     "itensVendidos": [
       {
@@ -23,7 +23,7 @@
   {
     "cliente": "João",
     "cpf": "98765432100",
-    "dataHora": "09/06/2024 12:55:43",
+    "dataHora": "09/06/2024 18:39:00",
     "balcao": 5,
     "itensVendidos": [
       {
@@ -42,9 +42,43 @@
     "total": 27.0
   },
   {
+    "cliente": "Pedro",
+    "cpf": "67890123456",
+    "dataHora": "09/06/2024 18:39:03",
+    "balcao": 3,
+    "itensVendidos": [
+      {
+        "nome": "Crepúsculo",
+        "valor": 9.0
+      },
+      {
+        "nome": "Chocolate",
+        "valor": 3.0
+      }
+    ],
+    "total": 12.0
+  },
+  {
+    "cliente": "Pedro",
+    "cpf": "67890123456",
+    "dataHora": "09/06/2024 18:39:03",
+    "balcao": 3,
+    "itensVendidos": [
+      {
+        "nome": "Crepúsculo",
+        "valor": 9.0
+      },
+      {
+        "nome": "Chocolate",
+        "valor": 3.0
+      }
+    ],
+    "total": 12.0
+  },
+  {
     "cliente": "Maria",
     "cpf": "12345678901",
-    "dataHora": "09/06/2024 12:55:43",
+    "dataHora": "09/06/2024 18:39:03",
     "balcao": 5,
     "itensVendidos": [
       {
@@ -61,7 +95,7 @@
   {
     "cliente": "Maria",
     "cpf": "12345678901",
-    "dataHora": "09/06/2024 12:55:43",
+    "dataHora": "09/06/2024 18:39:03",
     "balcao": 5,
     "itensVendidos": [
       {
@@ -74,5 +108,81 @@
       }
     ],
     "total": 14.0
+  },
+  {
+    "cliente": "Ana",
+    "cpf": "45678901234",
+    "dataHora": "09/06/2024 18:39:03",
+    "balcao": 4,
+    "itensVendidos": [
+      {
+        "nome": "O Poderoso Chefão",
+        "valor": 11.0
+      },
+      {
+        "nome": "Salgadinho",
+        "valor": 4.0
+      }
+    ],
+    "total": 15.0
+  },
+  {
+    "cliente": "Ana",
+    "cpf": "45678901234",
+    "dataHora": "09/06/2024 18:39:03",
+    "balcao": 4,
+    "itensVendidos": [
+      {
+        "nome": "O Poderoso Chefão",
+        "valor": 11.0
+      },
+      {
+        "nome": "Salgadinho",
+        "valor": 4.0
+      }
+    ],
+    "total": 15.0
+  },
+  {
+    "cliente": "João",
+    "cpf": "98765432100",
+    "dataHora": "09/06/2024 18:39:03",
+    "balcao": 5,
+    "itensVendidos": [
+      {
+        "nome": "Os Incríveis",
+        "valor": 10.0
+      },
+      {
+        "nome": "O Senhor dos Anéis",
+        "valor": 12.0
+      },
+      {
+        "nome": "Pipoca",
+        "valor": 5.0
+      }
+    ],
+    "total": 27.0
+  },
+  {
+    "cliente": "João",
+    "cpf": "98765432100",
+    "dataHora": "09/06/2024 18:39:03",
+    "balcao": 5,
+    "itensVendidos": [
+      {
+        "nome": "Os Incríveis",
+        "valor": 10.0
+      },
+      {
+        "nome": "O Senhor dos Anéis",
+        "valor": 12.0
+      },
+      {
+        "nome": "Pipoca",
+        "valor": 5.0
+      }
+    ],
+    "total": 27.0
   }
 ]

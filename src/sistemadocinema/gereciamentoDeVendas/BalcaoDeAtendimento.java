@@ -4,6 +4,7 @@
  */
 package sistemadocinema.gereciamentoDeVendas;
 
+import Arquivo.Json;
 import java.util.ArrayList;
 import java.util.List;
 import sistemadocinema.Filme;
@@ -33,6 +34,13 @@ public class BalcaoDeAtendimento {
         this.filmesEmCartaz = new ArrayList<>();
         this.gerenciadorVendas = gerenciadorVendas;
     }
+    
+    
+        public BalcaoDeAtendimento(int id) {
+        this.id = id;
+
+    }
+    
 
     /**
      * Obtém o identificador do balcão.

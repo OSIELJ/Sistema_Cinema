@@ -48,7 +48,11 @@ public class Sistema {
  
   
 
-        Cliente c = new Cliente("nome", "sobrenome", "13441301609", "endereco", "telefone");
+                Cliente c = new Cliente("nome", "sobrenome", "13441301609", "endereco", "telefone");
+                Cliente cliente1 = new Cliente("João", "Silva", "98765432100", "Rua A, 123", "123456789");
+                Cliente cliente2 = new Cliente("Maria", "Souza", "12345678901", "Rua B, 456", "987654321");
+                 Cliente cliente3 = new Cliente("Ana", "Oliveira", "45678901234", "Rua C, 789", "987654321");
+                Cliente cliente4 = new Cliente("Pedro", "Santos", "67890123456", "Rua D, 1011", "123456789");
 
         List<Venda> listVendas = new ArrayList<>();
         List<Cliente> listaClientes = new ArrayList<>();
@@ -78,10 +82,10 @@ public class Sistema {
 
         GerenciarVendas gerenciarVendas = new GerenciarVendas(listVendas);
         balcoes[4] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
-        balcoes[3] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
-        balcoes[2] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
-        balcoes[1] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
-        balcoes[0] = new BalcaoAutomatico(5, myFuncionario, gerenciarVendas);
+        balcoes[3] = new BalcaoAutomatico(4, myFuncionario, gerenciarVendas);
+        balcoes[2] = new BalcaoAutomatico(3, myFuncionario, gerenciarVendas);
+        balcoes[1] = new BalcaoAutomatico(2, myFuncionario, gerenciarVendas);
+        balcoes[0] = new BalcaoAutomatico(1, myFuncionario, gerenciarVendas);
         
         
         
@@ -89,33 +93,60 @@ public class Sistema {
         Alimenticios refrigerante = new Alimenticios("Refrigerante", LocalDate.of(2024, 12, 31), 3.0, 200);
         Alimenticios chocolate = new Alimenticios("Chocolate", LocalDate.of(2023, 12, 31), 3.0, 200);
         Alimenticios biscoitos = new Alimenticios("Biscoitos", LocalDate.of(2023, 10, 15), 2.5, 150);
+        Alimenticios sorvete = new Alimenticios("Sorvete", LocalDate.of(2024, 12, 31), 6.0, 120);
+        Alimenticios salgadinho = new Alimenticios("Salgadinho", LocalDate.of(2024, 12, 31), 4.0, 180);
+        Alimenticios doce = new Alimenticios("Doce", LocalDate.of(2024, 12, 31), 3.5, 200); 
+        Alimenticios sucoVencido = new Alimenticios("Suco de Laranja", LocalDate.of(2024, 4, 30), 4.0, 50);
+        Alimenticios salgadinhoVencido = new Alimenticios("Salgadinho", LocalDate.of(2024, 3, 15), 3.0, 80);        
         
         listaAlimenticios.add(pipoca);
         listaAlimenticios.add(refrigerante);
         listaAlimenticios.add(chocolate);
-        
-        
+        listaAlimenticios.add(sorvete);
+        listaAlimenticios.add(salgadinho);
+        listaAlimenticios.add(doce);        
+        listaAlimenticios.add(sucoVencido);
+        listaAlimenticios.add(salgadinhoVencido);          
         
         
         
         Filme filme = new Filme("Os Incríveis", "Animação", LocalDate.of(2024, 5, 1), 10.0, 100, "10 dias");
         Filme filme2 = new Filme("O Senhor dos Anéis", "Fantasia", LocalDate.of(2024, 6, 15), 12.0, 150, "15 dias");
         Filme filme3 = new Filme("Matrix", "Ficção Científica", LocalDate.of(2024, 7, 30), 11.0, 120, "12 dias");
+        Filme filme4 = new Filme("Harry Potter e a Pedra Filosofal", "Fantasia", LocalDate.of(2024, 8, 10), 15.0, 180, "14 dias");
+        Filme filme5 = new Filme("Interestelar", "Ficção Científica", LocalDate.of(2024, 9, 25), 13.0, 160, "13 dias");
+        Filme filme6 = new Filme("Forrest Gump", "Drama", LocalDate.of(2024, 10, 20), 11.0, 140, "10 dias");
+        Filme filme7 = new Filme("O Poderoso Chefão", "Drama", LocalDate.of(2024, 3, 10), 11.0, 120, "10 dias");
+        Filme filme8 = new Filme("Crepúsculo", "Romance", LocalDate.of(2024, 2, 5), 9.0, 100, "8 dias");
         
+        
+        listaFilmes.add(filme4);
+        listaFilmes.add(filme5);
+        listaFilmes.add(filme6);        
         listaFilmes.add(filme);
         listaFilmes.add(filme2);
         listaFilmes.add(filme3);
+        listaFilmes.add(filme7);
+        listaFilmes.add(filme8);
         
         
 
         Sala sala1 = new Sala(filme, 80);
         Sala sala2 = new Sala(filme2, 100);
         Sala sala3 = new Sala(filme3, 90);
+        Sala sala4 = new Sala(filme4, 120);
+        Sala sala5 = new Sala(filme5, 150);
+        Sala sala6 = new Sala(filme6, 100);
 
         List<Sala> salas = new ArrayList<>();
         salas.add(sala1);
         salas.add(sala2);
         salas.add(sala3);
+        salas.add(sala4);
+        salas.add(sala5);
+        salas.add(sala6);
+
+        
 
         Estoque myEstoque = new Estoque();
         myEstoque.adicionarProduto(pipoca);
@@ -125,17 +156,42 @@ public class Sistema {
         myEstoque.adicionarProduto(filme2);
         myEstoque.adicionarProduto(filme3);
         myEstoque.adicionarProduto(biscoitos);
+        myEstoque.adicionarProduto(sorvete);
+        myEstoque.adicionarProduto(salgadinho);
+        myEstoque.adicionarProduto(doce);
+        myEstoque.adicionarProduto(filme4);
+        myEstoque.adicionarProduto(filme5);
+        myEstoque.adicionarProduto(filme6);
+        myEstoque.adicionarProduto(filme7);
+        myEstoque.adicionarProduto(filme8);
+        myEstoque.adicionarProduto(sucoVencido);
+        myEstoque.adicionarProduto(salgadinhoVencido);        
+        
+        
+        
 
         Scanner scanner = new Scanner(System.in);
         String nomeUsuario, senha;
 
         listaClientes.add(c);
 
+        System.out.println("-------------------------------------------------------------------");        
         myEstoque.verificarValidadeProdutos();
-
+        System.out.println("-------------------------------------------------------------------");
+                
+                
         Autenticar myAutenticar = new Autenticar();
         myAutenticar.adicionarUsuario(myFuncionario);
         myAutenticar.adicionarUsuario(myGerente);
+        
+        
+  
+        
+        
+        
+        
+        
+        
 
         /*Questão 1:
         
@@ -233,11 +289,14 @@ public class Sistema {
                  */
                 System.out.println("-------------------------------------------------------------------");
 
-                Cliente cliente1 = new Cliente("João", "Silva", "98765432100", "Rua A, 123", "123456789");
-                Cliente cliente2 = new Cliente("Maria", "Souza", "12345678901", "Rua B, 456", "987654321");
+
+
                 
                 listaClientes.add(cliente1);
                 listaClientes.add(cliente2);
+                listaClientes.add(cliente3);
+                listaClientes.add(cliente4);                
+                
 
                 System.out.println("Escolha o método de pagamento: credito, debito, pix");
                 String metodoPagamento = "pix";
@@ -258,6 +317,7 @@ public class Sistema {
                 myEstoque.removerProduto(pipoca);
                 listVendas.add(venda1);
                 System.out.println("Venda realizada com sucesso.");
+                
 
                 Venda venda2 = new Venda(cliente2, balcoes[4], gateway);
                 venda2.adicionarItem(filme3);
@@ -267,6 +327,27 @@ public class Sistema {
                 myEstoque.removerProduto(refrigerante);
                 listVendas.add(venda2);
                 System.out.println("Venda realizada com sucesso.");
+                
+                
+                Venda venda3 = new Venda(cliente3, balcoes[3], gateway);
+                venda3.adicionarItem(filme7);
+                venda3.adicionarItem(salgadinho);
+                balcoes[3].confirmarVenda(venda3);
+                myEstoque.removerProduto(filme7);
+                myEstoque.removerProduto(salgadinho);
+                listVendas.add(venda3);
+                System.out.println("Venda realizada com sucesso.");
+                
+                
+
+                Venda venda4 = new Venda(cliente4, balcoes[2], gateway);
+                venda4.adicionarItem(filme8);
+                venda4.adicionarItem(chocolate);
+                balcoes[2].confirmarVenda(venda4);
+                myEstoque.removerProduto(filme8);
+                myEstoque.removerProduto(chocolate);
+                listVendas.add(venda4);
+                System.out.println("Venda realizada com sucesso.");                
 
                 gerenciarVendas.imprimirRelatorioVendas();
                 System.out.println("-------------------------------------------------------------------");
@@ -650,6 +731,7 @@ public class Sistema {
 
                     Usuario usuarioLogado = myAutenticar.autenticar(nomeUsuario, senha);
                     if (usuarioLogado != null) {
+                        
                         Menu menu = new Menu(usuarioLogado, myEstoque, balcoes[4], listaClientes,
                                 salas, listaFuncionarios, listVendas);
                         menu.exibirMenu();

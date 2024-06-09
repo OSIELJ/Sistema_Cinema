@@ -31,8 +31,8 @@ public class GerenciarCadastros {
      * @param listaFuncionarios    Lista de funcionários
      */
     public GerenciarCadastros(List<Cliente> listaClientes, List<Funcionario> listaFuncionarios) {
-        this.listaClientes = new ArrayList<>();
-        this.listaFuncionarios = new ArrayList<>();
+        this.listaClientes = listaClientes;
+        this.listaFuncionarios = listaFuncionarios;
     }
 
     /**

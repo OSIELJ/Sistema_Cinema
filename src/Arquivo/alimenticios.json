@@ -16,5 +16,35 @@
     "dataValidade": "2023-12-31",
     "valor": 3.0,
     "quantidadeEmEstoque": 200
+  },
+  {
+    "nome": "Sorvete",
+    "dataValidade": "2024-12-31",
+    "valor": 6.0,
+    "quantidadeEmEstoque": 120
+  },
+  {
+    "nome": "Salgadinho",
+    "dataValidade": "2024-12-31",
+    "valor": 4.0,
+    "quantidadeEmEstoque": 180
+  },
+  {
+    "nome": "Doce",
+    "dataValidade": "2024-12-31",
+    "valor": 3.5,
+    "quantidadeEmEstoque": 200
+  },
+  {
+    "nome": "Suco de Laranja",
+    "dataValidade": "2024-04-30",
+    "valor": 4.0,
+    "quantidadeEmEstoque": 50
+  },
+  {
+    "nome": "Salgadinho",
+    "dataValidade": "2024-03-15",
+    "valor": 3.0,
+    "quantidadeEmEstoque": 80
   }
 ]

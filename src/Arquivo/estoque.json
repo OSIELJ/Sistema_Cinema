@@ -1,16 +1,58 @@
 {
   "produtos": [
     {
-      "nome": "Chocolate",
-      "dataValidade": "2023-12-31",
-      "valor": 3.0,
-      "quantidadeEmEstoque": 200
-    },
-    {
       "nome": "Biscoitos",
       "dataValidade": "2023-10-15",
       "valor": 2.5,
       "quantidadeEmEstoque": 150
+    },
+    {
+      "nome": "Sorvete",
+      "dataValidade": "2024-12-31",
+      "valor": 6.0,
+      "quantidadeEmEstoque": 120
+    },
+    {
+      "nome": "Doce",
+      "dataValidade": "2024-12-31",
+      "valor": 3.5,
+      "quantidadeEmEstoque": 200
+    },
+    {
+      "titulo": "Harry Potter e a Pedra Filosofal",
+      "estilo": "Fantasia",
+      "dataValidade": "2024-08-10",
+      "valor": 15.0,
+      "quantidadeEmEstoque": 180,
+      "periodoExibicao": "14 dias"
+    },
+    {
+      "titulo": "Interestelar",
+      "estilo": "Ficção Científica",
+      "dataValidade": "2024-09-25",
+      "valor": 13.0,
+      "quantidadeEmEstoque": 160,
+      "periodoExibicao": "13 dias"
+    },
+    {
+      "titulo": "Forrest Gump",
+      "estilo": "Drama",
+      "dataValidade": "2024-10-20",
+      "valor": 11.0,
+      "quantidadeEmEstoque": 140,
+      "periodoExibicao": "10 dias"
+    },
+    {
+      "nome": "Suco de Laranja",
+      "dataValidade": "2024-04-30",
+      "valor": 4.0,
+      "quantidadeEmEstoque": 50
+    },
+    {
+      "nome": "Salgadinho",
+      "dataValidade": "2024-03-15",
+      "valor": 3.0,
+      "quantidadeEmEstoque": 80
     }
   ]
 }

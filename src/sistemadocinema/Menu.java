@@ -4,6 +4,7 @@
  */
 package sistemadocinema;
 
+import Arquivo.Json;
 import com.mycompany.prototipo.Credito;
 import com.mycompany.prototipo.CreditoAdapter;
 import com.mycompany.prototipo.Debito;
@@ -93,12 +94,13 @@ public class Menu {
             System.out.println("1. Realizar venda");
             System.out.println("2. Cadastrar Cliente");
             System.out.println("3. Alterar Cliente");
-            System.out.println("2. Excluir Cliente");
+            System.out.println("4. Excluir Cliente");
             System.out.println("5. Verificar estoque");
             System.out.println("6. Verificar rendimento diário ou mensal dos balcões");
             System.out.println("7. Cadastar Funcionario");
             System.out.println("8. Editar Funcionario");
-            System.out.println("9. Sair");
+            System.out.println("9. Gerar Relatorio mesal ou anual");            
+            System.out.println("10. Sair");
 
             opcao = scanner.nextLine();
 
@@ -178,6 +180,7 @@ public class Menu {
                         balcaoAutomatico.confirmarVenda(venda);
                         meuEstoque.removerProduto(filmeEscolhido);
                         listaVendas.add(venda);
+                        Json.salvarVendas(listaVendas);
                         System.out.println("Venda realizada com sucesso.");
                     } else {
                         System.out.println("Falha no processamento do pagamento.");
@@ -210,7 +213,9 @@ public class Menu {
                 }
                 case "3" -> {
 
-                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, listaFuncionarios);
+                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(Json.lerClientes(), listaFuncionarios);
+                    gerenciarCadastros.imprimirListaClientes();
+
                     System.out.println("Alterar Cliente:");
 
                     System.out.println("Informe o CPF do novo funcionário: ");
@@ -223,31 +228,47 @@ public class Menu {
                     String novoTelefone = scanner.nextLine();
 
                     gerenciarCadastros.editarCliente(cpf, novoTelefone, novoEndereco);
+                    gerenciarCadastros.imprimirListaClientes();
+
 
                 }
                 case "4" -> {
 
-                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, listaFuncionarios);
+                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(Json.lerClientes(), listaFuncionarios);
+                    gerenciarCadastros.imprimirListaClientes();
                     System.out.println("Excluir Cliente:");
 
                     System.out.println("Informe o CPF do novo funcionário: ");
                     String cpf = scanner.nextLine();
 
+                     
                     gerenciarCadastros.excluirCliente(cpf);
-
+                    gerenciarCadastros.imprimirListaClientes();
+                    
                 }
                 case "5" -> {
                     System.out.println("Verificação de Estoque:");
                     meuEstoque.verificarValidadeProdutos();
                 }
                 case "6" -> {
-
                     GerenciarVendas gerenciarVendas = new GerenciarVendas(listaVendas);
 
-                    System.out.println("Verificar rendimento diário dos balcões:");
-                    double rendimentoDiario = gerenciarVendas.calcularRendimentoDiario();
-                    System.out.println("Rendimento diário: " + rendimentoDiario);
+                    System.out.println("Verificar rendimento diário ou mensal dos balcões:");
+                    System.out.println("1. Rendimento diário");
+                    System.out.println("2. Rendimento mensal");
+                    String opcaoRendimento = scanner.nextLine();
 
+                    switch (opcaoRendimento) {
+                        case "1" -> {
+                            double rendimentoDiario = gerenciarVendas.calcularRendimentoDiario();
+                            System.out.println("Rendimento diário: " + rendimentoDiario);
+                        }
+                        case "2" -> {
+                            double rendimentoMensal = gerenciarVendas.calcularRendimentoMensal();
+                            System.out.println("Rendimento mensal: " + rendimentoMensal);
+                        }
+                        default -> System.out.println("Opção inválida. Por favor, escolha novamente.");
+                    }
                 }
                 case "7" -> {
                     
@@ -268,8 +289,8 @@ public class Menu {
                 }
                 case "8" -> {
                     
-                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, listaFuncionarios);
-                    
+                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, Json.lerFuncionarios());
+                    gerenciarCadastros.imprimirListaFuncionarios();
                      System.out.println("8. Editar Funcionario");
                      
                     System.out.println("Informe o CPF do novo funcionário:");
@@ -279,10 +300,40 @@ public class Menu {
                     System.out.println("Informe a senha do novo funcionário:");
                     String senha = scanner.nextLine();
                     
+
+                    
                     gerenciarCadastros.editarFuncionario(cpf, senha, nomeUsuario);
+                    gerenciarCadastros.imprimirListaFuncionarios();                    
                     
                 }
                 case "9" -> {
+                    
+                    
+                    GerenciarVendas gerenciarVendas = new GerenciarVendas(Json.lerVendas());                    
+                    
+                            
+                     System.out.println("Gerar Relatorio Mensal ou Anual:");
+                    System.out.println("1. Relatorio Mensal");
+                    System.out.println("2. Relatorio Anual");
+                    String opcaoRelatorio = scanner.nextLine();
+
+                    switch (opcaoRelatorio) {
+
+                        case "1" -> {
+                            gerenciarVendas.imprimirRelatorioVendas();
+                        }
+                        case "2" -> {
+                            gerenciarVendas.imprimirRelatorioVendas();
+
+                        }
+                        default -> System.out.println("Opção inválida. Por favor, escolha novamente.");
+                    }                   
+                    
+                    
+
+                    
+                }                
+                case "10" -> {
                     System.out.println("Sessão encerrada.");
                     return;
                     
@@ -307,7 +358,7 @@ public class Menu {
             System.out.println("1. Realizar venda");
             System.out.println("2. Cadastrar Cliente");
             System.out.println("3. Alterar Cliente");
-            System.out.println("2. Excluir Cliente");
+            System.out.println("4. Excluir Cliente");
             System.out.println("5. Verificar estoque");
             System.out.println("6. Verificar rendimento diário ou mensal dos balcões");
             System.out.println("7. Sair");
@@ -420,7 +471,8 @@ public class Menu {
                 }
                 case "3" -> {
 
-                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, listaFuncionarios);
+                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(Json.lerClientes(), listaFuncionarios);
+                    gerenciarCadastros.imprimirListaClientes();                    
                     System.out.println("Alterar Cliente:");
 
                     System.out.println("Informe o CPF do novo funcionário: ");
@@ -433,31 +485,47 @@ public class Menu {
                     String novoTelefone = scanner.nextLine();
 
                     gerenciarCadastros.editarCliente(cpf, novoTelefone, novoEndereco);
-
+                    gerenciarCadastros.imprimirListaClientes();
+                    
                 }
                 case "4" -> {
 
-                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(listaClientes, listaFuncionarios);
+                    GerenciarCadastros gerenciarCadastros = new GerenciarCadastros(Json.lerClientes(), listaFuncionarios);
+                    gerenciarCadastros.imprimirListaClientes();
                     System.out.println("Excluir Cliente:");
 
                     System.out.println("Informe o CPF do novo funcionário: ");
                     String cpf = scanner.nextLine();
 
+                    
+                    
                     gerenciarCadastros.excluirCliente(cpf);
-
+                    gerenciarCadastros.imprimirListaClientes();
+                    
                 }
                 case "5" -> {
                     System.out.println("Verificação de Estoque:");
                     meuEstoque.verificarValidadeProdutos();
                 }
                 case "6" -> {
-
                     GerenciarVendas gerenciarVendas = new GerenciarVendas(listaVendas);
 
-                    System.out.println("Verificar rendimento diário dos balcões:");
-                    double rendimentoDiario = gerenciarVendas.calcularRendimentoDiario();
-                    System.out.println("Rendimento diário: " + rendimentoDiario);
+                    System.out.println("Verificar rendimento diário ou mensal dos balcões:");
+                    System.out.println("1. Rendimento diário");
+                    System.out.println("2. Rendimento mensal");
+                    String opcaoRendimento = scanner.nextLine();
 
+                    switch (opcaoRendimento) {
+                        case "1" -> {
+                            double rendimentoDiario = gerenciarVendas.calcularRendimentoDiario();
+                            System.out.println("Rendimento diário: " + rendimentoDiario);
+                        }
+                        case "2" -> {
+                            double rendimentoMensal = gerenciarVendas.calcularRendimentoMensal();
+                            System.out.println("Rendimento mensal: " + rendimentoMensal);
+                        }
+                        default -> System.out.println("Opção inválida. Por favor, escolha novamente.");
+                    }
                 }
                 case "7" -> {
                     System.out.println("Sessão encerrada.");

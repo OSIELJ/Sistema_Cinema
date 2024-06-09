@@ -39,7 +39,7 @@ public class Json {
     public static final String arqCliente = "./src/Arquivo/cliente.json";
     public static final String arqProdutos = "./src/main/java/Arquivo/produtos.json";
     public static final String arqFilmes = "./src/Arquivo/filmes.json";
-    public static final String arqExtratoVenda = "C:/Users/Osiel/Documents/NetBeansProjects/Sistema_Cinema/src/Arquivo/extratoVenda.json";
+    public static final String arqExtratoVenda = "./src/Arquivo/extratoVenda.json";
     public static final String arqFuncionario = "./src/Arquivo/funcionario.json";
     public static final String arqVenda = "./src/Arquivo/venda.json";
     public static final String arqAlimenticios = "./src/Arquivo/alimenticios.json";
@@ -219,6 +219,27 @@ public class Json {
         }
         System.out.println("Funcionarios salvos com sucesso ");
     }
+        
+        
+    /**
+     * Lê a lista de funcionários de um arquivo JSON.
+     * 
+     * @return A lista de funcionários lida do arquivo.
+     */
+    public static List<Funcionario> lerFuncionarios() {
+        Gson gson = new Gson();
+        List<Funcionario> listaFuncionarios = null;
+
+        try (FileReader reader = new FileReader(arqFuncionario)) {
+            Type tipoListaFuncionario = new TypeToken<List<Funcionario>>() {}.getType();
+            listaFuncionarios = gson.fromJson(reader, tipoListaFuncionario);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Funcionarios lidos com sucesso ");
+        return listaFuncionarios;
+    }        
        
     /**
      * Salva uma lista de vendas em um arquivo JSON.
@@ -291,6 +312,29 @@ public class Json {
 
         System.out.println("Estoque salvo com sucesso.");
     }
+    
+    
+    /**
+     * Lê uma lista de vendas de um arquivo JSON usando o VendaDeserializer.
+     * 
+     * @return A lista de vendas lida do arquivo.
+     */
+    public static List<Venda> lerVendas() {
+        List<Venda> listaVendas = new ArrayList<>();
+
+        try (FileReader reader = new FileReader(arqVenda)) {
+            Gson gson = new GsonBuilder()
+                    .registerTypeAdapter(Venda.class, new VendaDeserializer())
+                    .create();
+            Type tipoListaVendas = new TypeToken<List<Venda>>() {}.getType();
+            listaVendas = gson.fromJson(reader, tipoListaVendas);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return listaVendas;
+    }
+    
 
     /**
      * Sobrescreve o método toString para retornar uma representação textual da classe Json.

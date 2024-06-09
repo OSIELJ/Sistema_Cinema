@@ -23,10 +23,8 @@ public class Relatorio {
      * 
      * @param tipo O tipo de relatório (Diário, Mensal, Anual).
      */
-    public Relatorio(String tipo) {
-        this.tipo = tipo;
-        this.vendas = new ArrayList<>();
-        this.rendimento = 0.0;
+    public Relatorio(List<Venda> vendas) {
+        this.vendas = vendas;
     }
 
     /**
@@ -37,6 +35,57 @@ public class Relatorio {
     public void adicionarVenda(Venda venda) {
         vendas.add(venda);
         rendimento += venda.calcularTotal();
+    }
+
+    /**
+     * Calcula o rendimento total do relatório.
+     * 
+     * @return O rendimento total.
+     */
+    public double calcularRendimentoTotal() {
+        return rendimento;
+    }
+
+    /**
+     * Lista todas as vendas no relatório.
+     * 
+     * @return A lista de vendas.
+     */
+    public List<Venda> listarVendas() {
+        return vendas;
+    }
+
+    /**
+     * Lista as vendas dentro de um período mensal.
+     * 
+     * @param mes O mês desejado (1 para Janeiro, 2 para Fevereiro, etc.).
+     * @param ano O ano desejado.
+     * @return A lista de vendas dentro do período mensal especificado.
+     */
+    public List<Venda> listarVendasMensais(int mes, int ano) {
+        List<Venda> vendasMensais = vendas;
+        for (Venda venda : vendas) {
+            if (venda.getDataHora().getMonthValue() == mes && venda.getDataHora().getYear() == ano) {
+                vendasMensais.add(venda);
+            }
+        }
+        return vendasMensais;
+    }
+
+    /**
+     * Lista as vendas dentro de um período anual.
+     * 
+     * @param ano O ano desejado.
+     * @return A lista de vendas dentro do período anual especificado.
+     */
+    public List<Venda> listarVendasAnuais(int ano) {
+        List<Venda> vendasAnuais = vendas;
+        for (Venda venda : vendas) {
+            if (venda.getDataHora().getYear() == ano) {
+                vendasAnuais.add(venda);
+            }
+        }
+        return vendasAnuais;
     }
 
     /**
