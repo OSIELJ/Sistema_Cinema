@@ -10,6 +10,8 @@ import sistemadocinema.Filme;
 /**
  * ComparatorValorVenda é uma classe que implementa a interface Comparator,
  * usada para comparar duas vendas com base no valor total da venda.
+ * 
+ * @author Osiel Junior
  */
 public class ComparatorValorVenda implements Comparator<Venda> {
 

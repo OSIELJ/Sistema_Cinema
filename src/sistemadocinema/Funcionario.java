@@ -5,6 +5,8 @@ import java.util.List;
 /**
  * A classe Funcionario representa um funcionário do sistema de cinema.
  * Herda propriedades da classe Usuario e inclui funcionalidades adicionais específicas para funcionários.
+ * 
+ * @author Osiel Junior
  */
 public class Funcionario extends Usuario {
     

@@ -11,6 +11,7 @@ import java.util.Comparator;
  * ComparatorDataHoraVenda é uma classe que implementa a interface Comparator,
  * usada para comparar duas vendas com base na data e hora em que foram realizadas.
  * 
+ * @author Osiel Junior
  */
 public class ComparatorDataHoraVenda implements Comparator<Venda> {
 

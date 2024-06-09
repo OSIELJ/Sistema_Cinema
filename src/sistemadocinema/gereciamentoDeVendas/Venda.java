@@ -22,6 +22,8 @@ import sistemadocinema.Produto;
  * Também fornece métodos para adicionar itens à venda, calcular o valor total,
  * gerar um extrato da venda e processar o pagamento.
  * 
+ * @author Osiel Junior
+ * 
  */
 public class Venda {
     private Cliente cliente;

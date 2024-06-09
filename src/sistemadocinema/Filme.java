@@ -5,6 +5,8 @@ import java.time.LocalDate;
 /**
  * A classe Filme representa um filme exibido no cinema, herdando propriedades de Produto.
  * Inclui informações específicas sobre o título, estilo e período de exibição do filme.
+ * 
+ * @author Osiel Junior
  */
 public class Filme extends Produto {
     private String titulo;

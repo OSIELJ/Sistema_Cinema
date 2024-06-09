@@ -11,6 +11,7 @@ import java.time.LocalDate;
  * Esta classe inclui atributos comuns a todos os produtos, como nome, data de validade,
  * valor e quantidade em estoque.
  * 
+ * @author Osiel Junior
  */
 public abstract class Produto {
 

@@ -9,6 +9,7 @@ import java.util.Comparator;
  * Esta classe implementa um Comparator personalizado para comparar objetos do tipo Filme com base em seus valores.
  * O método compare compara dois objetos Filme com base em seus valores.
  * 
+ * @author Osiel Junior
  */
 public class ComparatorFilmeValor implements Comparator<Filme> {
 

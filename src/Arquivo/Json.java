@@ -31,6 +31,8 @@ import sistemadocinema.gereciamentoDeVendas.Venda;
 
 /**
  *Classe responsável por gerenciar operações de leitura e escrita de dados em arquivos JSON.
+ * 
+ * @author Osiel Junior
  */
 public class Json {
 

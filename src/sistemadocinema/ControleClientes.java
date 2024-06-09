@@ -10,6 +10,8 @@ import java.util.List;
 /**
  * Classe responsável por controlar uma lista de clientes.
  * Permite encontrar um cliente com base em um comparador personalizado.
+ * 
+ * @author Osiel Junior
  */
 public class ControleClientes {
     private final List<Cliente> clientes;

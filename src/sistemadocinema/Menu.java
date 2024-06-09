@@ -29,6 +29,8 @@ import sistemadocinema.gereciamentoDeVendas.Venda;
  * @see Sala
  * @see Funcionario
  * @see Venda
+ * 
+ * @author Osiel Junior
  */
 public class Menu {
 

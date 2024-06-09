@@ -30,6 +30,7 @@ import sistemadocinema.gereciamentoDeVendas.GerenciarVendas;
  * Representa o sistema de cinema, responsável por gerenciar operações como cadastro de clientes,
  * funcionários, filmes, vendas, entre outras.
  *
+ * @author Osiel Junior
  */
 public class Sistema {
 
@@ -41,6 +42,11 @@ public class Sistema {
      * @param args os argumentos da linha de comando (não utilizados)
      */
     public static void main(String[] args) {
+        
+       
+
+ 
+  
 
         Cliente c = new Cliente("nome", "sobrenome", "13441301609", "endereco", "telefone");
 

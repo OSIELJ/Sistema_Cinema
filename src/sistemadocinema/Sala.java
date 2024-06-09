@@ -7,7 +7,7 @@ package sistemadocinema;
 /**
  * A classe Sala representa uma sala de cinema que exibe um filme específico e possui um número determinado de poltronas disponíveis.
  * 
- * @autor Osiel Junior e Daniel Rodrigues
+ * @author  Osiel Junior e Daniel Rodrigues
  */
 public class Sala {
     private Filme filme;

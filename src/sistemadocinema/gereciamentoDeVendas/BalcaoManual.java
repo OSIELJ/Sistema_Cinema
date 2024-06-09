@@ -9,6 +9,7 @@ import sistemadocinema.Funcionario;
 /**
  * Representa um balcão de atendimento manual no sistema de cinema.
  * 
+ * @author Osiel Junior
  */
 public class BalcaoManual extends BalcaoDeAtendimento {
 

@@ -17,6 +17,8 @@ import java.lang.reflect.Type;
  * Adaptador para serialização e desserialização de objetos do tipo Produto.
  * Este adaptador trata especificamente os subtipos Filme e Alimenticios.
  * 
+ * @author Osiel Junior
+ * 
  */
 public class ProdutoAdapter implements JsonSerializer<Produto>, JsonDeserializer<Produto> {
     

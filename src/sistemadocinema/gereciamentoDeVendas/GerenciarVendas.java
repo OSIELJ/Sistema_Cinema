@@ -13,6 +13,7 @@ import java.util.List;
  * incluindo a confirmação e o cancelamento de vendas, a impressão de relatórios de vendas
  * e o cálculo do rendimento diário.
  * 
+ * @author Osiel Junior
  */
 public class GerenciarVendas {
     private final List<Venda> vendasConfirmadas;
@@ -31,12 +32,20 @@ public class GerenciarVendas {
      * 
      * @param venda A venda a ser confirmada.
      */
-    public void confirmarVenda(Venda venda) {
-        venda.calcularTotal(); // Calcula o total da venda
-        this.vendasConfirmadas.add(venda);
-        System.out.println("Venda realizada com sucesso!");
-        Json.salvarExtratoVenda(venda.getExtrato());
+public void confirmarVenda(Venda venda) {
+    // Verifica se uma venda semelhante já foi confirmada anteriormente
+    for (Venda vendaConfirmada : vendasConfirmadas) {
+        if (vendaConfirmada.equals(venda)) {
+            System.out.println("Esta venda já foi confirmada anteriormente!");
+            return;
+        }
     }
+    
+    venda.calcularTotal(); // Calcula o total da venda
+    this.vendasConfirmadas.add(venda);
+    System.out.println("Venda realizada com sucesso!");
+    Json.salvarExtratoVenda(venda.getExtrato());
+}
 
     /**
      * Método para cancelar uma venda.
@@ -54,12 +63,16 @@ public class GerenciarVendas {
     /**
      * Método para imprimir o relatório de vendas.
      */
-    public void imprimirRelatorioVendas() {
-        System.out.println("Relatório de Vendas:");
-        for (Venda venda : vendasConfirmadas) {
+public void imprimirRelatorioVendas() {
+    System.out.println("Relatório de Vendas:");
+    List<Venda> vendasImpressas = new ArrayList<>();
+    for (Venda venda : vendasConfirmadas) {
+        if (!vendasImpressas.contains(venda)) {
             System.out.println(venda.getExtrato());
+            vendasImpressas.add(venda);
         }
     }
+}
 
     /**
      * Método para calcular o rendimento diário das vendas.

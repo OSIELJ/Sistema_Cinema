@@ -12,6 +12,8 @@ import java.util.List;
  * como a geração de relatórios e a gestão de outros gerentes.
  * 
  * @see Funcionario
+ * 
+ * @author Osiel Junior
  */
 public class Gerente extends Funcionario {
     

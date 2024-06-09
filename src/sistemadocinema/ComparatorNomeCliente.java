@@ -8,6 +8,8 @@ import java.util.Comparator;
 /**
  * Esta classe implementa um Comparator personalizado para comparar objetos do tipo Cliente com base em seus nomes.
  * O método compare compara dois objetos Cliente com base em seus nomes.
+ * 
+ * @author Osiel Junior
  */
 public class ComparatorNomeCliente implements Comparator<Cliente> {
     

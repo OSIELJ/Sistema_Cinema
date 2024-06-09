@@ -17,8 +17,9 @@ import sistemadocinema.gereciamentoDeVendas.Venda;
 
 /**
  * Classe responsável por adaptar objetos do tipo Venda para JSON utilizando o Gson.
- * Implementa JsonSerializer<Venda> para fornecer uma forma personalizada de serializar Venda.
+ * Implementa JsonSerializer para fornecer uma forma personalizada de serializar Venda.
  * 
+ * @author Osiel Junior
  */
 public class VendaAdapter implements JsonSerializer<Venda> {
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");

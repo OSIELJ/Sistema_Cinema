@@ -10,6 +10,8 @@ import Arquivo.Json;
 
 /**
  * Gerencia os cadastros de clientes e funcionários no sistema.
+ * 
+ * @author Osiel Junior
  */
 public class GerenciarCadastros {
 

@@ -12,6 +12,7 @@ import java.util.List;
  * Permite adicionar, remover, verificar a validade de produtos e listar os filmes disponíveis.
  * Também fornece métodos para acessar e modificar a lista de produtos.
  * 
+ * @author Osiel Junior
  */
 public class Estoque {
 
