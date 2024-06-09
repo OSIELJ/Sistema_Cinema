@@ -83,9 +83,22 @@ public class GerenciarVendas {
      */
     public double calcularRendimentoDiario() {
         double rendimento = 0.0;
-        for (Venda venda : vendasConfirmadas) {
-            rendimento += venda.getValorTotal();
+        List<Venda> vendas = Json.lerVendas();
+        
+        // Verifica se a lista de vendas não está vazia
+        if (!vendas.isEmpty()) {
+            // Obtém o número do balcão da primeira venda
+            int numeroBalcao = vendas.get(0).getBalcao().id;
+
+            // Percorre todas as vendas
+            for (Venda venda : vendas) {
+                // Verifica se o número do balcão é o mesmo
+                if (venda.getBalcao().id == numeroBalcao) {
+                    rendimento += venda.getValorTotal();
+                }
+            }
         }
+
         return rendimento;
     }
 

@@ -21,7 +21,7 @@ public class Relatorio {
     /**
      * Construtor da classe Relatório.
      * 
-     * @param tipo O tipo de relatório (Diário, Mensal, Anual).
+     * 
      */
     public Relatorio(List<Venda> vendas) {
         this.vendas = vendas;

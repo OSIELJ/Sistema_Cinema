@@ -732,7 +732,11 @@ public class Sistema {
                     Usuario usuarioLogado = myAutenticar.autenticar(nomeUsuario, senha);
                     if (usuarioLogado != null) {
                         
-                        Menu menu = new Menu(usuarioLogado, myEstoque, balcoes[4], listaClientes,
+                        System.out.println("Selecione qual balcão |0 1 2 3 4| "); 
+                        int balcaoSelecionado = scanner.nextInt();                        
+                        
+                        
+                        Menu menu = new Menu(usuarioLogado, myEstoque, balcoes[balcaoSelecionado], listaClientes,
                                 salas, listaFuncionarios, listVendas);
                         menu.exibirMenu();
                         break;
